@@ -14,6 +14,7 @@ public class LongestPalindrome {
 		return s.substring(left + 1, right);
 	}
 
+	// O(n^2)
 	static public String longestPalindrome(String s) {
 		if (s == null)
 			return null;
