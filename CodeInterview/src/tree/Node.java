@@ -10,4 +10,8 @@ public class Node {
 		left = l;
 		right = r;
 	}
+
+	public String toString() {
+		return String.valueOf(value);
+	}
 }
