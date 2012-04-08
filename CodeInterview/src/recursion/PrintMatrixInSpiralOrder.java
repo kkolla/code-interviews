@@ -10,8 +10,6 @@ public class PrintMatrixInSpiralOrder {
 		}
 
 		if (maxRow == 1) {
-			if (k == 1)
-				System.out.print("aaa");
 			for (int i = k; i < maxCol; i++)
 				System.out.print(m[k][i] + " ");
 			System.out.println();
