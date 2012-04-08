@@ -22,7 +22,7 @@ public class FindNextNodeInBinaryTree {
 	}
 
 	public static void main(String[] args) {
-		Node root = Node.getBSTWithTenNodes();
+		Node root = Node.createBSTWithTenNodes();
 		Node first = root;
 		while (first.left != null)
 			first = first.left;

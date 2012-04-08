@@ -2,7 +2,7 @@ package recursion;
 
 public class PrintMatrixInSpiralOrder {
 
-	// buggy!
+	/* buggy! */
 	public static void printSpiral(int[][] m, int maxRow, int maxCol, int k) {
 		if (maxRow <= 0 || maxCol <= 0) {
 			System.out.println();

@@ -21,11 +21,6 @@ public class LeastCommonAncestor {
 		Node root = new Node(1, n2, n3);
 		Node ancestor = lca(root, n5, n4);
 		System.out.println("LCA's value: " + ancestor.value);
-
-		root = Node.getBSTWithTenNodes();
-
-		ancestor = lca(root, root.left, root.right);
-		System.out.println("LCA's value: " + ancestor.value);
 	}
 
 }

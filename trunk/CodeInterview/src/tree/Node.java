@@ -25,7 +25,7 @@ public class Node {
 		return String.valueOf(value);
 	}
 
-	public static Node getBSTWithTenNodes() {
+	public static Node createBSTWithTenNodes() {
 		Node n1 = new Node(1);
 		Node n3 = new Node(3);
 		Node n2 = new Node(2, n1, n3);
