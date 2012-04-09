@@ -1,5 +1,7 @@
 package linkedlist;
 
+import utils.PrintUtils;
+
 public class ReverseLinkedList {
 
 	public static Node reverseLinkedListIterative(Node head) {
@@ -33,14 +35,14 @@ public class ReverseLinkedList {
 		Node head = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5,
 				null)))));
 
-		Node.printLinkedList(head);
-		Node.printLinkedList(reverseLinkedListIterative(head));
+		PrintUtils.printLinkedList(head);
+		PrintUtils.printLinkedList(reverseLinkedListIterative(head));
 
 		head = new Node(1, new Node(2, new Node(3, new Node(4,
 				new Node(5, null)))));
 
-		Node.printLinkedList(head);
-		Node.printLinkedList(reverseLinkedListRecursive(head));
+		PrintUtils.printLinkedList(head);
+		PrintUtils.printLinkedList(reverseLinkedListRecursive(head));
 	}
 
 }
