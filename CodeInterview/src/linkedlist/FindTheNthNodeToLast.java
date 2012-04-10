@@ -29,7 +29,7 @@ public class FindTheNthNodeToLast {
 	}
 
 	public static void main(String[] args) {
-		Node head = CreateUtils.createLinkedListWithTenNodes();
+		Node head = CreateUtils.createSortedLinkedListFromOneToN(10);
 		int n = 8;
 		PrintUtils.printLinkedList(head);
 
