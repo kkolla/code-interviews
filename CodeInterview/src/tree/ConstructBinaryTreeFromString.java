@@ -29,11 +29,9 @@ public class ConstructBinaryTreeFromString {
 		int maxDepth = 1;
 		stack.push(s[i++]);
 		states.push(State.EXPECT_LEFT_CHILD);
-		while (!stack.isEmpty() && !states.isEmpty()) {
-			if (i == s.length)
-				break;
+		while (!stack.isEmpty() && !states.isEmpty() && i != s.length) {
 			State state = states.peek();
-			char c = s[i];
+			char c = s[i++];
 			switch (state) {
 			case EXPECT_LEFT_CHILD:
 			case EXPECT_RIGHT_CHILD:
@@ -42,6 +40,7 @@ public class ConstructBinaryTreeFromString {
 				stack.push(c);
 				if (c == '(') {
 					states.push(State.EXPECT_LEFT_CHILD);
+					maxDepth = Math.max(maxDepth, states.size());
 				} else if (c == '0') {
 					states.pop();
 					states.push(state == State.EXPECT_LEFT_CHILD ? State.EXPECT_RIGHT_CHILD
@@ -61,8 +60,6 @@ public class ConstructBinaryTreeFromString {
 				}
 				break;
 			}
-			maxDepth = Math.max(maxDepth, states.size());
-			i++;
 		}
 
 		return i == s.length ? maxDepth - 1 : -1;
