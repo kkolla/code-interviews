@@ -32,4 +32,19 @@ public class CreateUtils {
 		}
 		return head;
 	}
+
+	public static linkedlist.Node createRandomLinkedList(int maxLength,
+			int maxValue) {
+		int n = (int) (Math.random() * maxLength);
+		if (n == 0)
+			return null;
+		linkedlist.Node head = new linkedlist.Node(
+				(int) (Math.random() * maxValue));
+		linkedlist.Node t = head;
+		for (int i = 1; i < n; i++) {
+			t.next = new linkedlist.Node((int) (Math.random() * maxValue));
+			t = t.next;
+		}
+		return head;
+	}
 }
