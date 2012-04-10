@@ -1,6 +1,6 @@
 package recursion;
 
-public class ReverseString {
+public class PringStringInReversedOrder {
 
 	public static void printReversedString(char[] s, int i) {
 		if (i == s.length)
