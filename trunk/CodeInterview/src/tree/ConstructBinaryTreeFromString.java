@@ -3,8 +3,17 @@ package tree;
 import java.util.Stack;
 
 /*
- * Consider this string representation for binary trees. Each node is of the form (lr), where l represents the left child and r represents the right child. If l is the character 0, then there is no left child. Similarly, if r is the character 0, then there is no right child. Otherwise, the child can be a node of the form (lr), and the representation continues recursively.<br />For example: (00) is a tree that consists of one node. ((00)0) is a two-node tree in which the root has a left child, and the left child is a leaf. And ((00)(00)) is a three-node tree, with a root, a left and a right child.</p>
- * Write a function that takes as input such a string, and returns -1 if the string is malformed, and the depth of the tree if the string is well-formed.
+ * Consider this string representation for binary trees. Each node is of the form (lr), 
+ * where l represents the left child and r represents the right child. 
+ * If l is the character 0, then there is no left child. Similarly, 
+ * if r is the character 0, then there is no right child. Otherwise, 
+ * the child can be a node of the form (lr), and the representation continues recursively.
+ * For example: (00) is a tree that consists of one node. 
+ * ((00)0) is a two-node tree in which the root has a left child, 
+ * and the left child is a leaf. And ((00)(00)) is a three-node tree, 
+ * with a root, a left and a right child.
+ * Write a function that takes as input such a string, and returns -1 if the string is malformed, 
+ * and the depth of the tree if the string is well-formed.
  */
 public class ConstructBinaryTreeFromString {
 	public enum State {
@@ -17,7 +26,7 @@ public class ConstructBinaryTreeFromString {
 		Stack<Character> stack = new Stack<Character>();
 		Stack<State> states = new Stack<State>();
 		int i = 0;
-		int maxDepth = 0;
+		int maxDepth = 1;
 		stack.push(s[i++]);
 		states.push(State.EXPECT_LEFT_CHILD);
 		while (!stack.isEmpty() && !states.isEmpty()) {
