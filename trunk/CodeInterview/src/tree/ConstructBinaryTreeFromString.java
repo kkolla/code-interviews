@@ -20,7 +20,7 @@ public class ConstructBinaryTreeFromString {
 		int maxDepth = 0;
 		stack.push(s[i++]);
 		states.push(State.EXPECT_LEFT_CHILD);
-		while (!stack.isEmpty()) {
+		while (!stack.isEmpty() && !states.isEmpty()) {
 			if (i == s.length)
 				break;
 			State state = states.peek();
@@ -61,7 +61,8 @@ public class ConstructBinaryTreeFromString {
 
 	public static void main(String[] args) {
 		String[] ss = { "(00)", "((00)0)", "((00)(00))", "((00)(0(00)))",
-				"((00)(0(0(00))))", "x", "0", "()", "(0)", "(00)x", "(0p)" };
+				"((00)(0(0(00))))", "x", "0", "()", "(0)", "(00)x", "(0p)",
+				"((00)(0(00))))", "((00)(0(000)))", "((00)(0((00)0)))" };
 		for (String s : ss) {
 			int depth = findDepth(s.toCharArray());
 			System.out.println(s + ": " + depth);
