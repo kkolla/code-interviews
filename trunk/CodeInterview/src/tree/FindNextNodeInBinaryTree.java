@@ -1,5 +1,7 @@
 package tree;
 
+import utils.CreateUtils;
+
 public class FindNextNodeInBinaryTree {
 
 	public static Node nextNode(Node n) {
@@ -22,7 +24,7 @@ public class FindNextNodeInBinaryTree {
 	}
 
 	public static void main(String[] args) {
-		Node root = Node.createBSTWithTenNodes();
+		Node root = CreateUtils.createBSTWithTenNodes();
 		Node first = root;
 		while (first.left != null)
 			first = first.left;

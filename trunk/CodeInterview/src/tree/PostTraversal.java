@@ -2,6 +2,8 @@ package tree;
 
 import java.util.Stack;
 
+import utils.CreateUtils;
+
 public class PostTraversal {
 
 	public static void postTraverseIterative(Node root) {
@@ -49,7 +51,7 @@ public class PostTraversal {
 	 */
 
 	public static void main(String[] args) {
-		postTraverseIterative(Node.createBSTWithTenNodes());
+		postTraverseIterative(CreateUtils.createBSTWithTenNodes());
 	}
 
 }

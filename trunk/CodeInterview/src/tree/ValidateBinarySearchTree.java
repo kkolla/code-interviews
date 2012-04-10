@@ -1,5 +1,7 @@
 package tree;
 
+import utils.CreateUtils;
+
 public class ValidateBinarySearchTree {
 
 	public static boolean validate(Node root, int min, int max) {
@@ -11,7 +13,7 @@ public class ValidateBinarySearchTree {
 	}
 
 	public static void main(String[] args) {
-		Node root = Node.createBSTWithTenNodes();
+		Node root = CreateUtils.createBSTWithTenNodes();
 		System.out
 				.println(validate(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
 		root.value = 100;
