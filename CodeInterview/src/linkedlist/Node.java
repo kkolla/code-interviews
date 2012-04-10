@@ -5,15 +5,13 @@ public class Node {
 	public Node next;
 	public Node prev;
 
+	public Node(int value) {
+		this.value = value;
+	}
+
 	public Node(int value, Node next) {
 		this.value = value;
 		this.next = next;
-	}
-
-	public static Node createLinkedListWithTenNodes() {
-		return new Node(1, new Node(2, new Node(3, new Node(4, new Node(5,
-				new Node(6, new Node(7, new Node(8, new Node(9, new Node(10,
-						null))))))))));
 	}
 
 	public static int length(Node head) {

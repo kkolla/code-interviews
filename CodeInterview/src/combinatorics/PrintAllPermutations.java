@@ -1,12 +1,12 @@
 package combinatorics;
 
+import utils.PrintUtils;
+
 public class PrintAllPermutations {
 
 	public static void permutate(int[] s, int start) {
 		if (start == s.length) {
-			for (int i = 0; i < s.length; i++)
-				System.out.print(s[i]);
-			System.out.println();
+			PrintUtils.printArray(s);
 			return;
 		}
 		for (int i = start; i < s.length; i++) {

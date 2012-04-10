@@ -1,5 +1,6 @@
 package linkedlist;
 
+import utils.CreateUtils;
 import utils.PrintUtils;
 
 public class FindTheNthNodeToLast {
@@ -28,7 +29,7 @@ public class FindTheNthNodeToLast {
 	}
 
 	public static void main(String[] args) {
-		Node head = Node.createLinkedListWithTenNodes();
+		Node head = CreateUtils.createLinkedListWithTenNodes();
 		int n = 8;
 		PrintUtils.printLinkedList(head);
 

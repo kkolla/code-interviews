@@ -3,6 +3,8 @@ package tree;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import utils.CreateUtils;
+
 public class LevelByLevelTraversal {
 
 	public static void traverseByLevel(Node root) {
@@ -33,7 +35,7 @@ public class LevelByLevelTraversal {
 	}
 
 	public static void main(String[] args) {
-		traverseByLevel(Node.createBSTWithTenNodes());
+		traverseByLevel(CreateUtils.createBSTWithTenNodes());
 	}
 
 }
