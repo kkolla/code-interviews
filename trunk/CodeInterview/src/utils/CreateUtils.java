@@ -21,14 +21,15 @@ public class CreateUtils {
 		return root;
 	}
 
-	public static linkedlist.Node createLinkedListWithTenNodes() {
-		return new linkedlist.Node(1, new linkedlist.Node(2,
-				new linkedlist.Node(3, new linkedlist.Node(4,
-						new linkedlist.Node(5,
-								new linkedlist.Node(6, new linkedlist.Node(7,
-										new linkedlist.Node(8,
-												new linkedlist.Node(9,
-														new linkedlist.Node(10,
-																null))))))))));
+	public static linkedlist.Node createSortedLinkedListFromOneToN(int n) {
+		if (n < 1)
+			return null;
+		linkedlist.Node head = new linkedlist.Node(1);
+		linkedlist.Node t = head;
+		for (int i = 2; i <= n; i++) {
+			t.next = new linkedlist.Node(i);
+			t = t.next;
+		}
+		return head;
 	}
 }
