@@ -5,6 +5,8 @@ import utils.PrintUtils;
 
 public class MergeSortedLinkedListsInPlace {
 
+	// a more efficient way is to use heap
+	// which reduces the complexity from O(m*n) to O(m*log(n))
 	public static Node mergeSortedLinkedLists(Node[] heads) {
 		Node head = null;
 		Node iter = null;
