@@ -15,7 +15,7 @@ import java.util.Stack;
  * Write a function that takes as input such a string, and returns -1 if the string is malformed, 
  * and the depth of the tree if the string is well-formed.
  */
-public class ConstructBinaryTreeFromString {
+public class FindDepthIfTreeIsConstructableFromString {
 	public enum State {
 		EXPECT_LEFT_CHILD, EXPECT_RIGHT_CHILD, EXPECT_RIGHT_BRACKET
 	}

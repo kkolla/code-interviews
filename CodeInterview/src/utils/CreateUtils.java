@@ -1,5 +1,7 @@
 package utils;
 
+import interval.Interval;
+
 public class CreateUtils {
 
 	public static tree.Node createBSTWithTenNodes() {
@@ -46,5 +48,28 @@ public class CreateUtils {
 			t = t.next;
 		}
 		return head;
+	}
+
+	public static Interval[] createRandomIntIntervals(int maxLength,
+			int maxValue) {
+		int n = (int) (Math.random() * maxLength);
+		Interval[] intervals = new Interval[n];
+		for (int i = 0; i < n; i++) {
+			double begin = (int) (Math.random() * maxValue);
+			double end = begin;
+			while (end <= begin)
+				end = (int) (Math.random() * maxValue);
+			intervals[i] = new Interval(begin, end);
+		}
+		return intervals;
+	}
+
+	public static int[] createRandomIntArray(int maxLength, int maxValue) {
+		int n = (int) (Math.random() * maxLength);
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = (int) (Math.random() * maxValue);
+		}
+		return arr;
 	}
 }
