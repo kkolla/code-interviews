@@ -36,12 +36,7 @@ public class ReverseLinkedList {
 				null)))));
 
 		PrintUtils.printLinkedList(head);
-		PrintUtils.printLinkedList(reverseLinkedListIterative(head));
-
-		head = new Node(1, new Node(2, new Node(3, new Node(4,
-				new Node(5, null)))));
-
-		PrintUtils.printLinkedList(head);
+		PrintUtils.printLinkedList(head = reverseLinkedListIterative(head));
 		PrintUtils.printLinkedList(reverseLinkedListRecursive(head));
 	}
 
