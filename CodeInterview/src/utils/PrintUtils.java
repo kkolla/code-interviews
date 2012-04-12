@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import linkedlist.Node;
+import tree.LevelByLevelTraversal;
 
 public class PrintUtils {
 
@@ -69,5 +70,12 @@ public class PrintUtils {
 			System.out.println("Key: " + e.getKey() + "\tValue: "
 					+ e.getValue());
 		}
+	}
+
+	public static void printBinaryTree(tree.Node root) {
+		if (root == null)
+			System.out.println("null binary tree");
+		else
+			LevelByLevelTraversal.traverseByLevel(root);
 	}
 }
