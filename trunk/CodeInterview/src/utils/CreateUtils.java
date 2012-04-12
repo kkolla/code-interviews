@@ -27,10 +27,13 @@ public class CreateUtils {
 		if (n < 1)
 			return null;
 		linkedlist.Node head = new linkedlist.Node(1);
-		linkedlist.Node t = head;
+		linkedlist.Node curr = head;
+		linkedlist.Node prev = null;
 		for (int i = 2; i <= n; i++) {
-			t.next = new linkedlist.Node(i);
-			t = t.next;
+			curr.next = new linkedlist.Node(i);
+			curr.prev = prev;
+			prev = curr;
+			curr = curr.next;
 		}
 		return head;
 	}
