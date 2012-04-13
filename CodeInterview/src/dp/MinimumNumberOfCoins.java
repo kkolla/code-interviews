@@ -7,8 +7,19 @@ import java.util.Map;
 
 import utils.PrintUtils;
 
-public class MinimumNumberOfChanges {
+/*
+ * You are given n types of coin denominations of values 
+ * v(1) < v(2) < ... < v(n) (all integers). 
+ * Assume v(1) = 1, so you can always make change for 
+ * any amount of money C. Give an algorithm which makes 
+ * change for an amount of money C with as few coins as possible. 
+ */
+public class MinimumNumberOfCoins {
 
+	// c[i]: minimum number of coins needed
+	// c[i] = c[i-j] if j is an available coin and i>=j
+	// answer: c[money]
+	// complexity: O(money*coins), O(money)
 	public static int minimumCoins(int[] coins, int money,
 			List<Integer> usedCoins) {
 		Map<Integer, Integer> backtrack = new HashMap<Integer, Integer>();
@@ -26,7 +37,7 @@ public class MinimumNumberOfChanges {
 			nums[i] = min + 1;
 			backtrack.put(i, i - coin);
 		}
-		// PrintUtils.printMap(backtrack);
+
 		int left = money;
 		do {
 			Integer previous = backtrack.get(left);
