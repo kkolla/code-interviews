@@ -1,5 +1,6 @@
-package linkedlist;
+package tree;
 
+import linkedlist.Node;
 import utils.CreateUtils;
 import utils.PrintUtils;
 
