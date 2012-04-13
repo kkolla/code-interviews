@@ -50,6 +50,20 @@ public class PrintUtils {
 		System.out.println();
 	}
 
+	public static void printArray(double[] arr) {
+		if (arr == null) {
+			System.out.println("null array");
+			return;
+		}
+		if (arr.length == 0) {
+			System.out.println("empty array");
+			return;
+		}
+		for (int i = 0; i < arr.length; i++)
+			System.out.printf("%.2f" + " ", arr[i]);
+		System.out.println();
+	}
+
 	public static void printArray(Object[] arr) {
 		if (arr == null) {
 			System.out.println("null array");

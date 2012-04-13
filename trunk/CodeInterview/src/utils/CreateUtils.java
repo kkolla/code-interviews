@@ -75,4 +75,13 @@ public class CreateUtils {
 		}
 		return arr;
 	}
+
+	public static double[] createRandomRealArray(int maxLength) {
+		int n = (int) (Math.random() * maxLength);
+		double[] arr = new double[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 10);
+		}
+		return arr;
+	}
 }
