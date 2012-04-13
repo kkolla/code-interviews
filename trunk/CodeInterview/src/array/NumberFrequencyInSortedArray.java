@@ -1,9 +1,19 @@
 package array;
 
+import java.util.Arrays;
+
+import utils.CreateUtils;
+import utils.PrintUtils;
+
 public class NumberFrequencyInSortedArray {
 
 	public static void main(String[] args) {
-		System.out.println(frequency(new int[] { 1, 2, 2, 2, 2, 3 }, 2));
+		int[] a = CreateUtils.createRandomIntArray(20, 10);
+		Arrays.sort(a);
+		int n = (int) (Math.random() * 10);
+		PrintUtils.printArray(a);
+		System.out.println(n);
+		System.out.println(frequency(a, n));
 	}
 
 	public static int frequency(int[] a, int n) {

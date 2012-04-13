@@ -40,14 +40,13 @@ public class CreateUtils {
 
 	public static linkedlist.Node createRandomLinkedList(int maxLength,
 			int maxValue) {
-		int n = (int) (Math.random() * maxLength);
+		int n = randomNonNegative(maxLength);
 		if (n == 0)
 			return null;
-		linkedlist.Node head = new linkedlist.Node(
-				(int) (Math.random() * maxValue));
+		linkedlist.Node head = new linkedlist.Node(randomNonNegative(maxValue));
 		linkedlist.Node t = head;
 		for (int i = 1; i < n; i++) {
-			t.next = new linkedlist.Node((int) (Math.random() * maxValue));
+			t.next = new linkedlist.Node(randomNonNegative(maxValue));
 			t = t.next;
 		}
 		return head;
@@ -55,33 +54,51 @@ public class CreateUtils {
 
 	public static Interval[] createRandomIntIntervals(int maxLength,
 			int maxValue) {
-		int n = (int) (Math.random() * maxLength);
+		int n = randomNonNegative(maxLength);
 		Interval[] intervals = new Interval[n];
 		for (int i = 0; i < n; i++) {
-			double begin = (int) (Math.random() * maxValue);
+			double begin = randomNonNegative(maxValue);
 			double end = begin;
 			while (end <= begin)
-				end = (int) (Math.random() * maxValue);
+				end = randomNonNegative(maxValue);
 			intervals[i] = new Interval(begin, end);
 		}
 		return intervals;
 	}
 
 	public static int[] createRandomIntArray(int maxLength, int maxValue) {
-		int n = (int) (Math.random() * maxLength);
+		int n = randomNonNegative(maxLength);
 		int[] arr = new int[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = (int) (Math.random() * maxValue);
+			arr[i] = randomNonNegative(maxValue);
 		}
 		return arr;
 	}
 
 	public static double[] createRandomRealArray(int maxLength) {
-		int n = (int) (Math.random() * maxLength);
+		int n = randomNonNegative(maxLength);
 		double[] arr = new double[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = (Math.random() > 0.5 ? -1 : 1) * (Math.random() * 10);
+			arr[i] = (Math.random() > 0.5 ? -1 : 1) * randomNonNegative(10);
 		}
 		return arr;
+	}
+
+	public static String[] createRandomStringArray(int maxLength,
+			int maxStringLength) {
+		int n = randomNonNegative(maxLength);
+		String[] arr = new String[n];
+		char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+		for (int i = 0; i < n; i++) {
+			arr[i] = "";
+			int size = randomNonNegative(maxStringLength);
+			for (int j = 0; j < size; j++)
+				arr[i] += alphabet[randomNonNegative(alphabet.length)];
+		}
+		return arr;
+	}
+
+	public static int randomNonNegative(int maxExclusive) {
+		return (int) (Math.random() * maxExclusive);
 	}
 }
