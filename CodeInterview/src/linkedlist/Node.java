@@ -5,6 +5,10 @@ public class Node {
 	public Node next;
 	public Node prev;
 
+	public Node() {
+
+	}
+
 	public Node(int value) {
 		this.value = value;
 	}
