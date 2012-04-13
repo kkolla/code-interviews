@@ -19,6 +19,7 @@ public class FindNextNodeInBinaryTree {
 					return t.parent;
 				t = t.parent;
 			}
+			// for the case where n is the right most node
 			return null;
 		}
 	}
