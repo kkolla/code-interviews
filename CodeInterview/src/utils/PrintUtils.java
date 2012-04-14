@@ -92,4 +92,10 @@ public class PrintUtils {
 		else
 			LevelByLevelTraversal.traverseByLevel(root);
 	}
+
+	public static void print2DArray(int[][] m) {
+		for (int i = 0; i < m.length; i++) {
+			printArray(m[i]);
+		}
+	}
 }
