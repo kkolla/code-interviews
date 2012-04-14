@@ -1,5 +1,7 @@
 package combinatorics;
 
+import utils.CreateUtils;
+
 public class PrintAllValidBracketPairs {
 
 	public static void printAllValidBracketPairs(int left, int right, String s) {
@@ -15,7 +17,7 @@ public class PrintAllValidBracketPairs {
 	}
 
 	public static void main(String[] args) {
-		int n = (int) (Math.random() * 10);
+		int n = CreateUtils.randomNonNegative(10);
 		printAllValidBracketPairs(n, n, "");
 	}
 }

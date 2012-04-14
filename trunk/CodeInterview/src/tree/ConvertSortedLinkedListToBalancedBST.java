@@ -1,6 +1,5 @@
 package tree;
 
-import linkedlist.Node;
 import utils.CreateUtils;
 import utils.PrintUtils;
 
@@ -30,7 +29,7 @@ public class ConvertSortedLinkedListToBalancedBST {
 	}
 
 	public static void main(String[] args) {
-		int length = (int) (Math.random() * 20);
+		int length = CreateUtils.randomNonNegative(20);
 		linkedlist.Node head = CreateUtils
 				.createSortedLinkedListFromOneToN(length);
 		tree.Node root = convert(head, length);
