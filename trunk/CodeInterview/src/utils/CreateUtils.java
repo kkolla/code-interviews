@@ -101,4 +101,18 @@ public class CreateUtils {
 	public static int randomNonNegative(int maxExclusive) {
 		return (int) (Math.random() * maxExclusive);
 	}
+
+	public static int[][] createRandom2DIntArray(int maxLength, int maxValue,
+			boolean isSquare) {
+		int rows = randomNonNegative(maxLength);
+		rows = rows == 0 ? 1 : rows;
+		int cols = isSquare ? rows : randomNonNegative(maxLength);
+		cols = cols == 0 ? 1 : cols;
+		int[][] m = new int[rows][cols];
+		for (int i = 0; i < rows; i++) {
+			for (int j = 0; j < cols; j++)
+				m[i][j] = randomNonNegative(maxValue);
+		}
+		return m;
+	}
 }
