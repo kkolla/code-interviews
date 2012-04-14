@@ -10,7 +10,7 @@ public class NumberFrequencyInSortedArray {
 	public static void main(String[] args) {
 		int[] a = CreateUtils.createRandomIntArray(20, 10);
 		Arrays.sort(a);
-		int n = (int) (Math.random() * 10);
+		int n = CreateUtils.randomNonNegative(10);
 		PrintUtils.printArray(a);
 		System.out.println(n);
 		System.out.println(frequency(a, n));
