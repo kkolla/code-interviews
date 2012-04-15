@@ -1,5 +1,7 @@
 package dp;
 
+import java.util.Stack;
+
 import utils.CreateUtils;
 import utils.PrintUtils;
 
@@ -12,7 +14,7 @@ import utils.PrintUtils;
  */
 public class MaxAllOneSubMatrix {
 
-	// O(rows*cols*cols)
+	// O(mnn)
 	public static void findMaxAllOneSubMatrix(int[][] m) {
 		final int rows = m.length, cols = m[0].length;
 
@@ -69,10 +71,80 @@ public class MaxAllOneSubMatrix {
 					+ ", bestBotRightCol: " + bestBotRightCol);
 	}
 
+	// O(mn)
+	// boosted by calculating as max rectangle in histogram for iterating rows
+	public static void findMaxAllOneSubMatrixBoosted(int[][] m) {
+		final int rows = m.length, cols = m[0].length;
+
+		// cache, also histogram
+		int[] maxOneCounts = new int[cols];
+
+		// answers
+		int bestTopLeftRow = -1, bestTopLeftCol = -1, bestBotRightRow = -1, bestBotRightCol = -1;
+		int maxArea = 0;
+
+		for (int i = rows - 1; i >= 0; i--) {
+			// update cache
+			for (int j = 0; j < cols; j++) {
+				if (m[i][j] == 0) {
+					maxOneCounts[j] = 0;
+				} else {
+					if (i != rows - 1)
+						maxOneCounts[j] = maxOneCounts[j] + 1;
+					else
+						maxOneCounts[j] = 1;
+				}
+			}
+
+			Stack<Integer> s = new Stack<Integer>();
+			int[] widths = new int[cols];
+			// find max rectangle in histogram
+			for (int j = 0; j < cols; j++) {
+				while (!s.isEmpty()
+						&& maxOneCounts[s.peek()] >= maxOneCounts[j])
+					s.pop();
+				int leftOffset = s.isEmpty() ? j : j - s.peek() - 1;
+				widths[j] += leftOffset;
+				s.push(j);
+			}
+			s = new Stack<Integer>();
+			for (int j = cols - 1; j >= 0; j--) {
+				while (!s.isEmpty()
+						&& maxOneCounts[s.peek()] >= maxOneCounts[j])
+					s.pop();
+				int rightOffset = s.isEmpty() ? cols - j - 1 : s.peek() - j - 1;
+				widths[j] += rightOffset + 1;
+				s.push(j);
+			}
+			int start = -1, end = -1;
+			for (int j = 0; j < cols; j++) {
+				int area = widths[j] * maxOneCounts[j];
+				if (area > maxArea) {
+					maxArea = area;
+					bestTopLeftRow = i;
+					bestTopLeftCol = j;
+					bestBotRightRow = i + maxOneCounts[j] - 1;
+					bestBotRightCol = j + widths[j] - 1;
+				}
+			}
+		}
+
+		if (bestTopLeftRow == -1)
+			System.out.println("there's no 1 in the matrix");
+		else
+			System.out.println("bestTopLeftRow: " + bestTopLeftRow
+					+ ", bestTopLeftCol: " + bestTopLeftCol
+					+ ", bestBotRightRow: " + bestBotRightRow
+					+ ", bestBotRightCol: " + bestBotRightCol);
+	}
+
 	public static void main(String[] args) {
 		int[][] m = CreateUtils.createRandom2DIntArray(10, 2, false);
 		PrintUtils.print2DArray(m);
+		System.out.println("first method:");
 		findMaxAllOneSubMatrix(m);
+		System.out.println("second method:");
+		findMaxAllOneSubMatrixBoosted(m);
 	}
 
 }

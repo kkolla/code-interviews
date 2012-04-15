@@ -23,7 +23,7 @@ public class MaxRectangeAreaInHistogram {
 		Map<Integer, Integer> left = new HashMap<Integer, Integer>();
 		Map<Integer, Integer> right = new HashMap<Integer, Integer>();
 		for (int i = 0; i < h.length; i++) {
-			while (!s.isEmpty() && h[s.peek()] > h[i])
+			while (!s.isEmpty() && h[s.peek()] >= h[i])
 				s.pop();
 			int leftOffset = s.isEmpty() ? i : i - s.peek() - 1;
 			widths[i] += leftOffset;
@@ -32,7 +32,7 @@ public class MaxRectangeAreaInHistogram {
 		}
 		s = new Stack<Integer>();
 		for (int i = h.length - 1; i >= 0; i--) {
-			while (!s.isEmpty() && h[s.peek()] > h[i])
+			while (!s.isEmpty() && h[s.peek()] >= h[i])
 				s.pop();
 			int rightOffset = s.isEmpty() ? h.length - i - 1 : s.peek() - i - 1;
 			widths[i] += rightOffset + 1;
