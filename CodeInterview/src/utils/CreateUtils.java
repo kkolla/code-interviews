@@ -1,5 +1,6 @@
 package utils;
 
+import graph.Vertex;
 import interval.Interval;
 
 public class CreateUtils {
@@ -114,5 +115,27 @@ public class CreateUtils {
 				m[i][j] = randomNonNegative(maxValue);
 		}
 		return m;
+	}
+
+	public static Vertex createDAGWithSevenVertices() {
+		Vertex v1 = new Vertex(1);
+		Vertex v2 = new Vertex(2);
+		Vertex v3 = new Vertex(3);
+		Vertex v4 = new Vertex(4);
+		Vertex v5 = new Vertex(5);
+		Vertex v6 = new Vertex(6);
+		Vertex v7 = new Vertex(7);
+		Vertex v8 = new Vertex(8);
+		Vertex v9 = new Vertex(9);
+		Vertex v10 = new Vertex(10);
+		v1.neighbors.add(v2);
+		v1.neighbors.add(v3);
+		v2.neighbors.add(v4);
+		v2.neighbors.add(v5);
+		v3.neighbors.add(v5);
+		v4.neighbors.add(v6);
+		v5.neighbors.add(v6);
+		v6.neighbors.add(v7);
+		return v1;
 	}
 }
