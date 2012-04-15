@@ -117,7 +117,6 @@ public class MaxAllOneSubMatrix {
 				widths[j] += rightOffset + 1;
 				s.push(j);
 			}
-			int start = -1, end = -1;
 			for (int j = 0; j < cols; j++) {
 				int area = widths[j] * maxOneCounts[j];
 				if (area > maxArea) {
