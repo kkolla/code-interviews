@@ -1,5 +1,7 @@
 package utils;
 
+import graph.Vertex;
+
 import java.util.List;
 import java.util.Map;
 
@@ -97,5 +99,17 @@ public class PrintUtils {
 		for (int i = 0; i < m.length; i++) {
 			printArray(m[i]);
 		}
+	}
+
+	public static void printGraphDepthFirst(Vertex v) {
+		System.out.print(v.value + ", neighbors: ");
+		for (Vertex n : v.neighbors) {
+			System.out.print(n.value + " ");
+		}
+		System.out.println();
+		for (Vertex n : v.neighbors) {
+			printGraphDepthFirst(n);
+		}
+
 	}
 }

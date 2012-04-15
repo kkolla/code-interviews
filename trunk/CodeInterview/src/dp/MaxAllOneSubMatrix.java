@@ -83,6 +83,7 @@ public class MaxAllOneSubMatrix {
 		int bestTopLeftRow = -1, bestTopLeftCol = -1, bestBotRightRow = -1, bestBotRightCol = -1;
 		int maxArea = 0;
 
+		// go upwards this time for linear cache update
 		for (int i = rows - 1; i >= 0; i--) {
 			// update cache
 			for (int j = 0; j < cols; j++) {
