@@ -20,8 +20,14 @@ public class PrintAllPermutations {
 		}
 	}
 
+	public static void permutateWithoutDuplicates(int[] s, int start) {
+		// how?
+	}
+
 	public static void main(String[] args) {
-		permutate(new int[] { 1, 2, 3, 4, 5 }, 0);
+		int[] a = new int[] { 1, 2, 3, 4, 5, 0, 0 };
+		permutate(a, 0);
+		permutateWithoutDuplicates(a, 0);
 	}
 
 }
