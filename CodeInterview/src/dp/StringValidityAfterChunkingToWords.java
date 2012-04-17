@@ -7,7 +7,7 @@ package dp;
  * isitniceinhere-> is it nice in here (valid)
  * zxyy-> invalid
  */
-public class StringValidityAfterSplitIntoWords {
+public class StringValidityAfterChunkingToWords {
 
 	// this can be preprocessed as constant operation
 	public static boolean isInDictionary(String word) {
