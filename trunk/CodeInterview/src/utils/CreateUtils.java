@@ -1,7 +1,10 @@
 package utils;
 
+import graph.Graph;
 import graph.Vertex;
 import interval.Interval;
+
+import java.util.Arrays;
 
 public class CreateUtils {
 
@@ -76,6 +79,12 @@ public class CreateUtils {
 		return arr;
 	}
 
+	public static int[] createRandomSortedIntArray(int maxLength, int maxValue) {
+		int[] arr = createRandomIntArray(maxLength, maxValue);
+		Arrays.sort(arr);
+		return arr;
+	}
+
 	public static double[] createRandomRealArray(int maxLength) {
 		int n = randomNonNegative(maxLength);
 		double[] arr = new double[n];
@@ -86,15 +95,18 @@ public class CreateUtils {
 	}
 
 	public static String[] createRandomStringArray(int maxLength,
-			int maxStringLength) {
+			int maxStringLength, boolean hasSpace) {
 		int n = randomNonNegative(maxLength);
 		String[] arr = new String[n];
-		char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+		char[] alphabet = hasSpace ? "abcdefghijklmnopqrstuvwxyz "
+				.toCharArray() : "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		for (int i = 0; i < n; i++) {
 			arr[i] = "";
 			int size = randomNonNegative(maxStringLength);
+			StringBuffer sb = new StringBuffer("");
 			for (int j = 0; j < size; j++)
-				arr[i] += alphabet[randomNonNegative(alphabet.length)];
+				sb.append(alphabet[randomNonNegative(alphabet.length)]);
+			arr[i] = sb.toString();
 		}
 		return arr;
 	}
@@ -125,9 +137,6 @@ public class CreateUtils {
 		Vertex v5 = new Vertex(5);
 		Vertex v6 = new Vertex(6);
 		Vertex v7 = new Vertex(7);
-		Vertex v8 = new Vertex(8);
-		Vertex v9 = new Vertex(9);
-		Vertex v10 = new Vertex(10);
 		v1.neighbors.add(v2);
 		v1.neighbors.add(v3);
 		v2.neighbors.add(v4);
@@ -137,5 +146,15 @@ public class CreateUtils {
 		v5.neighbors.add(v6);
 		v6.neighbors.add(v7);
 		return v1;
+	}
+
+	public static Graph createDAGWithEightVertices() {
+		return new Graph(
+				new String[] { "A", "B", "C", "D", "E", "F", "G", "H" },
+				new int[][] { { 0, 1, 1, 0, 0, 0, 0, 0 },
+						{ 0, 0, 0, 1, 1, 0, 0, 0 }, { 0, 0, 0, 0, 1, 0, 0, 0 },
+						{ 0, 0, 0, 0, 0, 1, 0, 0 }, { 0, 0, 0, 0, 0, 1, 1, 0 },
+						{ 0, 0, 0, 0, 0, 0, 1, 0 }, { 0, 0, 0, 0, 0, 0, 0, 1 },
+						{ 0, 0, 0, 0, 0, 0, 0, 0 } });
 	}
 }
