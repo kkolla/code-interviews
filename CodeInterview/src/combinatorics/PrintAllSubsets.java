@@ -61,8 +61,8 @@ public class PrintAllSubsets {
 
 	public static void main(String[] args) {
 		int[] set = new int[] { 3, 2, 4, 4, 1, 2, 3, 4, 3, 4 };
-		// allSubsetsIterative(set);
-		// allSubsetsRecursive(set, 0, new StringBuffer());
+		allSubsetsIterative(set);
+		allSubsetsRecursive(set, 0, new StringBuffer());
 		allSubsetsWithoutDuplicates(set);
 	}
 }
