@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class CreateUtils {
 
-	public static tree.Node createBSTWithTenNodes() {
+	public static tree.Node bstWithTenNodes() {
 		tree.Node n1 = new tree.Node(1);
 		tree.Node n3 = new tree.Node(3);
 		tree.Node n2 = new tree.Node(2, n1, n3);
@@ -27,7 +27,7 @@ public class CreateUtils {
 		return root;
 	}
 
-	public static linkedlist.Node createSortedLinkedListFromOneToN(int n) {
+	public static linkedlist.Node sortedLinkedListFromOneToN(int n) {
 		if (n < 1)
 			return null;
 		linkedlist.Node head = new linkedlist.Node(1);
@@ -42,94 +42,97 @@ public class CreateUtils {
 		return head;
 	}
 
-	public static linkedlist.Node createRandomLinkedList(int maxLength,
+	public static linkedlist.Node randNonNegLinkedList(int maxLength,
 			int maxValue) {
-		int n = randomNonNegative(maxLength);
+		int n = randNonNegInt(maxLength);
 		if (n == 0)
 			return null;
-		linkedlist.Node head = new linkedlist.Node(randomNonNegative(maxValue));
+		linkedlist.Node head = new linkedlist.Node(randNonNegInt(maxValue));
 		linkedlist.Node t = head;
 		for (int i = 1; i < n; i++) {
-			t.next = new linkedlist.Node(randomNonNegative(maxValue));
+			t.next = new linkedlist.Node(randNonNegInt(maxValue));
 			t = t.next;
 		}
 		return head;
 	}
 
-	public static Interval[] createRandomIntIntervals(int maxLength,
-			int maxValue) {
-		int n = randomNonNegative(maxLength);
+	public static Interval[] randNonNegIntIntervals(int maxLength, int maxValue) {
+		int n = randNonNegInt(maxLength);
 		Interval[] intervals = new Interval[n];
 		for (int i = 0; i < n; i++) {
-			double begin = randomNonNegative(maxValue);
+			double begin = randNonNegInt(maxValue);
 			double end = begin;
 			while (end <= begin)
-				end = randomNonNegative(maxValue);
+				end = randNonNegInt(maxValue);
 			intervals[i] = new Interval(begin, end);
 		}
 		return intervals;
 	}
 
-	public static int[] createRandomIntArray(int maxLength, int maxValue) {
-		int n = randomNonNegative(maxLength);
+	public static int[] randNonNegIntArray(int maxLength, int maxValue) {
+		int n = randNonNegInt(maxLength);
 		int[] arr = new int[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = randomNonNegative(maxValue);
+			arr[i] = randNonNegInt(maxValue);
 		}
 		return arr;
 	}
 
-	public static int[] createRandomSortedIntArray(int maxLength, int maxValue) {
-		int[] arr = createRandomIntArray(maxLength, maxValue);
+	public static int[] randSortedNonNegIntArray(int maxLength, int maxValue) {
+		int[] arr = randNonNegIntArray(maxLength, maxValue);
 		Arrays.sort(arr);
 		return arr;
 	}
 
-	public static double[] createRandomRealArray(int maxLength) {
-		int n = randomNonNegative(maxLength);
+	public static double[] randRealArray(int maxLength) {
+		int n = randNonNegInt(maxLength);
 		double[] arr = new double[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = (Math.random() > 0.5 ? -1 : 1) * randomNonNegative(10);
+			arr[i] = (Math.random() > 0.5 ? -1 : 1) * randNonNegInt(10);
 		}
 		return arr;
 	}
 
-	public static String[] createRandomStringArray(int maxLength,
-			int maxStringLength, boolean hasSpace) {
-		int n = randomNonNegative(maxLength);
+	public static String[] randStringArray(int maxLength, int maxStringLength,
+			boolean hasSpace) {
+		int n = randNonNegInt(maxLength);
 		String[] arr = new String[n];
 		char[] alphabet = hasSpace ? "abcdefghijklmnopqrstuvwxyz "
 				.toCharArray() : "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		for (int i = 0; i < n; i++) {
 			arr[i] = "";
-			int size = randomNonNegative(maxStringLength);
+			int size = randNonNegInt(maxStringLength);
 			StringBuffer sb = new StringBuffer("");
 			for (int j = 0; j < size; j++)
-				sb.append(alphabet[randomNonNegative(alphabet.length)]);
+				sb.append(alphabet[randNonNegInt(alphabet.length)]);
 			arr[i] = sb.toString();
 		}
 		return arr;
 	}
 
-	public static int randomNonNegative(int maxExclusive) {
+	public static int randNonNegInt(int maxExclusive) {
 		return (int) (Math.random() * maxExclusive);
 	}
 
-	public static int[][] createRandom2DIntArray(int maxLength, int maxValue,
+	public static double randReal(double maxExclusive) {
+		return (Math.random() >= 0.5 ? 1 : -1) * (Math.random() * maxExclusive);
+	}
+
+	public static int[][] randNonNegMatrix(int maxLength, int maxValue,
 			boolean isSquare) {
-		int rows = randomNonNegative(maxLength);
+		int rows = randNonNegInt(maxLength);
 		rows = rows == 0 ? 1 : rows;
-		int cols = isSquare ? rows : randomNonNegative(maxLength);
+		int cols = isSquare ? rows : randNonNegInt(maxLength);
 		cols = cols == 0 ? 1 : cols;
 		int[][] m = new int[rows][cols];
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < cols; j++)
-				m[i][j] = randomNonNegative(maxValue);
+				m[i][j] = randNonNegInt(maxValue);
 		}
 		return m;
 	}
 
-	public static Vertex createDAGWithSevenVertices() {
+	public static Vertex dagWithSevenVertices() {
 		Vertex v1 = new Vertex(1);
 		Vertex v2 = new Vertex(2);
 		Vertex v3 = new Vertex(3);
@@ -148,7 +151,7 @@ public class CreateUtils {
 		return v1;
 	}
 
-	public static Graph createDAGWithEightVertices() {
+	public static Graph dagWithEightVertices() {
 		return new Graph(
 				new String[] { "A", "B", "C", "D", "E", "F", "G", "H" },
 				new int[][] { { 0, 1, 1, 0, 0, 0, 0, 0 },

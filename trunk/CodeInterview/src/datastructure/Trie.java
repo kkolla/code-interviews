@@ -125,20 +125,20 @@ public class Trie {
 
 	public static void main(String[] args) {
 		Trie root = new Trie();
-		String[] words = CreateUtils.createRandomStringArray(50, 10, false);
+		String[] words = CreateUtils.randStringArray(50, 10, false);
 		PrintUtils.printArray(words);
 		for (int i = 0; i < words.length; i++) {
 			root.addWord(words[i]);
 		}
 		System.out.println("words in dictionary: " + root.prefixes);
-		String[] prefixes = CreateUtils.createRandomStringArray(20, 3, false);
+		String[] prefixes = CreateUtils.randStringArray(20, 3, false);
 		for (int i = 0; i < prefixes.length; i++) {
 			System.out.println("prefix count for '" + prefixes[i] + "': "
 					+ root.countPrefix(prefixes[i]));
 		}
-		String[] queries = CreateUtils.createRandomStringArray(20, 10, false);
+		String[] queries = CreateUtils.randStringArray(20, 10, false);
 		for (int i = 0; i < queries.length; i++) {
-			int missing = CreateUtils.randomNonNegative(queries[i].length());
+			int missing = CreateUtils.randNonNegInt(queries[i].length());
 			System.out
 					.println("word count for '"
 							+ queries[i]

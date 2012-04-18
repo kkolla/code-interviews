@@ -36,7 +36,7 @@ public class MaxContiguousSubsequenceSum {
 	}
 
 	public static void main(String[] args) {
-		double[] a = CreateUtils.createRandomRealArray(10);
+		double[] a = CreateUtils.randRealArray(10);
 		PrintUtils.printArray(a);
 		System.out.println(maxSubsequenceSum(a));
 		System.out.println(maxSubsequenceSumConstSpace(a));

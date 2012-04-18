@@ -13,7 +13,7 @@ public class ValidateBinarySearchTree {
 	}
 
 	public static void main(String[] args) {
-		Node root = CreateUtils.createBSTWithTenNodes();
+		Node root = CreateUtils.bstWithTenNodes();
 		System.out
 				.println(validate(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
 		root.value = 100;

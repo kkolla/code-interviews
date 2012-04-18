@@ -29,9 +29,9 @@ public class ConvertSortedLinkedListToBalancedBST {
 	}
 
 	public static void main(String[] args) {
-		int length = CreateUtils.randomNonNegative(20);
+		int length = CreateUtils.randNonNegInt(20);
 		linkedlist.Node head = CreateUtils
-				.createSortedLinkedListFromOneToN(length);
+				.sortedLinkedListFromOneToN(length);
 		tree.Node root = convert(head, length);
 		PrintUtils.printLinkedList(head);
 		PrintUtils.printBinaryTree(root);

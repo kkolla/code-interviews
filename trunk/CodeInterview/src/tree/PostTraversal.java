@@ -51,7 +51,7 @@ public class PostTraversal {
 	 */
 
 	public static void main(String[] args) {
-		postTraverseIterative(CreateUtils.createBSTWithTenNodes());
+		postTraverseIterative(CreateUtils.bstWithTenNodes());
 	}
 
 }

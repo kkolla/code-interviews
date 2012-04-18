@@ -74,7 +74,7 @@ public class ExternalSort {
 
 	public static void main(String[] args) {
 		int memoryLimit = 10;
-		int[] data = CreateUtils.createRandomIntArray(100, 100);
+		int[] data = CreateUtils.randNonNegIntArray(100, 100);
 		int[] disk = externalSort(data, memoryLimit);
 		PrintUtils.printArray(disk);
 	}

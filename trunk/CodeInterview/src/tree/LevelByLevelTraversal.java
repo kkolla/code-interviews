@@ -35,7 +35,7 @@ public class LevelByLevelTraversal {
 	}
 
 	public static void main(String[] args) {
-		traverseByLevel(CreateUtils.createBSTWithTenNodes());
+		traverseByLevel(CreateUtils.bstWithTenNodes());
 	}
 
 }

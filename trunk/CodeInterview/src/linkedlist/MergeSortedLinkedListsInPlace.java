@@ -46,11 +46,11 @@ public class MergeSortedLinkedListsInPlace {
 
 	public static void main(String[] args) {
 		Node[] heads = new Node[] {
-				CreateUtils.createSortedLinkedListFromOneToN(6),
-				CreateUtils.createSortedLinkedListFromOneToN(8),
-				CreateUtils.createSortedLinkedListFromOneToN(5),
-				CreateUtils.createSortedLinkedListFromOneToN(7),
-				CreateUtils.createSortedLinkedListFromOneToN(20) };
+				CreateUtils.sortedLinkedListFromOneToN(6),
+				CreateUtils.sortedLinkedListFromOneToN(8),
+				CreateUtils.sortedLinkedListFromOneToN(5),
+				CreateUtils.sortedLinkedListFromOneToN(7),
+				CreateUtils.sortedLinkedListFromOneToN(20) };
 		Node head = mergeSortedLinkedLists(heads);
 		PrintUtils.printLinkedList(head);
 	}

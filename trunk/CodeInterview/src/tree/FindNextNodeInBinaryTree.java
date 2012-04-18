@@ -25,7 +25,7 @@ public class FindNextNodeInBinaryTree {
 	}
 
 	public static void main(String[] args) {
-		Node root = CreateUtils.createBSTWithTenNodes();
+		Node root = CreateUtils.bstWithTenNodes();
 		Node first = root;
 		while (first.left != null)
 			first = first.left;
