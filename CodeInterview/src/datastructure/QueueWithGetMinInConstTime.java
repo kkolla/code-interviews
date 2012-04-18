@@ -85,7 +85,7 @@ public class QueueWithGetMinInConstTime extends AbstractQueue<Integer> {
 		QueueWithGetMinInConstTime q = new QueueWithGetMinInConstTime();
 		for (int i = 0; i < 20; i++) {
 			if (Math.random() > 0.3) {
-				int n = CreateUtils.randomNonNegative(100);
+				int n = CreateUtils.randNonNegInt(100);
 				q.offer(n);
 				System.out.println(n + " added, getMin: " + q.getMin());
 			} else {

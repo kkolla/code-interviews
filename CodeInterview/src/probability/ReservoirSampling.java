@@ -43,7 +43,7 @@ public class ReservoirSampling {
 	}
 
 	public static void main(String[] args) throws Exception {
-		int[] a = CreateUtils.createRandomIntArray(20, 10);
+		int[] a = CreateUtils.randNonNegIntArray(20, 10);
 		PrintUtils.printArray(a);
 		List<Integer> l = new ArrayList<Integer>();
 		for (int i = 0; i < a.length; i++)

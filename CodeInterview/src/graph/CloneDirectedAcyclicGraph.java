@@ -49,7 +49,7 @@ public class CloneDirectedAcyclicGraph {
 	}
 
 	public static void main(String[] args) {
-		Vertex v = CreateUtils.createDAGWithSevenVertices();
+		Vertex v = CreateUtils.dagWithSevenVertices();
 		PrintUtils.printGraphDepthFirst(v);
 		System.out.println();
 		PrintUtils.printGraphDepthFirst(clone(v));

@@ -95,7 +95,7 @@ public class BigramStringGenerator {
 
 	public static void main(String[] args) {
 		BigramStringGenerator gen = new BigramStringGenerator();
-		String[] trains = CreateUtils.createRandomStringArray(2, 100, true);
+		String[] trains = CreateUtils.randStringArray(2, 100, true);
 		if (trains.length == 1) {
 			for (String train : trains) {
 				System.out.println("train: " + train);

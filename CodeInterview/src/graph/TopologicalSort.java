@@ -41,7 +41,7 @@ public class TopologicalSort {
 	}
 
 	public static void main(String[] args) {
-		Graph g = CreateUtils.createDAGWithEightVertices();
+		Graph g = CreateUtils.dagWithEightVertices();
 		List<String> l = sort(g);
 		if (l == null) {
 			System.out.println("at least one cycle is contained in the graph");

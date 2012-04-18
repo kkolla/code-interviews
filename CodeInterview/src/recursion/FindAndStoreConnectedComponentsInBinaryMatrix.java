@@ -50,7 +50,7 @@ public class FindAndStoreConnectedComponentsInBinaryMatrix {
 	}
 
 	public static void main(String[] args) {
-		int[][] m = CreateUtils.createRandom2DIntArray(10, 2, false);
+		int[][] m = CreateUtils.randNonNegMatrix(10, 2, false);
 		PrintUtils.print2DArray(m);
 		List<List<String>> components = findComponents(m);
 		System.out.println("number of components: " + components.size());

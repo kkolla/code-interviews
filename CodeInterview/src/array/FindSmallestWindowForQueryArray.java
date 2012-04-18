@@ -45,8 +45,8 @@ public class FindSmallestWindowForQueryArray {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = CreateUtils.createRandomIntArray(20, 10);
-		int[] query = CreateUtils.createRandomIntArray(5, 10);
+		int[] arr = CreateUtils.randNonNegIntArray(20, 10);
+		int[] query = CreateUtils.randNonNegIntArray(5, 10);
 		PrintUtils.printArray(arr);
 		PrintUtils.printArray(query);
 		findWindow(arr, query);

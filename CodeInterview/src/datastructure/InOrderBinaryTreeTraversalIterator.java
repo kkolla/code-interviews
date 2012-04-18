@@ -48,7 +48,7 @@ public class InOrderBinaryTreeTraversalIterator implements Iterator<Node> {
 	}
 
 	public static void main(String[] args) {
-		Node root = CreateUtils.createBSTWithTenNodes();
+		Node root = CreateUtils.bstWithTenNodes();
 		InOrderBinaryTreeTraversalIterator it = new InOrderBinaryTreeTraversalIterator(
 				root);
 		while (it.hasNext())

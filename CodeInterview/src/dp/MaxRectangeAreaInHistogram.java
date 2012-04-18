@@ -54,7 +54,7 @@ public class MaxRectangeAreaInHistogram {
 	}
 
 	public static void main(String[] args) {
-		int[] h = CreateUtils.createRandomIntArray(10, 10);
+		int[] h = CreateUtils.randNonNegIntArray(10, 10);
 		for (int i = 0; i < h.length; i++)
 			h[i]++;
 		PrintUtils.printArray(h);

@@ -32,7 +32,7 @@ public class PringAllWordsByPhoneNumber {
 				{ 'd', 'e', 'f' }, { 'g', 'h', 'i' }, { 'j', 'k', 'l' },
 				{ 'o', 'p', 'q' }, { 'r', 's', 't' }, { 'u', 'v', 'w' },
 				{ 'w', 'x', 'y', 'z' } };
-		int[] a = CreateUtils.createRandomIntArray(5, 10);
+		int[] a = CreateUtils.randNonNegIntArray(5, 10);
 		char[] number = new char[a.length];
 		for (int i = 0; i < number.length; i++)
 			number[i] = (char) ('0' + a[i]);

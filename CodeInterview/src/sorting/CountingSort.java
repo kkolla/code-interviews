@@ -36,7 +36,7 @@ public class CountingSort {
 	}
 
 	public static void main(String[] args) {
-		int[] a = CreateUtils.createRandomIntArray(50, 50);
+		int[] a = CreateUtils.randNonNegIntArray(50, 50);
 		PrintUtils.printArray(a);
 		PrintUtils.printArray(sort(a));
 	}

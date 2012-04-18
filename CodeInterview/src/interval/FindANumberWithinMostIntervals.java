@@ -61,7 +61,7 @@ public class FindANumberWithinMostIntervals {
 	}
 
 	public static void main(String[] args) {
-		Interval[] intervals = CreateUtils.createRandomIntIntervals(8, 50);
+		Interval[] intervals = CreateUtils.randNonNegIntIntervals(8, 50);
 		PrintUtils.printArray(intervals);
 		System.out.println(findNumber(intervals));
 	}

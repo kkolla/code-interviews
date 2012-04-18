@@ -17,7 +17,7 @@ public class PrintAllValidBracketPairs {
 	}
 
 	public static void main(String[] args) {
-		int n = CreateUtils.randomNonNegative(10);
+		int n = CreateUtils.randNonNegInt(10);
 		printAllValidBracketPairs(n, n, "");
 	}
 }

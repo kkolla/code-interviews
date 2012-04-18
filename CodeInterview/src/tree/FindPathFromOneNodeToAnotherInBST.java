@@ -52,7 +52,7 @@ public class FindPathFromOneNodeToAnotherInBST {
 	}
 
 	public static void main(String[] args) {
-		Node root = CreateUtils.createBSTWithTenNodes();
+		Node root = CreateUtils.bstWithTenNodes();
 		PrintUtils.printBinaryTree(root);
 		System.out.println();
 		Node n1 = root.left.right;

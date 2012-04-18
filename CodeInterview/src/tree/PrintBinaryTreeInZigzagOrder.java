@@ -43,8 +43,8 @@ public class PrintBinaryTreeInZigzagOrder {
 
 	public static void main(String[] args) {
 		LevelByLevelTraversal.traverseByLevel(CreateUtils
-				.createBSTWithTenNodes());
-		printTreeZigzag(CreateUtils.createBSTWithTenNodes());
+				.bstWithTenNodes());
+		printTreeZigzag(CreateUtils.bstWithTenNodes());
 	}
 
 }

@@ -139,7 +139,7 @@ public class MaxAllOneSubMatrix {
 	}
 
 	public static void main(String[] args) {
-		int[][] m = CreateUtils.createRandom2DIntArray(10, 2, false);
+		int[][] m = CreateUtils.randNonNegMatrix(10, 2, false);
 		PrintUtils.print2DArray(m);
 		System.out.println("first method:");
 		findMaxAllOneSubMatrix(m);

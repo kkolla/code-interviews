@@ -38,7 +38,7 @@ public class ConvertBSTToSortedDoublyLinkedList {
 	}
 
 	public static void main(String[] args) {
-		tree.Node root = CreateUtils.createBSTWithTenNodes();
+		tree.Node root = CreateUtils.bstWithTenNodes();
 		Node head = convert(root);
 		PrintUtils.printBinaryTree(root);
 		Node t = head;

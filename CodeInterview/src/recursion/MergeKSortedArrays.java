@@ -48,7 +48,7 @@ public class MergeKSortedArrays {
 		int k = 5;
 		int[][] a = new int[k][];
 		for (int i = 0; i < k; i++) {
-			a[i] = CreateUtils.createRandomSortedIntArray(10, 10);
+			a[i] = CreateUtils.randSortedNonNegIntArray(10, 10);
 			PrintUtils.printArray(a[i]);
 		}
 		PrintUtils.printList(merge(a));
