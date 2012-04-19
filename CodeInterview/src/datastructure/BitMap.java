@@ -35,10 +35,10 @@ public class BitMap {
 	}
 
 	public static void main(String[] args) {
-		int largest = CreateUtils.randomNonNegative(100000);
+		int largest = CreateUtils.randNonNegInt(100000);
 		BitMap map = new BitMap(largest);
 		for (int i = 0; i < largest / 100; i++) {
-			int n = CreateUtils.randomNonNegative(largest);
+			int n = CreateUtils.randNonNegInt(largest);
 			if (map.contains(n)) {
 				System.out.println(n + " was contained in the map");
 			} else {
