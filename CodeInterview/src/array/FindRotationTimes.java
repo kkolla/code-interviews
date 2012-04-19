@@ -16,6 +16,9 @@ public class FindRotationTimes {
 
 	public static void main(String[] args) {
 		System.out.println(rotationTimes(new int[] { 6, 1, 2, 3, 4, 5 }));
+		System.out.println(rotationTimes(new int[] { 5, 6, 1, 2, 3, 4 }));
+		System.out.println(rotationTimes(new int[] { 2, 3, 4, 5, 6, 1 }));
+		System.out.println(rotationTimes(new int[] { 1, 2, 3, 4, 5, 6 }));
 	}
 
 }
