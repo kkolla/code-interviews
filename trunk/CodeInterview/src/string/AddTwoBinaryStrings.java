@@ -1,9 +1,10 @@
-package recursion;
+package string;
 
 import utils.CreateUtils;
 
 /*
  * Given two binary strings, return their sum (also a binary string)
+ * e.g. "110"+"11"="1001"
  */
 public class AddTwoBinaryStrings {
 

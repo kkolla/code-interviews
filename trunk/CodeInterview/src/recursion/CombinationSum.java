@@ -22,7 +22,7 @@ import utils.PrintUtils;
  * [2, 6] 
  * [1, 1, 6] 
  */
-public class CombinationSumRepeatedUsesAllowed {
+public class CombinationSum {
 
 	public static ArrayList<ArrayList<Integer>> combinationSum(
 			int[] candidates, int target) {

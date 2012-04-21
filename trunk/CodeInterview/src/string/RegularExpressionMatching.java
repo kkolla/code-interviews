@@ -16,6 +16,7 @@ package string;
  */
 public class RegularExpressionMatching {
 
+	// cannot pass leetcode oj
 	public static boolean match(char[] s, char[] p, int i, int j) {
 		// pattern characters have all been matched
 		if (j == p.length)
