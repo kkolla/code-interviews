@@ -1,5 +1,7 @@
 package combinatorics;
 
+import java.util.Arrays;
+
 import utils.PrintUtils;
 
 public class PrintAllPermutations {
@@ -25,7 +27,8 @@ public class PrintAllPermutations {
 	}
 
 	public static void main(String[] args) {
-		int[] a = new int[] { 1, 2, 3, 4, 5, 0, 0 };
+		int[] a = new int[] { 1, 2, 3, 0, 0 };
+		Arrays.sort(a);
 		permutate(a, 0);
 		permutateWithoutDuplicates(a, 0);
 	}

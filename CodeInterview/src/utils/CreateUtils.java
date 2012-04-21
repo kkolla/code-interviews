@@ -114,6 +114,11 @@ public class CreateUtils {
 		return (int) (Math.random() * maxExclusive);
 	}
 
+	public static int randInt(int maxAbsoluteExclusive) {
+		return (Math.random() >= 0.5 ? 1 : -1)
+				* randNonNegInt(maxAbsoluteExclusive);
+	}
+
 	public static double randReal(double maxExclusive) {
 		return (Math.random() >= 0.5 ? 1 : -1) * (Math.random() * maxExclusive);
 	}
