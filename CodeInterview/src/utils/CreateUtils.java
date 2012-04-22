@@ -83,12 +83,21 @@ public class CreateUtils {
 		Arrays.sort(arr);
 		return arr;
 	}
+	
+	public static int[] randIntArray(int maxLength, int maxAbsoluteExclusive) {
+		int n = randNonNegInt(maxLength);
+		int[] arr = new int[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = randInt(maxAbsoluteExclusive);
+		}
+		return arr;
+	}
 
 	public static double[] randRealArray(int maxLength) {
 		int n = randNonNegInt(maxLength);
 		double[] arr = new double[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = (Math.random() > 0.5 ? -1 : 1) * randNonNegInt(10);
+			arr[i] = randReal(Double.MAX_VALUE);
 		}
 		return arr;
 	}
