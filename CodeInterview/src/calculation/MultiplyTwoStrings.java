@@ -18,6 +18,8 @@ public class MultiplyTwoStrings {
 			b = b.substring(1);
 			positive = !positive;
 		}
+		if (a.charAt(0) == '0' || b.charAt(0) == '0')
+			return "0";
 		List<Integer> r = new ArrayList<Integer>();
 		int carry = 0;
 		for (int ai = a.length() - 1, offset = 0; ai >= 0; ai--, offset++) {
