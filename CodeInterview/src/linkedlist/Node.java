@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class Node {
+public class Node implements Comparable<Node> {
 	public int value;
 	public Node next;
 	public Node prev;
@@ -31,5 +31,12 @@ public class Node {
 	public String toString() {
 		return "Node (value: " + value + ", next: "
 				+ (next == null ? "null" : next.value) + ")";
+	}
+
+	@Override
+	public int compareTo(Node o) {
+		if (value == o.value)
+			return 0;
+		return value < o.value ? -1 : 1;
 	}
 }
