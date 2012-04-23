@@ -13,7 +13,7 @@ public class DutchFlagProblem {
 	public static int[] sort(int[] a, int middle) {
 		int less = 0;
 		int greater = a.length - 1;
-		for (int i = 0; i < greater;) {
+		for (int i = 0; i <= greater;) { // !: not <
 			if (a[i] < middle) {
 				int temp = a[i];
 				a[i] = a[less];

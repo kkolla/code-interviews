@@ -1,5 +1,10 @@
 package array;
 
+/*
+ * Follow up for "Search in Rotated Sorted Array":
+ * What if duplicates are allowed?
+ * Would this affect the run-time complexity? How and why?
+ */
 public class SearchInRotatedSortedArray {
 
 	public static boolean isLessThanByPosition(int first, int last, int a, int b) {
@@ -28,7 +33,7 @@ public class SearchInRotatedSortedArray {
 	}
 
 	public static void main(String[] args) {
-		int[] a = { 5, 6, 7, 9, 1, 2, 3 };
+		int[] a = { 5, 6, 7, 9, 1, 1, 2, 3 };
 		for (int i = 0; i <= 10; i++)
 			System.out.println(i + ": " + search(a, i));
 	}
