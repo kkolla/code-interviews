@@ -16,19 +16,13 @@ public class ReverseLinkedList {
 	}
 
 	public static Node reverseLinkedListRecursive(Node head) {
-		if (head == null) {
-			return null;
-		}
-		Node next = head.next;
-		if (next == null)
+		if (head == null || head.next == null) {
 			return head;
-
-		Node n = reverseLinkedListRecursive(next);
+		}
+		Node newHead = reverseLinkedListRecursive(head.next);
 		head.next.next = head;
 		head.next = null;
-		head = n;
-		return n;
-
+		return newHead;
 	}
 
 	public static void main(String[] args) {

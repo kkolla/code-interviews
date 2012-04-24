@@ -1,0 +1,6 @@
+1. distribute to data centers (LANs), then copy within each
+2. bit torrent
+3. split into pieces, each time swap pieced between nodes
+
+http://www.mitbbs.com/article_t/JobHunting/32081893.html
+http://agilewarrior.wordpress.com/2011/05/28/how-facebook-pushes-new-code-live/
