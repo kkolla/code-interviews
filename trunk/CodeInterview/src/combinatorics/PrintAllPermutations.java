@@ -24,12 +24,11 @@ public class PrintAllPermutations {
 	}
 
 	public static void permutateWithoutDuplicates(int[] a) {
-		Arrays.sort(a);
+		Arrays.sort(a);// or by hash
 		permutateWithoutDuplicates(a, 0);
 	}
 
 	public static void permutateWithoutDuplicates(int[] a, int start) {
-		Arrays.sort(a);// or by hash
 		if (start == a.length) {
 			PrintUtils.printArray(a);
 			return;
