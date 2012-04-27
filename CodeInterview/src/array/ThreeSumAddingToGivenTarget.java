@@ -5,9 +5,9 @@ import java.util.Arrays;
 import utils.CreateUtils;
 import utils.PrintUtils;
 
-public class ThreeNumbersAddingToGivenSum {
+public class ThreeSumAddingToGivenTarget {
 
-	public static void findTuples(int[] a, int sum) {
+	public static void findTuples(int[] a, int target) {
 		if (a.length < 3)
 			return;
 		Arrays.sort(a);
@@ -15,7 +15,7 @@ public class ThreeNumbersAddingToGivenSum {
 			int second = first + 1;
 			int third = a.length - 1;
 			while (second < third) {
-				int key = sum - a[first];
+				int key = target - a[first];
 				if (key == a[second] + a[third]) {
 					System.out.println(a[first] + " " + a[second] + " "
 							+ a[third]);
@@ -32,10 +32,10 @@ public class ThreeNumbersAddingToGivenSum {
 
 	public static void main(String[] args) {
 		int[] a = CreateUtils.randNonNegIntArray(10, 10);
-		int sum = CreateUtils.randNonNegInt(20);
+		int target = CreateUtils.randNonNegInt(20);
 		PrintUtils.printArray(a);
-		System.out.println(sum);
-		findTuples(a, sum);
+		System.out.println(target);
+		findTuples(a, target);
 	}
 
 }
