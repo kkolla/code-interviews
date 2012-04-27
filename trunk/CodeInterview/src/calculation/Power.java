@@ -18,10 +18,6 @@ public class Power {
 	}
 
 	public static double powerIterative(double x, int y) {
-		if (y == 0)
-			return 1;
-		if (y == 1)
-			return x;
 		boolean negative = false;
 		if (y < 0) {
 			negative = true;
