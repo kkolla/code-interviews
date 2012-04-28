@@ -23,7 +23,8 @@ public class DivideTwoIntegers {
 		return divide(dividend - divisor, divisor, ++q);
 	}
 
-	// O(log(dividend)), does not work for Integer.MIN_VALUE
+	// O(log(dividend)), used multiplication
+	// does not work for Integer.MIN_VALUE
 	public static int divide2(int dividend, int divisor) {
 		boolean positive = true;
 		if (dividend < 0) {

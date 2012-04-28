@@ -19,15 +19,15 @@ public class GroupStringsBySameAnagram {
 		// compare each hash tables pair
 		// O(256*n*n)=O(n^2)
 		for (int i = 0; i < n - 1; i++) {
-			if (output[i])
-				continue;
-			output[i] = true;
-			System.out.println(ss[i]);
 			for (int j = i + 1; j < n; j++)
 				for (int k = 0; k < 256; k++)
 					if (counts[i][k] != counts[j][k])
 						break;
 					else if (k == 255 && !output[j]) {
+						if (!output[i]) {
+							output[i] = true;
+							System.out.println(ss[i]);
+						}
 						output[j] = true;
 						System.out.println(ss[j]);
 					}
