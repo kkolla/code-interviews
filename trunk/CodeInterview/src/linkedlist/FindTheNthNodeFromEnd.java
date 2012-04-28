@@ -3,7 +3,7 @@ package linkedlist;
 import utils.CreateUtils;
 import utils.PrintUtils;
 
-public class FindTheNthNodeToLast {
+public class FindTheNthNodeFromEnd {
 
 	public static Node findNthNodeToLastIterative(Node head, int n) {
 		int length = Node.length(head);
