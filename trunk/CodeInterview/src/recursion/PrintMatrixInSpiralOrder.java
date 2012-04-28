@@ -14,12 +14,12 @@ public class PrintMatrixInSpiralOrder {
 				System.out.print(m[k][k + i] + " ");
 			return;
 		}
-
 		if (numCols == 1) {
 			for (int i = 0; i < numRows; i++)
 				System.out.print(m[i + k][k] + " ");
 			return;
 		}
+
 		for (int i = 0; i < numCols - 1; i++) {
 			System.out.print(m[k][k + i] + " ");
 		}
