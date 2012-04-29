@@ -1,0 +1,26 @@
+Both threads and processes are methods of parallelizing an application. 
+However, processes are independent execution units that contain their 
+own state information, use their own address spaces, and only interact 
+with each other via interprocess communication mechanisms 
+(generally managed by the operating system). Applications are typically 
+divided into processes during the design phase. Processes, in other words, 
+are an architectural construct. 
+
+By contrast, a thread is a coding construct that doesn't affect the 
+architecture of an application. A single process might contains multiple
+ threads; all threads within a process share the same state and same 
+ memory space, and can communicate with each other directly, because 
+ they share the same variables. 
+
+1. Threads are easier to create than processes since they
+don't require a separate address space.
+
+2. Multithreading requires careful programming since threads
+share data strucures that should only be modified by one thread
+at a time.  Unlike threads, processes don't share the same
+address space.
+
+3.  Threads are considered lightweight because they use far
+less resources than processes.
+
+4.  A process can consist of multiple threads.

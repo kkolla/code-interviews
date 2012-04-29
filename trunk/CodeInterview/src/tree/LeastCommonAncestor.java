@@ -2,6 +2,7 @@ package tree;
 
 public class LeastCommonAncestor {
 
+	// assuming n1 n2 are null or exist in the tree
 	public static Node lca(Node root, Node n1, Node n2) {
 		if (root == null || root == n1 || root == n2)
 			return root;
