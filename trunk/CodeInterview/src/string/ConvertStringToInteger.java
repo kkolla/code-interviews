@@ -33,7 +33,7 @@ package string;
  " --2"	0	0	
  "  -2"	-2	-2
  */
-public class StringToInteger {
+public class ConvertStringToInteger {
 	public boolean isDigit(char c) {
 		return c >= '0' && c <= '9';
 	}

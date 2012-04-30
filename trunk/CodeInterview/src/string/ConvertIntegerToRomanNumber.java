@@ -1,7 +1,7 @@
 package string;
 
 // copied but not studied!
-public class ConvertIntToRomanNumber {
+public class ConvertIntegerToRomanNumber {
 	public static String fill(char c, int times) {
 		String s = "";
 		for (int i = 0; i < times; i++)
