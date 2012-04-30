@@ -65,10 +65,8 @@ public class AcceptIterator<T> implements Iterator<T> {
 			next = null;
 			return t;
 		} else {
-			if (iter.hasNext()) {
-				return iter.next();
-			}
-			return null;
+			updateNext();
+			return next;
 		}
 	}
 
