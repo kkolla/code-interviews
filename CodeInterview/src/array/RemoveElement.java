@@ -6,23 +6,27 @@ import utils.CreateUtils;
 import utils.PrintUtils;
 
 /*
- * Given an array and a value, remove all instances of that value in place and return the new length.
- * The order of elements can be changed. It doesn't matter what you leave beyond the new length.
+ * Given an array and a value, remove all instances of that value 
+ * in place and return the new length.
+ * The order of elements can be changed. 
+ * It doesn't matter what you leave beyond the new length.
  */
 public class RemoveElement {
 
-	// O(nlog(n))
+	// O(n)
 	public static int removeElement(int[] a, int elem) {
 		if (a.length == 0)
 			return 0;
-		int length = 0;
-		Arrays.sort(a);
-		for (int i = 0; i < a.length; i++) {
-			if (a[i] != elem) {
-				a[length++] = a[i];
+		int fast = 0, slow = 0;
+		while (fast < a.length) {
+			int curr = a[fast];
+			if (curr != elem) {
+				a[slow] = curr;
+				slow++;
 			}
+			fast++;
 		}
-		return length;
+		return slow;
 	}
 
 	public static void main(String[] args) {

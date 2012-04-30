@@ -64,21 +64,6 @@ public class RemoveDuplicatesInPlace {
 		return slow;
 	}
 
-	public int removeElement(int[] a, int elem) {
-		if (a.length == 0)
-			return 0;
-		int fast = 0, slow = 0;
-		while (fast < a.length) {
-			int curr = a[fast];
-			if (curr != elem) {
-				a[slow] = curr;
-				slow++;
-			}
-			fast++;
-		}
-		return slow;
-	}
-
 	public static void main(String[] args) {
 		int[] a = CreateUtils.randNonNegIntArray(20, 10);
 		PrintUtils.printArray(a);
