@@ -13,7 +13,7 @@ public class EditDistance {
 	// d[i][j]: edit distance for word1.substring(0,i+1) and
 	// word2.substring(0,j+1)
 	// d[i][j] = d[i-1][j-1] if same character
-	// d[i][j] = min(d[i-1][j],d[i][j-1],d[i-1][j-1]+1)
+	// d[i][j] = min(d[i-1][j],d[i][j-1],d[i-1][j-1])+1 otherwise
 	// answer: d[word1.length()][word2.length()]
 
 	public static int minDistance(String word1, String word2) {

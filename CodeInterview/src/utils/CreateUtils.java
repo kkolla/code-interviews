@@ -83,7 +83,7 @@ public class CreateUtils {
 		Arrays.sort(arr);
 		return arr;
 	}
-	
+
 	public static int[] randIntArray(int maxLength, int maxAbsoluteExclusive) {
 		int n = randNonNegInt(maxLength);
 		int[] arr = new int[n];
@@ -102,19 +102,22 @@ public class CreateUtils {
 		return arr;
 	}
 
+	public static String randString(int maxStringLength, boolean hasSpace) {
+		char[] alphabet = hasSpace ? "abcdefghijklmnopqrstuvwxyz "
+				.toCharArray() : "abcdefghijklmnopqrstuvwxyz".toCharArray();
+		int size = randNonNegInt(maxStringLength);
+		StringBuffer sb = new StringBuffer("");
+		for (int j = 0; j < size; j++)
+			sb.append(alphabet[randNonNegInt(alphabet.length)]);
+		return sb.toString();
+	}
+
 	public static String[] randStringArray(int maxLength, int maxStringLength,
 			boolean hasSpace) {
 		int n = randNonNegInt(maxLength);
 		String[] arr = new String[n];
-		char[] alphabet = hasSpace ? "abcdefghijklmnopqrstuvwxyz "
-				.toCharArray() : "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		for (int i = 0; i < n; i++) {
-			arr[i] = "";
-			int size = randNonNegInt(maxStringLength);
-			StringBuffer sb = new StringBuffer("");
-			for (int j = 0; j < size; j++)
-				sb.append(alphabet[randNonNegInt(alphabet.length)]);
-			arr[i] = sb.toString();
+			arr[i] = randString(maxStringLength, hasSpace);
 		}
 		return arr;
 	}
