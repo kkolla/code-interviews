@@ -20,7 +20,7 @@ share data strucures that should only be modified by one thread
 at a time.  Unlike threads, processes don't share the same
 address space.
 
-3.  Threads are considered lightweight because they use far
+3. Threads are considered lightweight because they use far
 less resources than processes.
 
-4.  A process can consist of multiple threads.
+4. A process can consist of multiple threads.

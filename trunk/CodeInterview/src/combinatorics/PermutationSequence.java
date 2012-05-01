@@ -15,7 +15,7 @@ package combinatorics;
  */
 public class PermutationSequence {
 
-	public String getPermutation(int n, int k) {
+	public static String getPermutation(int n, int k) {
 		char[] s = new char[n];
 		for (int i = 1; i <= n; i++)
 			s[i - 1] = (char) ('0' + i);
@@ -25,8 +25,8 @@ public class PermutationSequence {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		for (int i = 1; i < 10; i++)
+			System.out.println(getPermutation(5, i));
 	}
 
 }
