@@ -1,0 +1,25 @@
+The Document Object Model (DOM) is a cross-platform and language-independent convention for 
+representing and interacting with objects in HTML, XHTML and XML documents.
+Objects in the DOM tree may be addressed and manipulated by using methods on the objects.
+
+Web browsers usually use an internal model similar to the DOM in order to render a document (such as an HTML page). 
+The DOM APIs are also used to inspect or modify a Web page from JavaScript code. In other words, the Document Object Model is the way JavaScript sees the browser state and the HTML page it contains.
+When an HTML page is rendered in a browser, the browser parses the markup (e.g. HTML), downloaded from the web-server into an in-memory DOM. The DOM is used to construct additional internal structures used to display the page in the browser window.
+The nodes of every document are organized in a tree structure, called the DOM tree. The topmost node in the DOM tree is the Document object. Each node has zero or more children.
+
+An example of a DOM tree is shown below:
+
+ |-> Document
+   |-> Element (<html>)
+     |-> Element (<body>)
+       |-> Element (<div>)
+         |-> text node
+         |-> Anchor
+           |-> text node
+       |-> Form
+            |-> Text-box
+            |-> Text Area
+            |-> Radio Button
+            |-> Check Box
+            |-> Select
+            |-> Button

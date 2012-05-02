@@ -1,0 +1,2 @@
+http://www.javascriptkit.com/javatutors/closures.shtml
+https://developer.mozilla.org/en/JavaScript/Guide/Closures
