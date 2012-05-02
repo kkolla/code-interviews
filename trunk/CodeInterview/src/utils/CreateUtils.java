@@ -93,11 +93,12 @@ public class CreateUtils {
 		return arr;
 	}
 
-	public static double[] randRealArray(int maxLength) {
+	public static double[] randRealArray(int maxLength,
+			double maxAbsoluteExclusive) {
 		int n = randNonNegInt(maxLength);
 		double[] arr = new double[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = randReal(Double.MAX_VALUE);
+			arr[i] = randReal(maxAbsoluteExclusive);
 		}
 		return arr;
 	}
