@@ -50,7 +50,7 @@ public class LongestIncreasingSequence {
 	}
 
 	public static void main(String[] args) {
-		double[] a = CreateUtils.randRealArray(10);
+		double[] a = CreateUtils.randRealArray(10, 10);
 		PrintUtils.printArray(a);
 		List<Double> sequence = new LinkedList<Double>();
 		System.out.println(lis(a, sequence));
