@@ -1,0 +1,44 @@
+Use a fast memory-based hashtable like memcached. 
+The keys will be the target you are limiting (e.g. an IP) and the expiration of 
+each stored value should be the maximum limitation time.
+The values stored for each key will contain a serialized list of 
+the last N attempts they made at performing the action, along with the time for each attempt.
+
+
+I'd use a ring buffer of timestamps with a fixed size of M. Each time the method is called, 
+you check the oldest entry, and if it's less than N seconds in the past, 
+you execute and add another entry, otherwise you sleep for the time difference.
+
+
+In concrete terms, you should be able to implement this with a DelayQueue. 
+Initialize the queue with M Delayed instances with their delay initially set to zero. 
+As requests to the method come in, take a token, which causes the method to block 
+until the throttling requirement has been met. When a token has been taken, 
+add a new token to the queue with a delay of N.
+
+
+Token Bucket: 
+http://en.wikipedia.org/wiki/Token_bucket
+http://stackoverflow.com/questions/667508/whats-a-good-rate-limiting-algorithm
+
+rate = 5.0; // unit: messages
+per  = 8.0; // unit: seconds
+allowance = rate; // unit: messages
+last_check = now(); // floating-point, e.g. usec accuracy. Unit: seconds
+
+when (message_received):
+  current = now();
+  time_passed = current - last_check;
+  last_check = current;
+  allowance += time_passed * (rate / per);
+  if (allowance > rate):
+    allowance = rate; // throttle
+  if (allowance < 1.0):
+    discard_message();
+  else:
+    forward_message();
+    allowance -= 1.0;
+There are no datastructures, timers etc. in this solution and it works cleanly :) 
+To see this, 'allowance' grows at speed 5/8 units per seconds at most, 
+i.e. at most five units per eight seconds. Every message that is forwarded deducts one unit, 
+so you can't send more than five messages per every eight seconds.

@@ -3,6 +3,7 @@ package datastructure;
 import utils.CreateUtils;
 import utils.PrintUtils;
 
+// http://e-university.wisdomjobs.com/data-structures/chapter-1178-290/tries.html
 public class Trie {
 	char value;
 	int prefixes;

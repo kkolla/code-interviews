@@ -1,0 +1,3 @@
+http://www.correlsense.com/blog/java-bytecode-instrumentation-introduction/
+
+http://www.informit.com/guides/content.aspx?g=java&seqNum=585
