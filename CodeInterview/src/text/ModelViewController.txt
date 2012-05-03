@@ -1,0 +1,24 @@
+The Model-View-Controller (MVC) pattern separates the modeling of the 
+domain, the presentation, and the actions based on user input into three 
+separate classes:
+
+Model. The model manages the behavior and data of the application domain, 
+responds to requests for information about its state (usually from the 
+view), and responds to instructions to change state (usually from the 
+controller).
+
+View. The view manages the display of information.
+
+Controller. The controller interprets the mouse and keyboard inputs from 
+the user, informing the model and/or the view to change as appropriate.
+
+It is important to note that both the view and the controller depend on 
+the model. However, the model depends on neither the view nor the 
+controller. This is one the key benefits of the separation. 
+This separation allows the model to be built and tested independent 
+of the visual presentation. The separation between view and controller 
+is secondary in many rich-client applications, and, in fact, many user 
+interface frameworks implement the roles as one object. 
+In Web applications, on the other hand, the separation between view 
+(the browser) and controller (the server-side components handling the 
+HTTP request) is very well defined.
