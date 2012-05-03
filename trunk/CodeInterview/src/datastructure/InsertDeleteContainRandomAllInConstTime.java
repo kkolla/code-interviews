@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InsertDeleteContainRandomAllInConstantTime<T> {
+public class InsertDeleteContainRandomAllInConstTime<T> {
 	List<T> a = new ArrayList<T>();
 	Map<T, Integer> map = new HashMap<T, Integer>();
 
