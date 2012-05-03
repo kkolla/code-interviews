@@ -25,17 +25,17 @@ public class InOrderBinaryTreeTraversalIterator implements Iterator<Node> {
 	@Override
 	public Node next() {
 		Node t = null;
-		if (!hasNext())
-			return t;
-		while (!s.isEmpty() || curr != null) {
-			if (curr != null) {
-				s.push(curr);
-				curr = curr.left;
-			} else {
-				curr = s.pop();
-				t = curr;
-				curr = curr.right;
-				break;
+		if (hasNext()) {
+			while (!s.isEmpty() || curr != null) {
+				if (curr != null) {
+					s.push(curr);
+					curr = curr.left;
+				} else {
+					curr = s.pop();
+					t = curr;
+					curr = curr.right;
+					break;
+				}
 			}
 		}
 		return t;
