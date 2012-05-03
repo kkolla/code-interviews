@@ -37,7 +37,7 @@ public class DivideTwoIntegers {
 			divisor = -divisor;
 		}
 		// quotient ranges from 0 to dividend
-		long low = 1, high = dividend;
+		long low = 0, high = dividend;
 		while (low <= high) {
 			long q = low + ((high - low) >> 1);
 			long remainder = dividend - q * divisor;
