@@ -34,7 +34,7 @@ public class MoveInAndOut {
 	}
 
 	public static void main(String[] args) {
-		final int n = CreateUtils.randNonNegInt(5);
+		final int n = CreateUtils.randNonNegInt(8);
 		System.out.println(n);
 		final Integer[] people = new Integer[n];
 		for (int i = 0; i < n; i++)
