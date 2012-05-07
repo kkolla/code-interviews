@@ -55,11 +55,9 @@ public class ReadLineByRead4096 {
 					}
 					sb.append(cs[position++]);
 				}
-
 				// position == cs.length
 				cs = null;
 				position = 0;
-
 			}
 			return sb.toString().toCharArray();
 		}
