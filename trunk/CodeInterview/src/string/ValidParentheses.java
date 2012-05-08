@@ -13,13 +13,12 @@ public class ValidParentheses {
 		char prev = '!';
 		for (int i = 0; i < p.length(); i++) {
 			char c = p.charAt(i);
-			boolean invalid = false;
 			if (c == '(') {
 				round++;
 			} else if (c == ')') {
 				String brackets = "()]}";
 				if (brackets.indexOf(prev) == -1 || round == 0)
-					invalid = true;
+					break;
 				else
 					round--;
 			} else if (c == '[') {
@@ -27,7 +26,7 @@ public class ValidParentheses {
 			} else if (c == ']') {
 				String brackets = "[])}";
 				if (brackets.indexOf(prev) == -1 || square == 0)
-					invalid = true;
+					break;
 				else
 					square--;
 			} else if (c == '{') {
@@ -35,12 +34,10 @@ public class ValidParentheses {
 			} else if (c == '}') {
 				String brackets = "{})]";
 				if (brackets.indexOf(prev) == -1 || brace == 0)
-					invalid = true;
+					break;
 				else
 					brace--;
 			}
-			if (invalid)
-				return false;
 			prev = c;
 		}
 		return round == 0 && square == 0 && brace == 0;

@@ -17,10 +17,9 @@ public class LengthOfLastWord {
 		int currLength = 0;
 		for (int i = 0; i < s.length(); i++) {
 			if (s.charAt(i) == ' ') {
-				if (currLength != 0) {
+				if (currLength != 0)
 					prevLength = currLength;
-					currLength = 0;
-				}
+				currLength = 0;
 			} else
 				currLength++;
 		}
@@ -28,8 +27,7 @@ public class LengthOfLastWord {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println(lengthOfLastWord("Hello   World  haha  "));
 	}
 
 }

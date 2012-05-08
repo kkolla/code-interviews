@@ -1,8 +1,8 @@
 package string;
 
 /*
- ‘?’ Matches any single character.
- ‘*’ Matches zero or more characters.
+ * '?' Matches any single character.
+ * '*' Matches zero or more characters.
  */
 public class WildcardMatching {
 

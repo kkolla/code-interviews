@@ -31,6 +31,6 @@ public class StringReplacement {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(replace("aabaaaaaabaab", "aaa"));
+		System.out.println(replace("aabaaaaaabaabaaaac", "aaa"));
 	}
 }

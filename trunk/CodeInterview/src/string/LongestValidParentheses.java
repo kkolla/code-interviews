@@ -27,6 +27,7 @@ public class LongestValidParentheses {
 				length = 0;
 			}
 		}
+		// max is 0 for the case "(()" if no counting from right to left
 		length = 0;
 		count = 0;
 		for (int i = s.length() - 1; i >= 0; i--) {

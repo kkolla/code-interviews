@@ -41,6 +41,7 @@ public class AcceptIterator<T> implements Iterator<T> {
 	}
 
 	private void updateNext() {
+		next = null;
 		while (iter.hasNext()) {
 			T t = iter.next();
 			if (pred.accept(t)) {
@@ -52,22 +53,14 @@ public class AcceptIterator<T> implements Iterator<T> {
 
 	@Override
 	public boolean hasNext() {
-		if (next != null)
-			return true;
-		updateNext();
 		return next != null;
 	}
 
 	@Override
 	public T next() {
-		if (next != null) {
-			T t = next;
-			next = null;
-			return t;
-		} else {
-			updateNext();
-			return next;
-		}
+		T t = next;
+		updateNext();
+		return t;
 	}
 
 	@Override

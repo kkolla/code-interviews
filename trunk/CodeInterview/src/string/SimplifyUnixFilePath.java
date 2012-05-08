@@ -23,10 +23,8 @@ public class SimplifyUnixFilePath {
 			char c = path.charAt(pos);
 			// c could be letter, ., /
 			if (c == '/') {
-				int i = pos;
-				while (i < path.length() && path.charAt(i) == c)
-					i++;
-				pos = i;
+				while (pos < path.length() && path.charAt(pos) == c)
+					pos++;
 			} else if (c == '.') {
 				if (pos + 1 < path.length() && path.charAt(pos + 1) == '.') {
 					// ..
@@ -60,7 +58,7 @@ public class SimplifyUnixFilePath {
 
 	public static void main(String[] args) {
 		String[] paths = { "/home/", "/home//", "/home///", "/a/./b/../../c/",
-				"/../" };
+				"/a/./b/..//c/", "/../" };
 		for (String path : paths)
 			System.out.println(simplifyPath(path));
 	}
