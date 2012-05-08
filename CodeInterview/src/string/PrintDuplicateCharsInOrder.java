@@ -1,6 +1,5 @@
 package string;
 
-import java.util.HashMap;
 
 /*
  * Input: "TTwitter is nice"
@@ -11,12 +10,13 @@ public class PrintDuplicateCharsInOrder {
 	public static void print(String s) {
 		int[] counts = new int[256];
 		for (int i = 0; i < s.length(); i++) {
-			int index = (int) s.charAt(i) + 128;
-			if (s.charAt(i) != ' ' && counts[index] == 1)
-				System.out.print(s.charAt(i) + " ");
+			if (s.charAt(i) == ' ')
+				continue;
+			int index = (int) s.charAt(i) - '\0';
 			counts[index]++;
+			if (counts[index] == 2)
+				System.out.print(s.charAt(i) + " ");
 		}
-		HashMap b;
 	}
 
 	public static void main(String[] args) {

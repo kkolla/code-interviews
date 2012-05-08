@@ -2,6 +2,7 @@ package calculation;
 
 public class SquareRoot {
 
+	// O(log(n))?
 	public static double sqrt(double number) {
 		if (number < 0)
 			return Double.NaN;

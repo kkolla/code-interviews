@@ -26,7 +26,7 @@ public class MinimumWindowSubstring {
 			int index = t.charAt(i) - 'A';
 			required[index]++;
 		}
-		int[] found = new int[26];
+		int[] found = new int[52];
 		int foundChars = 0;
 		int minLength = s.length();
 		int minBegin = -1, minEnd = -1;

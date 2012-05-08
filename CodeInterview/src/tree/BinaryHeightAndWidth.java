@@ -17,10 +17,10 @@ public class BinaryHeightAndWidth {
 	public static int width(Node root) {
 		if (root == null)
 			return 0;
-		int maxWidth = 0;
 		Queue<Node> q = new LinkedList<Node>();
 		q.offer(root);
 		int currWidth = 1;
+		int maxWidth = 1;
 		int nextWidth = 0;
 		while (!q.isEmpty()) {
 			Node n = q.poll();

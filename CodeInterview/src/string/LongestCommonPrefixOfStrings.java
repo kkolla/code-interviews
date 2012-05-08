@@ -11,7 +11,7 @@ public class LongestCommonPrefixOfStrings {
 		while (!done) {
 			char c = '!';
 			for (int i = 0; i < ss.length; i++) {
-				if (t == ss[i].length()) {
+				if (ss[i] == null || t == ss[i].length()) {
 					done = true;
 					break;
 				}

@@ -136,6 +136,19 @@ public class CreateUtils {
 		return (Math.random() >= 0.5 ? 1 : -1) * (Math.random() * maxExclusive);
 	}
 
+	public static boolean randBool() {
+		return Math.random() >= 0.5 ? true : false;
+	}
+
+	public static boolean[] randBoolArray(int maxLength) {
+		int n = randNonNegInt(maxLength);
+		boolean[] arr = new boolean[n];
+		for (int i = 0; i < n; i++) {
+			arr[i] = randBool();
+		}
+		return arr;
+	}
+
 	public static int[][] randNonNegMatrix(int maxLength, int maxValue,
 			boolean isSquare) {
 		int rows = randNonNegInt(maxLength);
@@ -178,4 +191,5 @@ public class CreateUtils {
 						{ 0, 0, 0, 0, 0, 0, 1, 0 }, { 0, 0, 0, 0, 0, 0, 0, 1 },
 						{ 0, 0, 0, 0, 0, 0, 0, 0 } });
 	}
+
 }

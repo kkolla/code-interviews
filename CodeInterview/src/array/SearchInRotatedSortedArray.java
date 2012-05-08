@@ -7,11 +7,10 @@ package array;
  */
 public class SearchInRotatedSortedArray {
 
-	public static boolean isLessThanByPosition(int first, int last, int a, int b) {
-		if (a == b)
-			return false;
+	public static boolean isLessThanByPosition(int[] arr, int a, int b) {
 		// if a and b are in the same partition
-		if (a >= first && b >= first || a <= last && b <= last)
+		if (a >= arr[0] && b >= arr[0] || a <= arr[arr.length - 1]
+				&& b <= arr[arr.length - 1])
 			return a < b;
 		else
 			return a > b;
@@ -24,7 +23,7 @@ public class SearchInRotatedSortedArray {
 			int mid = low + (high - low) / 2;
 			if (a[mid] == key)
 				return mid;
-			else if (isLessThanByPosition(a[0], a[a.length - 1], key, a[mid]))
+			else if (isLessThanByPosition(a, key, a[mid]))
 				high = mid - 1;
 			else
 				low = mid + 1;

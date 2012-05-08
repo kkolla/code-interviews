@@ -4,7 +4,7 @@ import java.util.Stack;
 
 import utils.CreateUtils;
 
-public class PostTraversal {
+public class PostOrderTraversal {
 
 	public static void postTraverseIterative(Node root) {
 		if (root == null)

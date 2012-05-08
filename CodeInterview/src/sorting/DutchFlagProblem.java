@@ -13,7 +13,7 @@ public class DutchFlagProblem {
 	public static int[] sort(int[] a, int middle) {
 		int less = 0;
 		int greater = a.length - 1;
-		for (int i = 0; i <= greater;) { // !: not <
+		for (int i = 0; i <= greater;) { // pitfall: not <
 			if (a[i] < middle) {
 				int temp = a[i];
 				a[i] = a[less];
@@ -32,10 +32,33 @@ public class DutchFlagProblem {
 		return a;
 	}
 
-	public static void main(String[] args) {
-		int[] arr = { 0, 1, 2, 1, 2, 1, 2, 0, 0, 2, 1, 0, 0, 2, 2, 1, 0 };
-		PrintUtils.printArray(arr);
-		PrintUtils.printArray(sort(arr, 1));
+	public static int[] dutchFlagSort(int[] a) {
+		for (int i = 0, small = 0, large = a.length - 1; i <= large;) {
+			if (a[i] == 0) {
+				swap(a, small, i);
+				small++;
+				i++;
+			} else if (a[i] == 2) {
+				swap(a, large, i);
+				large--;
+			} else {
+				i++;
+			}
+		}
+		return a;
 	}
 
+	public static void swap(int[] a, int i, int j) {
+		int t = a[i];
+		a[i] = a[j];
+		a[j] = t;
+	}
+
+	public static void main(String[] args) {
+		int[] a = { 0, 1, 2, 1, 2, 1, 2, 0, 0, 2, 1, 0, 0, 2, 2, 1, 0 };
+		PrintUtils.printArray(a);
+		PrintUtils.printArray(sort(a, 1));
+		a = new int[] { 0, 1, 0, 0, 1, 0, 0, 1, 0 };
+		PrintUtils.printArray(dutchFlagSort(a));
+	}
 }

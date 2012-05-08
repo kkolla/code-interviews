@@ -7,11 +7,11 @@ package dp;
  */
 public class ClimbingStairs {
 
-	public static int stairs(int n) {
+	public static long stairs(int n) {
 		if (n < 3)
 			return n;
-		int minusOne = 1, minusTwo = 1;
-		int stairs = -1;
+		long minusOne = 1, minusTwo = 1;
+		long stairs = -1;
 		for (int i = 2; i <= n; i++) {
 			stairs = minusOne + minusTwo;
 			minusTwo = minusOne;
@@ -20,8 +20,25 @@ public class ClimbingStairs {
 		return stairs;
 	}
 
+	// if 1, 2, 3 steps each time are allowed
+	public static long stairsWithThree(int n) {
+		if (n <= 2)
+			return n;
+		if (n == 3)
+			return 4;
+		long minusThree = 1, minusTwo = 2, minusOne = 4;
+		long stairs = -1;
+		for (int i = 4; i <= n; i++) {
+			stairs = minusThree + minusTwo + minusOne;
+			minusOne = stairs;
+			minusTwo = minusOne;
+			minusThree = minusTwo;
+		}
+		return stairs;
+	}
+
 	public static void main(String[] args) {
-		for (int i = 0; i <= 10; i++)
+		for (int i = 0; i <= 30; i++)
 			System.out.println(stairs(i));
 	}
 
