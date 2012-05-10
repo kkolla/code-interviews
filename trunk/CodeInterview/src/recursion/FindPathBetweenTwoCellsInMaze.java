@@ -9,7 +9,7 @@ public class FindPathBetweenTwoCellsInMaze {
 	public static boolean findPath(int[][] m, int x, int y, int endX, int endY,
 			String s) {
 		if (x < 0 || x > m.length - 1 || y < 0 || y > m[0].length - 1
-				|| m[x][y] == 0)
+				|| m[x][y] == 0 || m[endX][endY] == 0)
 			return false;
 		m[x][y] = 0;
 		s = s == "" ? "(" + x + "," + y + ")" : s + " -> (" + x + "," + y + ")";
