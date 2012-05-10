@@ -57,8 +57,10 @@ public class ReverseNodesInGroupOfK {
 	}
 
 	public static void main(String[] args) {
-		Node head = CreateUtils.sortedLinkedListFromOneToN(7);
-		PrintUtils.printLinkedList(reverseByGroup(head, 2));
+		for (int i = 1; i < 9; i++) {
+			Node head = CreateUtils.sortedLinkedListFromOneToN(7);
+			PrintUtils.printLinkedList(reverseByGroup(head, i));
+		}
 	}
 
 }

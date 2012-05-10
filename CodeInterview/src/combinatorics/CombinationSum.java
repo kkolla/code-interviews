@@ -27,43 +27,14 @@ public class CombinationSum {
 	public static ArrayList<ArrayList<Integer>> combinationSum(
 			int[] candidates, int target) {
 		ArrayList<ArrayList<Integer>> ls = new ArrayList<ArrayList<Integer>>();
-		combinationSumRecursive(candidates, 0, target, ls,
-				new ArrayList<Integer>(), new HashSet<String>(),
-				new boolean[candidates.length]);
+		combinationSum(candidates, target, ls, new ArrayList<Integer>(),
+				new HashSet<String>(), 0);
 		return ls;
 	}
 
-	public static void combinationSumRecursive(int[] candidates, int target,
+	public static void combinationSum(int[] candidates, int target,
 			ArrayList<ArrayList<Integer>> ls, ArrayList<Integer> l,
-			HashSet<String> outputs, boolean[] used) {
-		if (target == 0) {
-			ArrayList<Integer> l2 = (ArrayList<Integer>) l.clone();
-			Collections.sort(l2);
-			StringBuffer output = new StringBuffer("");
-			for (Integer f : l2) {
-				output.append(f + " ");
-			}
-			if (!outputs.contains(output.toString())) {
-				outputs.add(output.toString());
-				ls.add(l2);
-			}
-			return;
-		}
-		for (int i = 0; i < candidates.length; i++) {
-			if (!used[i] && target >= candidates[i]) {
-				used[i] = true;
-				l.add(candidates[i]);
-				combinationSumRecursive(candidates, target - candidates[i], ls,
-						l, outputs, used);
-				l.remove(l.size() - 1);
-				used[i] = false;
-			}
-		}
-	}
-
-	public static void combinationSumRecursive(int[] candidates, int start,
-			int target, ArrayList<ArrayList<Integer>> ls, ArrayList<Integer> l,
-			HashSet<String> outputs, boolean[] used) {
+			HashSet<String> outputs, int start) {
 		if (target == 0) {
 			ArrayList<Integer> l2 = (ArrayList<Integer>) l.clone();
 			Collections.sort(l2);
@@ -79,12 +50,13 @@ public class CombinationSum {
 		}
 		if (start == candidates.length)
 			return;
-		l.add(candidates[start]);
-		combinationSumRecursive(candidates, start + 1, target
-				- candidates[start], ls, l, outputs, used);
-		l.remove(l.size() - 1);
-		combinationSumRecursive(candidates, start + 1, target, ls, l, outputs,
-				used);
+		combinationSum(candidates, target, ls, l, outputs, start + 1);
+		if (target >= candidates[start]) {
+			l.add(candidates[start]);
+			combinationSum(candidates, target - candidates[start], ls, l,
+					outputs, start + 1);
+			l.remove(l.size() - 1);
+		}
 	}
 
 	public static void main(String[] args) {

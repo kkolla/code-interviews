@@ -20,7 +20,7 @@ public class RemoveTheNthNodeFromEnd {
 		for (int i = 1; i < n; i++)
 			fast = fast.next;
 		if (fast.next == null)
-			return head = head.next;
+			return head.next;
 		Node prev = null;
 		while (fast.next != null) {
 			prev = slow;
