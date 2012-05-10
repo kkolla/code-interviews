@@ -27,7 +27,7 @@ public class FibonacciNumbers {
 	}
 
 	public static void main(String[] args) {
-		int n = 7;
+		int n = 3;
 		System.out.println(fibonacciUsingMemoization(n, new long[n + 1]) + " "
 				+ fibnacciUsingDP(n));
 	}

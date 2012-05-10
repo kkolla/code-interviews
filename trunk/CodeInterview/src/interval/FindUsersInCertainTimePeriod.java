@@ -18,16 +18,13 @@ public class FindUsersInCertainTimePeriod {
 		Arrays.sort(intervals);
 		PrintUtils.printArray(intervals);
 		// find the first login time greater than period begin time
-		int t = -1;
-		for (int i = 0; i < intervals.length; i++)
+		// discard the later portion and get a smaller interval array
+		// find the intervals which have logout time less than period end time
+		int count = 0;
+		for (int i = 0; i < intervals.length; i++) {
 			if (intervals[i].begin > period.begin) {
-				t = i;
 				break;
 			}
-		// discard the later portion and get a smaller interval array
-		// find the first logout time less than period end time
-		int count = 0;
-		for (int i = 0; i < t; i++) {
 			if (intervals[i].end >= period.end) {
 				System.out.println(intervals[i]);
 				count++;
@@ -44,7 +41,6 @@ public class FindUsersInCertainTimePeriod {
 		System.out.println("query interval: " + period);
 		System.out.println("number of users in period: "
 				+ users(intervals, period));
-		// PrintUtils.printArray(intervals);
 	}
 
 }
