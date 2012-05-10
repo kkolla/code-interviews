@@ -17,7 +17,7 @@ import utils.PrintUtils;
 public class MinimumNumberOfCoins {
 
 	// c[i]: minimum number of coins needed
-	// c[i] = c[i-j] if j is an available coin and i>=j
+	// c[i] = min(c[i-j]) + 1 if j is an available coin and i>=j
 	// answer: c[money]
 	// complexity: O(money*coins), O(money)
 	public static int minimumCoins(int[] coins, int money,

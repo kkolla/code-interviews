@@ -60,9 +60,9 @@ public class PrintAllSubsets {
 	}
 
 	public static void main(String[] args) {
-		int[] set = new int[] { 1, 3, 2, 4 };
+		int[] set = new int[] { 1, 3, 2, 4, 1 };
 		// allSubsetsIterative(set);
-		allSubsetsRecursive(set, 0, new StringBuffer());
-		// allSubsetsWithoutDuplicates(set);
+		// allSubsetsRecursive(set, 0, new StringBuffer());
+		allSubsetsWithoutDuplicates(set);
 	}
 }

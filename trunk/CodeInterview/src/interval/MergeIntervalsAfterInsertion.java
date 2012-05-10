@@ -4,7 +4,7 @@ package interval;
  * insert one interval to non-overlapping intervals
  * print out the merged intervals
  */
-public class PrintMergedIntervalsAfterInsertion {
+public class MergeIntervalsAfterInsertion {
 
 	public static boolean intersect(Interval interval, Interval insert) {
 		return Math.max(interval.begin, insert.begin) <= Math.min(interval.end,

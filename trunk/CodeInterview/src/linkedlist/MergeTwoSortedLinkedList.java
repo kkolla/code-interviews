@@ -38,8 +38,9 @@ public class MergeTwoSortedLinkedList {
 
 	public static void main(String[] args) {
 		PrintUtils.printLinkedList(merge(
-				CreateUtils.sortedLinkedListFromOneToN(8),
-				CreateUtils.sortedLinkedListFromOneToN(5)));
+				merge(CreateUtils.sortedLinkedListFromOneToN(8),
+						CreateUtils.sortedLinkedListFromOneToN(5)),
+				CreateUtils.sortedLinkedListFromOneToN(7)));
 	}
 
 }

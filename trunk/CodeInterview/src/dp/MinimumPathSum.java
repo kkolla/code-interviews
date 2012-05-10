@@ -23,10 +23,4 @@ public class MinimumPathSum {
 				sum[i][j] = m[i][j] + Math.min(sum[i - 1][j], sum[i][j - 1]);
 		return sum[rows - 1][cols - 1];
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }
