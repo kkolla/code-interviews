@@ -44,6 +44,8 @@ public class ConvertStringToInteger {
 		int i = 0;
 		while (s.charAt(i) == ' ')
 			i++;
+		if (i == s.length())
+			return 0;
 		boolean positive = true;
 		if (s.charAt(i) != '+' && s.charAt(i) != '-' && !isDigit(s.charAt(i)))
 			return 0;

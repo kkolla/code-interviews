@@ -17,10 +17,12 @@ public class FindPathBetweenTwoCellsInMaze {
 			System.out.println(s);
 			return true;
 		}
-		return findPath(m, x - 1, y, endX, endY, s)
+		boolean found = findPath(m, x - 1, y, endX, endY, s)
 				|| findPath(m, x, y - 1, endX, endY, s)
 				|| findPath(m, x + 1, y, endX, endY, s)
 				|| findPath(m, x, y + 1, endX, endY, s);
+		m[x][y] = 1; // optional?
+		return found;
 	}
 
 	public static void main(String[] args) {

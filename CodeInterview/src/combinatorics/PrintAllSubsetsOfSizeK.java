@@ -41,7 +41,7 @@ public class PrintAllSubsetsOfSizeK {
 	}
 
 	public static void main(String[] args) {
-		int k = 3;
+		int k = 2;
 		int[] set = new int[] { 1, 2, 3, 4, 5, 6 };
 		// allSubsetsOfSizeKIterative(set, k);
 		allSubsetsOfSizeKRecursive(set, 0, k, "");

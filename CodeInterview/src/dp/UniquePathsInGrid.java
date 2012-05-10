@@ -13,8 +13,6 @@ import utils.CreateUtils;
 public class UniquePathsInGrid {
 
 	public static int pathsIterative(int m, int n) {
-		if (m == 0 || n == 0)
-			return 0;
 		if (m == 1 || n == 1)
 			return 1;
 		int[][] paths = new int[m][n];
@@ -28,8 +26,6 @@ public class UniquePathsInGrid {
 	}
 
 	public static int pathsRecursive(int m, int n) {
-		if (m == 0 || n == 0)
-			return 0;
 		if (m == 1 || n == 1)
 			return 1;
 		return pathsRecursive(m - 1, n) + pathsRecursive(m, n - 1);
@@ -39,7 +35,7 @@ public class UniquePathsInGrid {
 		int m = CreateUtils.randNonNegInt(10);
 		int n = CreateUtils.randNonNegInt(10);
 		System.out.println("m: " + m + " n: " + n);
-		System.out.println(" paths: " + pathsIterative(m, n) + " "
+		System.out.println("paths: " + pathsIterative(m, n) + " "
 				+ pathsRecursive(m, n));
 	}
 }
