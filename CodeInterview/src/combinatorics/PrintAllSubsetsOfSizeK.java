@@ -34,14 +34,15 @@ public class PrintAllSubsetsOfSizeK {
 			System.out.println(s);
 			return;
 		}
-		for (int i = start; i < a.length - k + 1; i++) {
-			allSubsetsOfSizeKRecursive(a, i + 1, k - 1, s + a[i]);
-		}
+		if (start == a.length)
+			return;
+		allSubsetsOfSizeKRecursive(a, start + 1, k, s);
+		allSubsetsOfSizeKRecursive(a, start + 1, k - 1, s + a[start]);
 	}
 
 	public static void main(String[] args) {
 		int k = 3;
-		int[] set = new int[] { 1, 2, 3, 4, 5 };
+		int[] set = new int[] { 1, 2, 3, 4, 5, 6 };
 		// allSubsetsOfSizeKIterative(set, k);
 		allSubsetsOfSizeKRecursive(set, 0, k, "");
 	}

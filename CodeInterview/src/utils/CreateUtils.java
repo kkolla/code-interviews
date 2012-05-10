@@ -62,8 +62,11 @@ public class CreateUtils {
 		for (int i = 0; i < n; i++) {
 			double begin = randNonNegInt(maxValue);
 			double end = begin;
-			while (end <= begin)
+			int times = 0;
+			while (end <= begin && times++ < 50)
 				end = randNonNegInt(maxValue);
+			if (times == 50)
+				end = begin;
 			intervals[i] = new Interval(begin, end);
 		}
 		return intervals;
@@ -71,36 +74,36 @@ public class CreateUtils {
 
 	public static int[] randNonNegIntArray(int maxLength, int maxValue) {
 		int n = randNonNegInt(maxLength);
-		int[] arr = new int[n];
+		int[] a = new int[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = randNonNegInt(maxValue);
+			a[i] = randNonNegInt(maxValue);
 		}
-		return arr;
+		return a;
 	}
 
 	public static int[] randSortedNonNegIntArray(int maxLength, int maxValue) {
-		int[] arr = randNonNegIntArray(maxLength, maxValue);
-		Arrays.sort(arr);
-		return arr;
+		int[] a = randNonNegIntArray(maxLength, maxValue);
+		Arrays.sort(a);
+		return a;
 	}
 
 	public static int[] randIntArray(int maxLength, int maxAbsoluteExclusive) {
 		int n = randNonNegInt(maxLength);
-		int[] arr = new int[n];
+		int[] a = new int[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = randInt(maxAbsoluteExclusive);
+			a[i] = randInt(maxAbsoluteExclusive);
 		}
-		return arr;
+		return a;
 	}
 
 	public static double[] randRealArray(int maxLength,
 			double maxAbsoluteExclusive) {
 		int n = randNonNegInt(maxLength);
-		double[] arr = new double[n];
+		double[] a = new double[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = randReal(maxAbsoluteExclusive);
+			a[i] = randReal(maxAbsoluteExclusive);
 		}
-		return arr;
+		return a;
 	}
 
 	public static String randString(int maxStringLength, boolean hasSpace) {
@@ -116,11 +119,11 @@ public class CreateUtils {
 	public static String[] randStringArray(int maxLength, int maxStringLength,
 			boolean hasSpace) {
 		int n = randNonNegInt(maxLength);
-		String[] arr = new String[n];
+		String[] a = new String[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = randString(maxStringLength, hasSpace);
+			a[i] = randString(maxStringLength, hasSpace);
 		}
-		return arr;
+		return a;
 	}
 
 	public static int randNonNegInt(int maxExclusive) {
@@ -142,11 +145,11 @@ public class CreateUtils {
 
 	public static boolean[] randBoolArray(int maxLength) {
 		int n = randNonNegInt(maxLength);
-		boolean[] arr = new boolean[n];
+		boolean[] a = new boolean[n];
 		for (int i = 0; i < n; i++) {
-			arr[i] = randBool();
+			a[i] = randBool();
 		}
-		return arr;
+		return a;
 	}
 
 	public static int[][] randNonNegMatrix(int maxLength, int maxValue,

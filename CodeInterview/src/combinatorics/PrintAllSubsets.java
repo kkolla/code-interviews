@@ -25,14 +25,12 @@ public class PrintAllSubsets {
 		}
 	}
 
-	public static void allSubsetsRecursive(int[] s, int start, StringBuffer sb) {
-		if (start == s.length) {
-			System.out.println(sb.toString());
+	public static void allSubsetsRecursive(int[] a, int start, String s) {
+		if (start == a.length) {
+			System.out.println(s);
 		} else {
-			allSubsetsRecursive(s, start + 1, sb);
-			sb.append(s[start] + " ");
-			allSubsetsRecursive(s, start + 1, sb);
-			sb.setLength(sb.length() - 2);
+			allSubsetsRecursive(a, start + 1, s);
+			allSubsetsRecursive(a, start + 1, s + a[start]);
 		}
 	}
 
@@ -62,7 +60,7 @@ public class PrintAllSubsets {
 	public static void main(String[] args) {
 		int[] set = new int[] { 1, 3, 2, 4, 1 };
 		// allSubsetsIterative(set);
-		// allSubsetsRecursive(set, 0, new StringBuffer());
-		allSubsetsWithoutDuplicates(set);
+		allSubsetsRecursive(set, 0, "");
+		// allSubsetsWithoutDuplicates(set);
 	}
 }
