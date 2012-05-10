@@ -23,7 +23,6 @@ public class ReturnTrueWithCertainProbability {
 			// we generate a number in the left half
 			// use false to indicate the right half
 			boolean isLeftHalf = prob();
-
 			// if low <= p <= (low+high)/2, and the generated probability is on
 			// the right, which surely is greater than p
 			if (p <= mid && !isLeftHalf)

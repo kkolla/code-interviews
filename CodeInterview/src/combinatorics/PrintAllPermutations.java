@@ -24,7 +24,7 @@ public class PrintAllPermutations {
 	}
 
 	public static void permutateWithoutDuplicates(int[] a) {
-		Arrays.sort(a);// or by hash
+		Arrays.sort(a);
 		permutateWithoutDuplicates(a, 0);
 	}
 
@@ -39,13 +39,13 @@ public class PrintAllPermutations {
 				continue;
 			last = a[i];
 			swap(a, i, start);
-			permutate(a, start + 1);
+			permutateWithoutDuplicates(a, start + 1);
 			swap(a, i, start);
 		}
 	}
 
 	public static void main(String[] args) {
-		int[] a = new int[] { 0, 1, 2, 3, 0 };
+		int[] a = new int[] { 1, 2, 1 };
 		// permutate(a, 0);
 		permutateWithoutDuplicates(a);
 	}
