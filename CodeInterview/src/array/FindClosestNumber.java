@@ -1,7 +1,6 @@
 package array;
 
 public class FindClosestNumber {
-
 	public static int search(int[] a, int key) {
 		int left = 0, right = a.length - 1;
 		while (left <= right) {
