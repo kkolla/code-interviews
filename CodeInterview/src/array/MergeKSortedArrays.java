@@ -47,16 +47,12 @@ public class MergeKSortedArrays {
 	}
 
 	public static void main(String[] args) {
-		/*int k = 5;
+		int k = 5;
 		int[][] a = new int[k][];
 		for (int i = 0; i < k; i++) {
 			a[i] = CreateUtils.randSortedNonNegIntArray(10, 10);
 			PrintUtils.printArray(a[i]);
 		}
-		PrintUtils.printList(merge(a)); */
-		
-		Map<Integer, String> map = new HashMap<Integer, String>();
-		map.put(new Integer(3), "abc");
-	    System.out.println(map.get(3));			
+		PrintUtils.printList(merge(a));		
 	}
 }
