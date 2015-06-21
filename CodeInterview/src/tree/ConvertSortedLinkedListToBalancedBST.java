@@ -7,11 +7,11 @@ public class ConvertSortedLinkedListToBalancedBST {
 
 	// O(n) = n/2+2O(n/2) = O(n*log(n))?
 	// boost to O(n): save the linked list nodes into an array in advance?
-	public static tree.Node convert(linkedlist.Node head, int length) {
+	public static tree.TreeNode convert(linkedlist.ListNode head, int length) {
 		if (head == null)
 			return null;
 
-		linkedlist.Node midNode = head;
+		linkedlist.ListNode midNode = head;
 		for (int i = 0; i < length / 2; i++) {
 			midNode = midNode.next;
 		}
@@ -19,7 +19,7 @@ public class ConvertSortedLinkedListToBalancedBST {
 		int leftLength = length / 2;
 		int rightLength = length - leftLength - 1;
 
-		tree.Node root = new tree.Node(midNode.value);
+		tree.TreeNode root = new tree.TreeNode(midNode.val);
 		if (leftLength > 0)
 			root.left = convert(head, leftLength);
 		if (rightLength > 0)
@@ -30,9 +30,9 @@ public class ConvertSortedLinkedListToBalancedBST {
 
 	public static void main(String[] args) {
 		int length = CreateUtils.randNonNegInt(20);
-		linkedlist.Node head = CreateUtils
+		linkedlist.ListNode head = CreateUtils
 				.sortedLinkedListFromOneToN(length);
-		tree.Node root = convert(head, length);
+		tree.TreeNode root = convert(head, length);
 		PrintUtils.printLinkedList(head);
 		PrintUtils.printBinaryTree(root);
 	}

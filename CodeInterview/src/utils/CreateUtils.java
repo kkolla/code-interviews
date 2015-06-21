@@ -8,33 +8,33 @@ import java.util.Arrays;
 
 public class CreateUtils {
 
-	public static tree.Node bstWithTenNodes() {
-		tree.Node n1 = new tree.Node(1);
-		tree.Node n3 = new tree.Node(3);
-		tree.Node n2 = new tree.Node(2, n1, n3);
+	public static tree.TreeNode bstWithTenNodes() {
+		tree.TreeNode n1 = new tree.TreeNode(1);
+		tree.TreeNode n3 = new tree.TreeNode(3);
+		tree.TreeNode n2 = new tree.TreeNode(2, n1, n3);
 		n1.parent = n3.parent = n2;
-		tree.Node n7 = new tree.Node(7);
-		tree.Node n10 = new tree.Node(10);
-		tree.Node n9 = new tree.Node(9, null, n10);
+		tree.TreeNode n7 = new tree.TreeNode(7);
+		tree.TreeNode n10 = new tree.TreeNode(10);
+		tree.TreeNode n9 = new tree.TreeNode(9, null, n10);
 		n10.parent = n9;
-		tree.Node n5 = new tree.Node(5);
-		tree.Node n4 = new tree.Node(4, n2, n5);
+		tree.TreeNode n5 = new tree.TreeNode(5);
+		tree.TreeNode n4 = new tree.TreeNode(4, n2, n5);
 		n2.parent = n5.parent = n4;
-		tree.Node n8 = new tree.Node(8, n7, n9);
+		tree.TreeNode n8 = new tree.TreeNode(8, n7, n9);
 		n7.parent = n9.parent = n8;
-		tree.Node root = new tree.Node(6, n4, n8);
+		tree.TreeNode root = new tree.TreeNode(6, n4, n8);
 		n4.parent = n8.parent = root;
 		return root;
 	}
 
-	public static linkedlist.Node sortedLinkedListFromOneToN(int n) {
+	public static linkedlist.ListNode sortedLinkedListFromOneToN(int n) {
 		if (n < 1)
 			return null;
-		linkedlist.Node head = new linkedlist.Node(1);
-		linkedlist.Node curr = head;
-		linkedlist.Node prev = null;
+		linkedlist.ListNode head = new linkedlist.ListNode(1);
+		linkedlist.ListNode curr = head;
+		linkedlist.ListNode prev = null;
 		for (int i = 2; i <= n; i++) {
-			curr.next = new linkedlist.Node(i);
+			curr.next = new linkedlist.ListNode(i);
 			curr.prev = prev;
 			prev = curr;
 			curr = curr.next;
@@ -42,15 +42,15 @@ public class CreateUtils {
 		return head;
 	}
 
-	public static linkedlist.Node randNonNegLinkedList(int maxLength,
+	public static linkedlist.ListNode randNonNegLinkedList(int maxLength,
 			int maxValue) {
 		int n = randNonNegInt(maxLength);
 		if (n == 0)
 			return null;
-		linkedlist.Node head = new linkedlist.Node(randNonNegInt(maxValue));
-		linkedlist.Node t = head;
+		linkedlist.ListNode head = new linkedlist.ListNode(randNonNegInt(maxValue));
+		linkedlist.ListNode t = head;
 		for (int i = 1; i < n; i++) {
-			t.next = new linkedlist.Node(randNonNegInt(maxValue));
+			t.next = new linkedlist.ListNode(randNonNegInt(maxValue));
 			t = t.next;
 		}
 		return head;

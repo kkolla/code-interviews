@@ -6,16 +6,16 @@ import utils.CreateUtils;
 
 public class PostOrderTraversal {
 
-	public static void postTraverseIterative(Node root) {
+	public static void postTraverseIterative(TreeNode root) {
 		if (root == null)
 			return;
 
-		Stack<Node> s = new Stack<Node>();
+		Stack<TreeNode> s = new Stack<TreeNode>();
 		s.push(root);
 
-		Node prev = null;
+		TreeNode prev = null;
 		while (!s.empty()) {
-			Node curr = s.peek();
+			TreeNode curr = s.peek();
 			// traverse down
 			if (prev == null || prev.left == curr || prev.right == curr) {
 				if (curr.left != null)

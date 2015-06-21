@@ -5,12 +5,12 @@ import utils.PrintUtils;
 
 public class LargestDistanceBetweenTwoNodes {
 
-	public static int distance(Node root) {
+	public static int distance(TreeNode root) {
 		return largestDistance(root)[0];
 	}
 
 	// [0]: largest distance, [1]: height of tree
-	public static int[] largestDistance(Node root) {
+	public static int[] largestDistance(TreeNode root) {
 		// if tree is null, both distance and height are 0
 		if (root == null)
 			return new int[] { 0, 0 };
@@ -27,7 +27,7 @@ public class LargestDistanceBetweenTwoNodes {
 	}
 
 	public static void main(String[] args) {
-		Node root = CreateUtils.bstWithTenNodes();
+		TreeNode root = CreateUtils.bstWithTenNodes();
 		PrintUtils.printBinaryTree(root);
 		System.out.println(distance(root));
 	}

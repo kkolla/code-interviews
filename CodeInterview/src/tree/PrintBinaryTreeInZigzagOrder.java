@@ -11,16 +11,16 @@ import utils.CreateUtils;
  */
 public class PrintBinaryTreeInZigzagOrder {
 
-	public static void printTreeZigzag(Node root) {
+	public static void printTreeZigzag(TreeNode root) {
 		if (root == null)
 			return;
-		Stack<Node> currLevel = new Stack<Node>();
-		Stack<Node> nextLevel = new Stack<Node>();
+		Stack<TreeNode> currLevel = new Stack<TreeNode>();
+		Stack<TreeNode> nextLevel = new Stack<TreeNode>();
 		currLevel.push(root);
 		boolean isLeftToRight = true;
 		while (!currLevel.isEmpty()) {
-			Node n = currLevel.pop();
-			System.out.print(n.value + " ");
+			TreeNode n = currLevel.pop();
+			System.out.print(n.val + " ");
 			if (isLeftToRight) {
 				if (n.left != null)
 					nextLevel.push(n.left);
@@ -35,7 +35,7 @@ public class PrintBinaryTreeInZigzagOrder {
 			if (currLevel.isEmpty()) {
 				System.out.println();
 				currLevel = nextLevel;
-				nextLevel = new Stack<Node>();
+				nextLevel = new Stack<TreeNode>();
 				isLeftToRight = !isLeftToRight;
 			}
 		}

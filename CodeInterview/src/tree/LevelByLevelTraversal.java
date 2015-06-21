@@ -7,15 +7,15 @@ import utils.CreateUtils;
 
 public class LevelByLevelTraversal {
 
-	public static void traverseByLevel(Node root) {
+	public static void traverseByLevel(TreeNode root) {
 		if (root == null)
 			return;
-		Queue<Node> q = new LinkedList<Node>();
+		Queue<TreeNode> q = new LinkedList<TreeNode>();
 		q.add(root);
 		int currLevel = 1;
 		int nextLevel = 0;
 		while (!q.isEmpty()) {
-			Node n = q.poll();
+			TreeNode n = q.poll();
 			if (n.left != null) {
 				q.add(n.left);
 				nextLevel++;
@@ -24,7 +24,7 @@ public class LevelByLevelTraversal {
 				q.add(n.right);
 				nextLevel++;
 			}
-			System.out.print(n.value + " ");
+			System.out.print(n.val + " ");
 			currLevel--;
 			if (currLevel == 0) {
 				System.out.println();

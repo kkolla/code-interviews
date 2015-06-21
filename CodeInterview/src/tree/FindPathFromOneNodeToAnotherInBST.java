@@ -8,22 +8,22 @@ import utils.PrintUtils;
 
 public class FindPathFromOneNodeToAnotherInBST {
 
-	public static void findPath(Node root, Node start, Node end) {
+	public static void findPath(TreeNode root, TreeNode start, TreeNode end) {
 		if (root == null)
 			return;
-		Node lca = LeastCommonAncestor.lca(root, start, end);
+		TreeNode lca = LeastCommonAncestor.lca(root, start, end);
 		List<Integer> firstHalfPath = new ArrayList<Integer>();
 		List<Integer> secondHalfPath = new ArrayList<Integer>();
-		Node n = lca;
+		TreeNode n = lca;
 		while (n != null) {
 			if (n == start) {
 				if (n != lca)
-					firstHalfPath.add(n.value);
+					firstHalfPath.add(n.val);
 				break;
 			} else {
 				if (n != lca)
-					firstHalfPath.add(n.value);
-				if (n.value > start.value)
+					firstHalfPath.add(n.val);
+				if (n.val > start.val)
 					n = n.left;
 				else
 					n = n.right;
@@ -33,12 +33,12 @@ public class FindPathFromOneNodeToAnotherInBST {
 		while (n != null) {
 			if (n == end) {
 				if (n != lca)
-					secondHalfPath.add(n.value);
+					secondHalfPath.add(n.val);
 				break;
 			} else {
 				if (n != lca)
-					secondHalfPath.add(n.value);
-				if (n.value > end.value)
+					secondHalfPath.add(n.val);
+				if (n.val > end.val)
 					n = n.left;
 				else
 					n = n.right;
@@ -46,17 +46,17 @@ public class FindPathFromOneNodeToAnotherInBST {
 		}
 		for (int i = firstHalfPath.size() - 1; i >= 0; i--)
 			System.out.println(firstHalfPath.get(i));
-		System.out.println(lca.value);
+		System.out.println(lca.val);
 		for (int i = 0; i < secondHalfPath.size(); i++)
 			System.out.println(secondHalfPath.get(i));
 	}
 
 	public static void main(String[] args) {
-		Node root = CreateUtils.bstWithTenNodes();
+		TreeNode root = CreateUtils.bstWithTenNodes();
 		PrintUtils.printBinaryTree(root);
 		System.out.println();
-		Node n1 = root.left.right;
-		Node n2 = root.right.left;
+		TreeNode n1 = root.left.right;
+		TreeNode n2 = root.right.left;
 		findPath(root, n1, n2);
 		System.out.println();
 		findPath(root, n2, n1);
