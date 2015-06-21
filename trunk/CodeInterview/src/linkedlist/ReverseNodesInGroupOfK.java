@@ -16,11 +16,11 @@ import utils.PrintUtils;
 public class ReverseNodesInGroupOfK {
 
 	// cannot pass large input, TLE?
-	public static Node reverseByGroup(Node head, int k) {
+	public static ListNode reverseByGroup(ListNode head, int k) {
 		if (head == null || k == 1)
 			return head;
 		int length = 0;
-		Node curr = head;
+		ListNode curr = head;
 		while (curr != null) {
 			length++;
 			curr = curr.next;
@@ -30,12 +30,12 @@ public class ReverseNodesInGroupOfK {
 			return head;
 
 		curr = head;
-		Node prevTail = null, currTail = null, currHead = null;
-		Node newHead = null;
+		ListNode prevTail = null, currTail = null, currHead = null;
+		ListNode newHead = null;
 		for (int i = 0; i < times; i++) {
-			Node prev = null;
+			ListNode prev = null;
 			for (int j = 0; j < k; j++) {
-				Node next = curr.next;
+				ListNode next = curr.next;
 				curr.next = prev;
 				prev = curr;
 				if (j == 0) {
@@ -58,7 +58,7 @@ public class ReverseNodesInGroupOfK {
 
 	public static void main(String[] args) {
 		for (int i = 1; i < 9; i++) {
-			Node head = CreateUtils.sortedLinkedListFromOneToN(7);
+			ListNode head = CreateUtils.sortedLinkedListFromOneToN(7);
 			PrintUtils.printLinkedList(reverseByGroup(head, i));
 		}
 	}

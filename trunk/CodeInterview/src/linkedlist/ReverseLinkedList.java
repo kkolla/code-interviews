@@ -4,10 +4,10 @@ import utils.PrintUtils;
 
 public class ReverseLinkedList {
 
-	public static Node reverseLinkedListIterative(Node head) {
-		Node curr = head, prev = null;
+	public static ListNode reverseLinkedListIterative(ListNode head) {
+		ListNode curr = head, prev = null;
 		while (curr != null) {
-			Node next = curr.next;
+			ListNode next = curr.next;
 			curr.next = prev;
 			prev = curr;
 			curr = next;
@@ -15,18 +15,18 @@ public class ReverseLinkedList {
 		return prev;
 	}
 
-	public static Node reverseLinkedListRecursive(Node head) {
+	public static ListNode reverseLinkedListRecursive(ListNode head) {
 		if (head == null || head.next == null) {
 			return head;
 		}
-		Node newHead = reverseLinkedListRecursive(head.next);
+		ListNode newHead = reverseLinkedListRecursive(head.next);
 		head.next.next = head;
 		head.next = null;
 		return newHead;
 	}
 
 	public static void main(String[] args) {
-		Node head = new Node(1, new Node(2, new Node(3, new Node(4, new Node(5,
+		ListNode head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5,
 				null)))));
 
 		PrintUtils.printLinkedList(head);

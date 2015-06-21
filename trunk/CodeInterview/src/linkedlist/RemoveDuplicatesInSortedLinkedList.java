@@ -4,10 +4,10 @@ import utils.PrintUtils;
 
 public class RemoveDuplicatesInSortedLinkedList {
 
-	public static Node removeAndKeepOneIfDuplicated(Node head) {
-		Node n = head;
+	public static ListNode removeAndKeepOneIfDuplicated(ListNode head) {
+		ListNode n = head;
 		while (n != null) {
-			if (n.next != null && n.next.value == n.value) {
+			if (n.next != null && n.next.val == n.val) {
 				n.next = n.next.next;
 			} else {
 				n = n.next;
@@ -16,17 +16,17 @@ public class RemoveDuplicatesInSortedLinkedList {
 		return head;
 	}
 
-	public static Node removeAllIfDuplicated(Node head) {
+	public static ListNode removeAllIfDuplicated(ListNode head) {
 		if (head == null || head.next == null)
 			return head;
-		Node newHead = null;
-		Node curr = null;
-		Node n = head;
+		ListNode newHead = null;
+		ListNode curr = null;
+		ListNode n = head;
 		while (n != null) {
-			int value = n.value;
-			Node t = n;
+			int value = n.val;
+			ListNode t = n;
 			int count = 0;
-			while (n != null && value == n.value) {
+			while (n != null && value == n.val) {
 				n = n.next;
 				count++;
 			}
@@ -47,15 +47,15 @@ public class RemoveDuplicatesInSortedLinkedList {
 	}
 
 	public static void main(String[] args) {
-		Node[] heads = new Node[] {
-				new Node(1, null),
-				new Node(1, new Node(1, null)),
-				new Node(1, new Node(1, new Node(2, null))),
-				new Node(1, new Node(2, new Node(2, null))),
-				new Node(1, new Node(1, new Node(1, new Node(2,
-						new Node(3, new Node(3, new Node(4, new Node(4,
-								new Node(5, null))))))))) };
-		for (Node head : heads) {
+		ListNode[] heads = new ListNode[] {
+				new ListNode(1, null),
+				new ListNode(1, new ListNode(1, null)),
+				new ListNode(1, new ListNode(1, new ListNode(2, null))),
+				new ListNode(1, new ListNode(2, new ListNode(2, null))),
+				new ListNode(1, new ListNode(1, new ListNode(1, new ListNode(2,
+						new ListNode(3, new ListNode(3, new ListNode(4, new ListNode(4,
+								new ListNode(5, null))))))))) };
+		for (ListNode head : heads) {
 			PrintUtils.printLinkedList(head);
 			PrintUtils.printLinkedList(removeAllIfDuplicated(head));
 		}

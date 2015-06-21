@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class CloneLinkedListWithRandomPointer {
 
-	public static class NodeWithRandomPointer extends Node {
+	public static class NodeWithRandomPointer extends ListNode {
 		public NodeWithRandomPointer random;
 		public NodeWithRandomPointer next;
 
@@ -22,7 +22,7 @@ public class CloneLinkedListWithRandomPointer {
 			// and construct node map
 			NodeWithRandomPointer n = head;
 			while (n != null) {
-				NodeWithRandomPointer node = new NodeWithRandomPointer(n.value);
+				NodeWithRandomPointer node = new NodeWithRandomPointer(n.val);
 				if (newHead == null)
 					newHead = node;
 				if (prev != null)
@@ -59,16 +59,16 @@ public class CloneLinkedListWithRandomPointer {
 
 		NodeWithRandomPointer n = head;
 		while (n != null) {
-			System.out.println("curr: " + n.value + " random:"
-					+ (n.random != null ? n.random.value : "null"));
+			System.out.println("curr: " + n.val + " random:"
+					+ (n.random != null ? n.random.val : "null"));
 			n = n.next;
 		}
 
 		NodeWithRandomPointer newHead = NodeWithRandomPointer.clone(head);
 		n = newHead;
 		while (n != null) {
-			System.out.println("curr: " + n.value + " random:"
-					+ (n.random != null ? n.random.value : "null"));
+			System.out.println("curr: " + n.val + " random:"
+					+ (n.random != null ? n.random.val : "null"));
 			n = n.next;
 		}
 	}
