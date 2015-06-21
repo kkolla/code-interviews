@@ -5,7 +5,7 @@ import graph.Vertex;
 import java.util.List;
 import java.util.Map;
 
-import linkedlist.Node;
+import linkedlist.ListNode;
 import tree.LevelByLevelTraversal;
 
 public class PrintUtils {
@@ -25,14 +25,14 @@ public class PrintUtils {
 		System.out.println();
 	}
 
-	public static void printLinkedList(Node head) {
+	public static void printLinkedList(ListNode head) {
 		if (head == null) {
 			System.out.println("null linked list");
 			return;
 		}
-		Node n = head;
+		ListNode n = head;
 		while (n != null) {
-			System.out.print(n.value + " ");
+			System.out.print(n.val + " ");
 			n = n.next;
 		}
 		System.out.println();
@@ -88,7 +88,7 @@ public class PrintUtils {
 		}
 	}
 
-	public static void printBinaryTree(tree.Node root) {
+	public static void printBinaryTree(tree.TreeNode root) {
 		if (root == null)
 			System.out.println("null binary tree");
 		else

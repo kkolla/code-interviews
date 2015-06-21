@@ -3,15 +3,15 @@ package datastructure;
 import java.util.Iterator;
 import java.util.Stack;
 
-import tree.Node;
+import tree.TreeNode;
 import utils.CreateUtils;
 
-public class InOrderBinaryTreeTraversalIterator implements Iterator<Node> {
-	private Stack<Node> s;
-	private Node curr = null;
+public class InOrderBinaryTreeTraversalIterator implements Iterator<TreeNode> {
+	private Stack<TreeNode> s;
+	private TreeNode curr = null;
 
-	public InOrderBinaryTreeTraversalIterator(Node root) {
-		s = new Stack<Node>();
+	public InOrderBinaryTreeTraversalIterator(TreeNode root) {
+		s = new Stack<TreeNode>();
 		if (root != null) {
 			curr = root;
 		}
@@ -23,8 +23,8 @@ public class InOrderBinaryTreeTraversalIterator implements Iterator<Node> {
 	}
 
 	@Override
-	public Node next() {
-		Node t = null;
+	public TreeNode next() {
+		TreeNode t = null;
 		if (hasNext()) {
 			while (!s.isEmpty() || curr != null) {
 				if (curr != null) {
@@ -48,7 +48,7 @@ public class InOrderBinaryTreeTraversalIterator implements Iterator<Node> {
 	}
 
 	public static void main(String[] args) {
-		Node root = CreateUtils.bstWithTenNodes();
+		TreeNode root = CreateUtils.bstWithTenNodes();
 		InOrderBinaryTreeTraversalIterator it = new InOrderBinaryTreeTraversalIterator(
 				root);
 		while (it.hasNext())

@@ -4,19 +4,19 @@ import utils.CreateUtils;
 
 public class ValidateBinarySearchTree {
 
-	public static boolean validate(Node root, int min, int max) {
+	public static boolean validate(TreeNode root, int min, int max) {
 		if (root == null)
 			return true;
-		return root.value > min && root.value < max
-				&& validate(root.left, min, root.value)
-				&& validate(root.right, root.value, max);
+		return root.val > min && root.val < max
+				&& validate(root.left, min, root.val)
+				&& validate(root.right, root.val, max);
 	}
 
 	public static void main(String[] args) {
-		Node root = CreateUtils.bstWithTenNodes();
+		TreeNode root = CreateUtils.bstWithTenNodes();
 		System.out
 				.println(validate(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
-		root.value = 100;
+		root.val = 100;
 		System.out
 				.println(validate(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
 	}

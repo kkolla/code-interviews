@@ -3,7 +3,7 @@ package tree;
 public class SwitchBinaryTreesToEqual {
 
 	// assuming two trees can be switched to be equal
-	public static int minSwitchTimes(Node root1, Node root2) {
+	public static int minSwitchTimes(TreeNode root1, TreeNode root2) {
 		// roots are always both null or equal
 		if (root1 == null && root2 == null)
 			return 0;
@@ -17,7 +17,7 @@ public class SwitchBinaryTreesToEqual {
 				&& root2.right == null)
 			return 1;
 
-		if (root1.left.value == root2.left.value) {
+		if (root1.left.val == root2.left.val) {
 			return minSwitchTimes(root1.left, root2.left)
 					+ minSwitchTimes(root2.left, root2.right);
 		} else {
@@ -28,10 +28,10 @@ public class SwitchBinaryTreesToEqual {
 	}
 
 	public static void main(String[] args) {
-		Node root1 = new Node(1, new Node(2, new Node(4, null, null), new Node(
-				5, null, null)), new Node(3, null, new Node(6, null, null)));
-		Node root2 = new Node(1, new Node(3, new Node(6, null, null), null),
-				new Node(2, new Node(5, null, null), new Node(4, null, null)));
+		TreeNode root1 = new TreeNode(1, new TreeNode(2, new TreeNode(4, null, null), new TreeNode(
+				5, null, null)), new TreeNode(3, null, new TreeNode(6, null, null)));
+		TreeNode root2 = new TreeNode(1, new TreeNode(3, new TreeNode(6, null, null), null),
+				new TreeNode(2, new TreeNode(5, null, null), new TreeNode(4, null, null)));
 		System.out.println(minSwitchTimes(root1, root2));
 	}
 

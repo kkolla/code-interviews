@@ -8,6 +8,7 @@ import utils.CreateUtils;
 public class DivideTwoIntegers {
 
 	// O(quotient)?
+	// doesn't work for dividend = Integer.MIN_VALUE
 	public static int divideByMinus(int dividend, int divisor, int q) {
 		if (dividend < 0 && divisor < 0)
 			return divideByMinus(-dividend, -divisor, q);
@@ -18,7 +19,7 @@ public class DivideTwoIntegers {
 
 		if (dividend < divisor)
 			return q;
-		if (divisor == 1)
+		if (divisor == 1) // optimization?
 			return dividend;
 		return divideByMinus(dividend - divisor, divisor, ++q);
 	}
@@ -53,34 +54,26 @@ public class DivideTwoIntegers {
 	}
 
 	// O(32c)
-	public static int divideByBitOps(int dividend2, int divisor2)
-			throws Exception {
-		if (divisor2 == 0)
-			throw new Exception("divided by zero");
-		long dividend = dividend2, divisor = divisor2;
-		boolean positive = true;
-		if (dividend < 0) {
-			positive = !positive;
-			dividend = -dividend;
-		}
-		if (divisor < 0) {
-			positive = !positive;
-			divisor = -divisor;
-		}
+	public static int divideByBitOps(int dividend, int divisor) {
+		long dvd = dividend < 0 ? -dividend : dividend;
+		long dvs = divisor < 0 ? -divisor : divisor;
+		boolean negative = (dividend < 0) ^ (divisor < 0);
+		
 		int shifts = 0;
-		while ((divisor << shifts) <= dividend) {
+		while ((dvs << shifts) <= dvd) {
 			shifts++;
 		}
-		int q = 0;
-		while (dividend >= divisor) {
-			long product = divisor << shifts;
-			if (product <= dividend) {
-				q |= 1 << shifts;
-				dividend -= product;
+		
+		int quotient = 0;
+		while (dvd >= dvs) {
+			long product = dvs << shifts;
+			if (product <= dvd) {
+				quotient += 1 << shifts;
+				dvd -= product;
 			}
 			shifts--;
 		}
-		return positive ? q : -q;
+		return negative ? -quotient : quotient;
 	}
 
 	// best solution?

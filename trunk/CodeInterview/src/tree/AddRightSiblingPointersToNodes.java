@@ -7,7 +7,7 @@ package tree;
  */
 public class AddRightSiblingPointersToNodes {
 
-	public class NodeWithRightSiblingPointer extends Node {
+	public class NodeWithRightSiblingPointer extends TreeNode {
 		public NodeWithRightSiblingPointer left;
 		public NodeWithRightSiblingPointer right;
 		public NodeWithRightSiblingPointer rightSibling;
