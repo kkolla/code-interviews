@@ -2,24 +2,24 @@ package linkedlist;
 
 /* not tested yet */
 public class SortDoublyLinkedListWith123InPlace {
-	public static Node sort(Node head) {
+	public static ListNode sort(ListNode head) {
 
 		if (head == null || head.next == null)
 			return head;
 
-		Node one = null, two = null, three = null;
+		ListNode one = null, two = null, three = null;
 
-		Node n = head;
+		ListNode n = head;
 
 		while (n != null) {
 
-			if (n.value == 1 && one == null)
+			if (n.val == 1 && one == null)
 				one = n;
 
-			else if (n.value == 2 && two == null)
+			else if (n.val == 2 && two == null)
 				two = n;
 
-			else if (n.value == 3 && three == null)
+			else if (n.val == 3 && three == null)
 				three = n;
 
 			n = n.next;
@@ -28,7 +28,7 @@ public class SortDoublyLinkedListWith123InPlace {
 
 		n = head;
 
-		Node t1 = one, t2 = two, t3 = three;
+		ListNode t1 = one, t2 = two, t3 = three;
 		insertNode(t2, three);
 
 		insertNode(t1, two);
@@ -39,13 +39,13 @@ public class SortDoublyLinkedListWith123InPlace {
 
 				deleteNode(head, n);
 
-				if (n.value == 1)
+				if (n.val == 1)
 					t1 = insertNode(t1, n);
 
-				else if (n.value == 2)
+				else if (n.val == 2)
 					t2 = insertNode(t2, n);
 
-				else if (n.value == 3)
+				else if (n.val == 3)
 					t3 = insertNode(t3, n);
 
 			}
@@ -58,7 +58,7 @@ public class SortDoublyLinkedListWith123InPlace {
 
 	}
 
-	public static void deleteNode(Node head, Node n) {
+	public static void deleteNode(ListNode head, ListNode n) {
 
 		if (head == null || n == null)
 			return;
@@ -75,7 +75,7 @@ public class SortDoublyLinkedListWith123InPlace {
 	}
 
 	// insert n after t
-	public static Node insertNode(Node t, Node n) {
+	public static ListNode insertNode(ListNode t, ListNode n) {
 
 		if (n == null || t == null || n == t)
 			return null;

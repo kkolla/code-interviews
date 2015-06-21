@@ -13,15 +13,15 @@ package linkedlist;
  */
 public class RemoveTheNthNodeFromEnd {
 
-	public static Node remove(Node head, int n) {
+	public static ListNode remove(ListNode head, int n) {
 		if (head == null)
 			return null;
-		Node slow = head, fast = head;
+		ListNode slow = head, fast = head;
 		for (int i = 1; i < n; i++)
 			fast = fast.next;
 		if (fast.next == null)
 			return head.next;
-		Node prev = null;
+		ListNode prev = null;
 		while (fast.next != null) {
 			prev = slow;
 			slow = slow.next;

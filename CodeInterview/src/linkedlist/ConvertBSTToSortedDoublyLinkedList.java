@@ -8,11 +8,11 @@ import utils.PrintUtils;
 public class ConvertBSTToSortedDoublyLinkedList {
 
 	// O(n)?
-	public static linkedlist.Node convert(tree.Node root) {
+	public static linkedlist.ListNode convert(tree.Node root) {
 		if (root == null)
 			return null;
-		linkedlist.Node head = null;
-		linkedlist.Node prev = null;
+		linkedlist.ListNode head = null;
+		linkedlist.ListNode prev = null;
 		Stack<tree.Node> s = new Stack<tree.Node>();
 		tree.Node n = root;
 		while (!s.isEmpty() || n != null) {
@@ -21,7 +21,7 @@ public class ConvertBSTToSortedDoublyLinkedList {
 				n = n.left;
 			} else {
 				n = s.pop();
-				linkedlist.Node curr = new linkedlist.Node(n.value);
+				linkedlist.ListNode curr = new linkedlist.ListNode(n.value);
 				curr.prev = prev;
 				if (prev == null) {
 					head = curr;
@@ -39,11 +39,11 @@ public class ConvertBSTToSortedDoublyLinkedList {
 
 	public static void main(String[] args) {
 		tree.Node root = CreateUtils.bstWithTenNodes();
-		Node head = convert(root);
+		ListNode head = convert(root);
 		PrintUtils.printBinaryTree(root);
-		Node t = head;
+		ListNode t = head;
 		do {
-			System.out.print(t.value + " ");
+			System.out.print(t.val + " ");
 			t = t.next;
 		} while (t != head);
 	}

@@ -11,25 +11,25 @@ import datastructure.Pair;
 public class MergeSortedLinkedListsInPlace {
 
 	// O(kn)
-	public static Node mergeSortedLinkedLists(Node[] heads) {
-		Node head = null;
-		Node iter = null;
+	public static ListNode mergeSortedLinkedLists(ListNode[] heads) {
+		ListNode head = null;
+		ListNode iter = null;
 		while (true) {
 			// keep doing the logic until all heads are null
 			boolean allHeadsNull = true;
-			for (Node h : heads)
+			for (ListNode h : heads)
 				if (h != null)
 					allHeadsNull = false;
 			if (allHeadsNull)
 				break;
 
-			Node smallest = null;
+			ListNode smallest = null;
 			int smallestHeadIndex = -1;
 			for (int i = 0; i < heads.length; i++) {
-				Node h = heads[i];
+				ListNode h = heads[i];
 				if (h == null)
 					continue;
-				if (smallest == null || h.value < smallest.value) {
+				if (smallest == null || h.val < smallest.val) {
 					smallest = h;
 					smallestHeadIndex = i;
 				}
@@ -49,12 +49,12 @@ public class MergeSortedLinkedListsInPlace {
 	}
 
 	// O(nlog(k))
-	public static Node mergeSortedLinkedListsBoosted(List<Node> heads) {
+	public static ListNode mergeSortedLinkedListsBoosted(List<ListNode> heads) {
 		if (heads == null || heads.size() == 0) {
 			return null;
 		}
-		PriorityQueue<Node> q = new PriorityQueue<Node>();
-		Node head = null, curr = null;
+		PriorityQueue<ListNode> q = new PriorityQueue<ListNode>();
+		ListNode head = null, curr = null;
 		int finished = 0;
 		for (int i = 0; i < heads.size(); i++) {
 			if (heads.get(i) != null)
@@ -63,7 +63,7 @@ public class MergeSortedLinkedListsInPlace {
 				finished++;
 		}
 		while (finished < heads.size()) {
-			Node n = q.poll();
+			ListNode n = q.poll();
 			if (head == null) {
 				head = n;
 				curr = head;
@@ -81,7 +81,7 @@ public class MergeSortedLinkedListsInPlace {
 	}
 
 	public static void main(String[] args) {
-		Node[] heads = new Node[] { CreateUtils.sortedLinkedListFromOneToN(6),
+		ListNode[] heads = new ListNode[] { CreateUtils.sortedLinkedListFromOneToN(6),
 				CreateUtils.sortedLinkedListFromOneToN(8),
 				CreateUtils.sortedLinkedListFromOneToN(5),
 				CreateUtils.sortedLinkedListFromOneToN(7),
@@ -91,12 +91,12 @@ public class MergeSortedLinkedListsInPlace {
 				.asList(heads)));
 
 		// why no output without reconstructing heads?
-		heads = new Node[] { CreateUtils.sortedLinkedListFromOneToN(6),
+		heads = new ListNode[] { CreateUtils.sortedLinkedListFromOneToN(6),
 				CreateUtils.sortedLinkedListFromOneToN(8),
 				CreateUtils.sortedLinkedListFromOneToN(5),
 				CreateUtils.sortedLinkedListFromOneToN(7),
 				CreateUtils.sortedLinkedListFromOneToN(20) };
-		Node head = mergeSortedLinkedLists(heads);
+		ListNode head = mergeSortedLinkedLists(heads);
 		PrintUtils.printLinkedList(head);
 	}
 

@@ -10,25 +10,25 @@ import utils.PrintUtils;
  */
 public class MergeTwoSortedLinkedList {
 
-	public static Node merge(Node head1, Node head2) {
+	public static ListNode merge(ListNode head1, ListNode head2) {
 		if (head1 == null)
 			return head2;
 		if (head2 == null)
 			return head1;
-		Node n1 = head1, n2 = head2;
-		Node head = head1.value < head2.value ? head1 : head2;
+		ListNode n1 = head1, n2 = head2;
+		ListNode head = head1.val < head2.val ? head1 : head2;
 		while (n1 != null && n2 != null) {
-			if (n1.value < n2.value) {
-				while (n1.next != null && n1.next.value < n2.value)
+			if (n1.val < n2.val) {
+				while (n1.next != null && n1.next.val < n2.val)
 					n1 = n1.next;
-				Node t = n1;
+				ListNode t = n1;
 				n1 = n1.next;
 				t.next = n2;
 			} else {
 				// pitfall: should be <=, not <
-				while (n2.next != null && n2.next.value <= n1.value)
+				while (n2.next != null && n2.next.val <= n1.val)
 					n2 = n2.next;
-				Node t = n2;
+				ListNode t = n2;
 				n2 = n2.next;
 				t.next = n1;
 			}
