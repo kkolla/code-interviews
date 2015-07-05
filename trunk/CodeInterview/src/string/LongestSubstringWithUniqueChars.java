@@ -9,6 +9,34 @@ import java.util.Arrays;
  * which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.
  */
 public class LongestSubstringWithUniqueChars {
+	
+	public static int lengthOfLongestSubstring(String s) {
+		if (s.isEmpty()) return 0;
+		
+		int[] indices = new int[256];
+		Arrays.fill(indices, -1);
+		
+		int start = 0, end = 0, currLen = 1, maxLen = 1;
+		indices[s.charAt(0)] = 0;
+		for (int i = 1; i < s.length(); i++) {
+			int prevIndex = indices[s.charAt(i)];
+			end = i;
+			if (prevIndex == -1 || i - currLen > prevIndex) {
+				// the current char was not seen before 
+				// or it was seen before but is not part of the currently considered substr
+				// in either case,  it can be added to the currently considered substr
+				currLen++;
+			} else {
+				// the current char was seen before, and is part of the currently considered substr
+				start = prevIndex + 1;
+				currLen = end - start + 1;
+			}
+			maxLen = Math.max(maxLen, end - start + 1);
+			indices[s.charAt(i)] = i;
+		}
+		
+		return maxLen;
+    }
 
 	// O(n)?
 	public static int longest(String s) {
@@ -33,9 +61,9 @@ public class LongestSubstringWithUniqueChars {
 	}
 
 	public static void main(String[] args) {
-		String[] ss = { "abcabcbb", "bbbbb", "abcddcbae", "" };
+		String[] ss = { "abccba", "abcabcbb", "bbbbb", "abcddcbae", "" };
 		for (String s : ss)
-			System.out.println(longest(s));
+			System.out.println(lengthOfLongestSubstring(s));
 	}
 
 }

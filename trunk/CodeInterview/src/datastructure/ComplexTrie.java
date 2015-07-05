@@ -4,22 +4,22 @@ import utils.CreateUtils;
 import utils.PrintUtils;
 
 // http://e-university.wisdomjobs.com/data-structures/chapter-1178-290/tries.html
-public class Trie {
+public class ComplexTrie {
 	char value;
 	int prefixes;
 	int wordsEndHere;
-	Trie[] children;
+	ComplexTrie[] children;
 
-	public Trie() {
+	public ComplexTrie() {
 		prefixes = 0;
 		wordsEndHere = 0;
-		children = new Trie[26]; // only deal with lower case characters;
+		children = new ComplexTrie[26]; // only deal with lower case characters;
 	}
 
-	public Trie(char c) {
+	public ComplexTrie(char c) {
 		prefixes = 0;
 		wordsEndHere = 0;
-		children = new Trie[26];
+		children = new ComplexTrie[26];
 		value = c;
 	}
 
@@ -31,7 +31,7 @@ public class Trie {
 			++prefixes;
 			char c = word.charAt(0);
 			if (!childExists(c)) {
-				setChild(c, new Trie(c));
+				setChild(c, new ComplexTrie(c));
 			}
 			// cut off the first character
 			// suppose this can be done in O(1)
@@ -57,8 +57,8 @@ public class Trie {
 	}
 
 	// O(1)
-	public Trie setChild(char c, Trie t) {
-		Trie old = children[c - 'a'];
+	public ComplexTrie setChild(char c, ComplexTrie t) {
+		ComplexTrie old = children[c - 'a'];
 		children[c - 'a'] = t;
 		return old;
 	}
@@ -120,12 +120,12 @@ public class Trie {
 	}
 
 	// O(1)
-	public Trie getChild(char c) {
+	public ComplexTrie getChild(char c) {
 		return children[c - 'a'];
 	}
 
 	public static void main(String[] args) {
-		Trie root = new Trie();
+		ComplexTrie root = new ComplexTrie();
 		String[] words = CreateUtils.randStringArray(50, 10, false);
 		PrintUtils.printArray(words);
 		for (int i = 0; i < words.length; i++) {

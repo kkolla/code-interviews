@@ -36,6 +36,19 @@ public class RemoveDuplicatesInPlace {
 		}
 		return slow;
 	}
+	
+	public int removeDuplicates2(int[] nums) {
+		if (nums.length == 0) return 0;
+		
+		int c = 0;
+        for (int i = 1; i < nums.length; i++) {
+        	if (nums[c] != nums[i]) {
+        		c++;
+        		nums[c] = nums[i];
+        	}
+        }
+        return c;
+    }
 
 	public static int removeDuplicatesTwiceAllowed(int[] a) {
 		if (a.length == 0)
@@ -63,6 +76,19 @@ public class RemoveDuplicatesInPlace {
 		}
 		return slow;
 	}
+	
+    public int removeDuplicatesTwiceAllowed2(int[] nums) {
+        if (nums.length <= 1) return nums.length;
+        
+        int c = 0;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[c] || (c == 0 || nums[c - 1] != nums[c])) {
+                nums[++c] = nums[i];
+            }
+        }
+        
+        return c + 1;
+     }
 
 	public static void main(String[] args) {
 		int[] a = CreateUtils.randNonNegIntArray(20, 10);

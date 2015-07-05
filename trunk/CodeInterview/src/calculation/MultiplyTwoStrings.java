@@ -5,8 +5,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MultiplyTwoStrings {
+	
+	public static String multiply(String num1, String num2) {
+		boolean positive = true;
+		if (num1.charAt(0) == '-') {
+			num1 = num1.substring(1);
+			positive = !positive;
+		}
+		if (num2.charAt(0) == '-') {
+			num2 = num2.substring(1);
+			positive = !positive;
+		}
+		
+		num1 = new StringBuilder(num1).reverse().toString();
+		num2 = new StringBuilder(num2).reverse().toString();
+		
+		// num1 * num2 has at most n + m digits
+		int[] d = new int[num1.length() + num2.length()];
+		
+		for (int i = 0; i < num1.length(); i++) {
+			int d1 = num1.charAt(i) - '0';
+			for (int j = 0; j < num2.length(); j++) {
+				int d2 = num2.charAt(j) - '0';
+				int product = d1 * d2;
+				d[i + j] += product;
+			}
+		}
+		
+		int carry = 0;
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < d.length; i++) {
+			d[i] += carry;
+			carry = d[i] / 10;
+			d[i] = d[i] % 10;
+			sb.insert(0, d[i]);
+		}
 
-	public static String multiply(String a, String b) throws Exception {
+		int nonZeroStart = 0;
+		while (nonZeroStart < sb.length() && sb.charAt(nonZeroStart) == '0') 
+			nonZeroStart++;
+		String s = sb.substring(nonZeroStart);
+		
+		return s.isEmpty() ? "0" : (positive ? s : "-" + s);
+	}
+	
+
+	public static String multiply2(String a, String b) throws Exception {
 		if (a == null || b == null || a.length() == 0 || b.length() == 0)
 			return null;
 		boolean positive = true;
@@ -71,6 +115,8 @@ public class MultiplyTwoStrings {
 						+ new BigInteger("59823473710")
 								.multiply(new BigInteger(
 										"24628946293461231023634576")));
+		
+		System.out.println(multiply2("123", "-456"));
 	}
 
 }
