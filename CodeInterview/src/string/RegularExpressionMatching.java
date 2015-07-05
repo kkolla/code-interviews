@@ -1,8 +1,8 @@
 package string;
 
 /*
- ‘.’ Matches any single character.
- ‘*’ Matches zero or more of the preceding element.
+ ï¿½.ï¿½ Matches any single character.
+ ï¿½*ï¿½ Matches zero or more of the preceding element.
  The matching should cover the entire input string (not partial).
 
  Some examples:
@@ -42,14 +42,33 @@ public class RegularExpressionMatching {
 		return match(s, p, i, j + 2);
 
 	}
+	
+	public static boolean isMatch(String s, String p) {
+        if (p.isEmpty()) return s.isEmpty();
+        if (p.length() > 1 && p.charAt(1) == '*') {
+        	int i = -1; // for the empty s case
+        	while(i < s.length() && (i < 0 || s.charAt(i) == p.charAt(0) || p.charAt(0) == '.')) {
+        		if (isMatch(s.substring(i + 1), p.substring(2)))	
+        			return true;
+        		i++;
+        	}
+        	return false;
+        } else {
+        	// p.length() == 1 or p.charAt(1) != '*'
+        	if (s.isEmpty() || (s.charAt(0) != p.charAt(0) && p.charAt(0) != '.'))
+        		return false;
+        	// the first characters match, check the rest
+        	return isMatch(s.substring(1), p.substring(1));
+        }
+    }
 
 	public static void main(String[] args) {
-		String[] ss = { "aaaa", "a", "aa", "aa", "aa", "ab", "ab", "aab", "ab" };
+		String[] ss = { "aaaa", "a", "aa", "aa", "aa", "ab", "ab", "aab", "ab", "ab" };
 		String[] ps = { "a*", "b", "a", "b*a", ".*", "ab*", "abc*", "c*a*b",
-				".*" };
+				".*", ".*c" };
 		for (int i = 0; i < ss.length; i++)
 			System.out.println(ss[i] + ", " + ps[i] + ": "
-					+ match(ss[i].toCharArray(), ps[i].toCharArray(), 0, 0));
+					+ isMatch(ss[i], ps[i]));
 	}
 
 }

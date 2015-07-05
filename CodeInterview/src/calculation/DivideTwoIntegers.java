@@ -55,6 +55,8 @@ public class DivideTwoIntegers {
 
 	// O(32c)
 	public static int divideByBitOps(int dividend, int divisor) {
+		if (divisor == 0) return Integer.MAX_VALUE;
+		
 		long dvd = dividend < 0 ? -dividend : dividend;
 		long dvs = divisor < 0 ? -divisor : divisor;
 		boolean negative = (dividend < 0) ^ (divisor < 0);

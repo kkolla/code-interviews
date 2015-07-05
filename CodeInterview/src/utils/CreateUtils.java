@@ -60,8 +60,8 @@ public class CreateUtils {
 		int n = randNonNegInt(maxLength);
 		Interval[] intervals = new Interval[n];
 		for (int i = 0; i < n; i++) {
-			double begin = randNonNegInt(maxValue);
-			double end = begin;
+			int begin = randNonNegInt(maxValue);
+			int end = begin;
 			int times = 0;
 			while (end <= begin && times++ < 50)
 				end = randNonNegInt(maxValue);

@@ -10,7 +10,8 @@ import utils.PrintUtils;
  */
 public class SetMatrixZeros {
 
-	public static int[][] setZeros(int[][] m) {
+	// space: O(1)
+	public static void setZeros(int[][] m) {
 		boolean firstRowZero = false, firstColZero = false;
 		for (int i = 0; i < m[0].length; i++)
 			if (m[0][i] == 0) {
@@ -38,14 +39,34 @@ public class SetMatrixZeros {
 		if (firstColZero)
 			for (int i = 0; i < m.length; i++)
 				m[i][0] = 0;
-		return m;
 	}
+	
+	// space: O(m + n)
+	public static void setZeros2(int[][] matrix) {
+        if (matrix == null) return;
+        
+        boolean[] r = new boolean[matrix.length];
+        boolean[] c = new boolean[matrix[0].length];
+        
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = 0; j < matrix[0].length; j++)
+                if (matrix[i][j] == 0) {
+                    r[i] = true;
+                    c[j] = true;
+                }
+                
+        for (int i = 0; i < matrix.length; i++)
+            for (int j = 0; j < matrix[0].length; j++)
+                if (r[i] || c[j]) matrix[i][j] = 0;
+	}
+
 
 	public static void main(String[] args) {
 		int[][] m = CreateUtils.randNonNegMatrix(10, 2, false);
 		PrintUtils.print2DArray(m);
 		System.out.println();
-		PrintUtils.print2DArray(setZeros(m));
+		setZeros(m);
+		PrintUtils.print2DArray(m);
 	}
 
 }

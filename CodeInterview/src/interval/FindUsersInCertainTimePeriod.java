@@ -22,7 +22,7 @@ public class FindUsersInCertainTimePeriod {
 		// find the intervals which have logout time less than period end time
 		int count = 0;
 		for (int i = 0; i < intervals.length; i++) {
-			if (intervals[i].begin > period.begin) {
+			if (intervals[i].start > period.start) {
 				break;
 			}
 			if (intervals[i].end >= period.end) {

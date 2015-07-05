@@ -22,7 +22,7 @@ public class FindANumberWithinMostIntervals {
 		double number = Double.NaN;
 		IntervalPoint[] points = new IntervalPoint[2 * intervals.length];
 		for (int i = 0; i < intervals.length; i++) {
-			points[2 * i] = new IntervalPoint(intervals[i].begin, true);
+			points[2 * i] = new IntervalPoint(intervals[i].start, true);
 			points[2 * i + 1] = new IntervalPoint(intervals[i].end, false);
 		}
 		Arrays.sort(points, new Comparator() {
