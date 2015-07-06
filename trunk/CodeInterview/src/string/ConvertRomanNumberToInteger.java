@@ -23,7 +23,7 @@ public class ConvertRomanNumberToInteger {
 
 	public static void main(String[] args) throws Exception {
 		String[] romans = { "D", "II", "III", "IV", "VI", "VII", "VIII", "IX",
-				"XL", "XLIX" };
+				"XL", "XLIX", "DCXXI" };
 		for (String roman : romans)
 			System.out.println(roman + " => " + toInt(roman));
 	}
