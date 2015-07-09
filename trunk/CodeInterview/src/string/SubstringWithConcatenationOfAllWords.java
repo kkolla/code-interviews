@@ -2,7 +2,8 @@ package string;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 import utils.PrintUtils;
 
@@ -18,9 +19,48 @@ import utils.PrintUtils;
  * (order does not matter).
  */
 public class SubstringWithConcatenationOfAllWords {
+	
+	// O((n - c*l)*c) -- c is the number of words, l is the length of word
+	public static List<Integer> findSubstring(String s, String[] words) {
+		List<Integer> result = new ArrayList<Integer>();
+		
+		if (s.isEmpty() || words.length == 0) return result;
+		
+		Map<String, Integer> toFind = new HashMap<String, Integer>();
+		for (String word: words) {
+			int count = toFind.containsKey(word) ? toFind.get(word) + 1 : 1;
+			toFind.put(word, count);
+		}
+		
+		int wordLen = words[0].length(), numWords = words.length;
+		int concatLen = wordLen * numWords;
+		
+		Map<String, Integer> found = new HashMap<String, Integer>();
+		
+		for (int start = 0; start <= s.length() - concatLen; start++) {
+			found.clear();
+			// trying to see if s.substring(start, start + concatLen) is a candidate
+			int i = 0;
+			for (; i < numWords; i++) {
+				int wordStart = start + wordLen * i;
+				int wordEnd = wordStart + wordLen;
+				String word = s.substring(wordStart, wordEnd);
+				if (!toFind.containsKey(word)) break;
+				// the substring is a word to find, see if its count reaches the limit
+				int count = found.containsKey(word) ? found.get(word) + 1 : 1;
+				if (count > toFind.get(word)) break;
+				found.put(word, count);
+			}
+			if (i == numWords) {
+				// all the words are found, meaning there was a match
+				result.add(start);
+			}
+		}
+		return result;
+    }
 
 	// Time Limit Exceeded for large data in online judge
-	public static ArrayList<Integer> findSubstring(String s, String[] l) {
+	public static ArrayList<Integer> findSubstring2(String s, String[] l) {
 		ArrayList<Integer> indices = new ArrayList<Integer>();
 		if (s.length() == 0 || l.length == 0 || l[0].length() == 0)
 			return indices;
@@ -67,8 +107,8 @@ public class SubstringWithConcatenationOfAllWords {
 	}
 
 	public static void main(String[] args) {
-		String S = "lingmindraboofooowingdingbarrwingmonkeypoundcake";
-		String[] L = { "fooo", "barr", "wing", "ding", "wing" };
+		String S = "barfoothefoobarman";
+		String[] L = { "foo", "bar" };
 		PrintUtils.printList(findSubstring(S, L));
 	}
 
