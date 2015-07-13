@@ -1,7 +1,7 @@
 package combinatorics;
 
 /*
- * The set [1,2,3,…,n] contains a total of n! unique permutations.
+ * The set [1,2,3,ï¿½,n] contains a total of n! unique permutations.
  * By listing and labeling all of the permutations in order,
  * We get the following sequence (ie, for n = 3):
  * "123"
@@ -19,8 +19,8 @@ public class PermutationSequence {
 		char[] s = new char[n];
 		for (int i = 1; i <= n; i++)
 			s[i - 1] = (char) ('0' + i);
-		for (int i = 1; i < k; i++)
-			NextPermutation.nextPermutation(s);
+		//for (int i = 1; i < k; i++)
+			//NextPermutation.nextPermutation(s);
 		return new String(s);
 	}
 

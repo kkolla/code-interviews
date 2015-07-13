@@ -1,47 +1,50 @@
 package combinatorics;
 
+import utils.PrintUtils;
+
 /*
  * http://wordaligned.org/articles/next-permutation#tocwhats-happening-here
  */
 public class NextPermutation {
 
-	public static void reverse(char[] s, int start, int end) {
-		for (int i = start, j = end; i < j; i++, j--) {
-			char c = s[i];
-			s[i] = s[j];
-			s[j] = c;
-		}
-	}
-
-	public static boolean nextPermutation(char[] s) {
-		// if already descending sorted, return false and reverse
-		int i = s.length - 2;
-		while (i >= 0 && s[i] >= s[i + 1])
-			i--;
-		if (i == -1) {
-			reverse(s, 0, s.length - 1);
-			return false;
-		}
-		// find the first element that is greater than the pivot
-		int j = s.length - 1;
-		while (s[j] <= s[i])
-			j--;
-		// swap i and j to get a greater head
-		char c = s[i];
-		s[i] = s[j];
-		s[j] = c;
-		// reverse the remaining string to get a smaller tail
-		reverse(s, i + 1, s.length - 1);
-		return true;
-	}
+	public static void nextPermutation(int[] nums) {
+        if (nums.length <= 1) return;
+        
+        int pivot = nums.length - 2; 
+        // from right to left, find the first element such that nums[pivot] < nums[pivot + 1]
+        while (pivot >= 0 && nums[pivot] >= nums[pivot + 1])
+            pivot--;
+            
+        if (pivot != -1) {
+            int t = nums.length - 1; 
+            // from right to left, find the first element larger than the pivot
+            while (t >= 0 && nums[t] <= nums[pivot])
+                t--;
+            // swap it with the pivot to get a larger head
+            swap(nums, pivot, t);    
+        }
+            
+        // reverse the right partion to get a smaller tail
+        int start = pivot + 1, end = nums.length - 1;
+        while (start < end) {
+            swap(nums, start, end);
+            start++;
+            end--;
+        }
+    }
+    
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp; 
+    }
 
 	public static void main(String[] args) {
-		char[] s = "AAB".toCharArray();
-		boolean undone;
-		do {
-			undone = nextPermutation(s);
-			System.out.println(new String(s));
-		} while (undone);
+		int[] nums = {3, 4, 1, 1, 5, 2};
+		for (int i = 0; i < 5; i++) {
+			PrintUtils.printArray(nums);
+			nextPermutation(nums);
+		}
 	}
 
 }

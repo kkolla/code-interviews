@@ -18,42 +18,34 @@ public class SimplifyUnixFilePath {
 	public static String simplifyPath(String path) {
 		assert (path.charAt(0) == '/');
 		Stack<String> s = new Stack<String>();
-		int pos = 1;
-		while (pos < path.length()) {
-			char c = path.charAt(pos);
-			// c could be letter, ., /
-			if (c == '/') {
-				while (pos < path.length() && path.charAt(pos) == c)
-					pos++;
-			} else if (c == '.') {
-				if (pos + 1 < path.length() && path.charAt(pos + 1) == '.') {
-					// ..
-					if (!s.isEmpty())
-						s.pop();
-					pos += 2;
-				} else {
-					// .
-					pos++;
-				}
-			} else {
-				// letter
-				int i = pos;
-				while (i < path.length() && path.charAt(i) != '.'
-						&& path.charAt(i) != '/')
-					i++;
-				String name = path.substring(pos, i);
-				s.push(name);
-				pos = i;
-			}
-		}
-		if (s.size() == 0)
-			return "/";
-		String simplified = "";
-		while (!s.isEmpty()) {
-			String name = s.pop();
-			simplified = "/" + name + simplified;
-		}
-		return simplified;
+        
+        int i = 0;
+        while (i < path.length()) {
+            // find start of the word
+            while (i < path.length() && path.charAt(i) == '/') i++;
+            if (i == path.length()) break;
+
+            // find end of the word
+            int start = i;
+            while (i < path.length() && path.charAt(i) != '/') i++;
+            
+            String name = path.substring(start, i);
+            if (name.equals("..")) {
+                if (!s.isEmpty()) s.pop();
+            } else if (!name.equals(".")) {
+                s.push(name);    
+            }
+        }
+        
+        if (s.isEmpty()) return "/";
+        else {
+            StringBuilder sb = new StringBuilder("");
+            while (!s.isEmpty()) {
+                String name = s.pop();
+                sb.insert(0, "/" + name);
+            }
+            return sb.toString();
+        }
 	}
 
 	public static void main(String[] args) {
