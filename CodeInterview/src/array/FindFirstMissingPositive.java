@@ -12,30 +12,27 @@ import utils.PrintUtils;
  */
 public class FindFirstMissingPositive {
 
-	public static int find(int[] a) {
-		for (int i = 0; i < a.length; i++) {
-			while (a[i] != i + 1) {
-				if (!(a[i] <= 0 || a[i] > a.length || a[i] == a[a[i] - 1])) {
-					int temp = a[i];
-					a[i] = a[temp - 1];
-					a[temp - 1] = temp;
-				} else {
-					break;
-				}
-			}
-		}
-
-		for (int i = 0; i < a.length; i++) {
-			if (a[i] != i + 1)
-				return i + 1;
-		}
-		return a.length + 1;
+	public static int firstMissingPositive(int[] nums) {
+		if (nums.length == 0) return 1;
+        int i = 0;
+        while (i < nums.length) {
+            if (nums[i] != i + 1 && nums[i] > 0 && nums[i] <= nums.length && nums[nums[i] - 1] != nums[i]) {
+                int temp = nums[i];
+                nums[i] = nums[temp - 1];
+                nums[temp - 1] = temp;
+            } else {
+                i++;
+            }
+        }
+        for (i = 0; i < nums.length; i++)
+            if (nums[i] != i + 1) return i + 1;
+        return i + 1;
 	}
 
 	public static void main(String[] args) {
 		int[] a = CreateUtils.randIntArray(10, 10);
 		PrintUtils.printArray(a);
-		System.out.println(find(a));
+		System.out.println(firstMissingPositive(a));
 	}
 
 }

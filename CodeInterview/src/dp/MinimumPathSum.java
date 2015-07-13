@@ -7,6 +7,20 @@ package dp;
  * Note: You can only move either down or right at any point in time.
  */
 public class MinimumPathSum {
+	
+    public int minPathSum(int[][] grid) {
+        int[][] m = new int[grid.length][grid[0].length];
+        
+        for (int i = 0; i < m.length; i++)
+            for (int j = 0; j < m[0].length; j++) {
+                if (i > 0 && j > 0) m[i][j] = Math.min(m[i - 1][j], m[i][j - 1]);
+                else if (j == 0) m[i][0] = m[i - 1][0];
+                else if (i == 0) m[0][j] = m[0][j - 1];
+                m[i][j] = grid[i][j];
+            }
+            
+        return m[grid.length - 1][grid[0].length - 1];
+    }
 
 	public static int minSum(int[][] m) {
 		int rows = m.length, cols = m[0].length;

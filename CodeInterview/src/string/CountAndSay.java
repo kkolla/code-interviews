@@ -11,25 +11,25 @@ public class CountAndSay {
 
 	public static String coundAndSay(int n) {
 		String s = "1";
-		for (int i = 1; i < n; i++) {
-			String t = "";
-			int count = 1;
-			char c = s.charAt(0);
-			for (int j = 1; j < s.length(); j++) {
-				if (s.charAt(j) == c) {
-					count++;
-				} else {
-					t += String.valueOf(count) + String.valueOf(c);
-					count = 1;
-					c = s.charAt(j);
-				}
-			}
-			t += String.valueOf(count) + String.valueOf(c);
-			s = t;
-		}
-		return s;
+        for (int i = 1; i < n; i++) {
+            StringBuilder sb = new StringBuilder("");
+            int count = 1; // for s[0]
+            for (int j = 1; j < s.length(); j++) {
+                if (s.charAt(j) == s.charAt(j - 1)) {
+                    count++;
+                } else {
+                    sb.append(count);
+                    sb.append(s.charAt(j - 1));
+                    count = 1;
+                }
+            }
+            sb.append(count);
+            sb.append(s.charAt(s.length() - 1));
+            s = sb.toString();
+        }   
+        return s;
 	}
-
+	
 	public static void main(String[] args) {
 		for (int i = 1; i < 20; i++) {
 			System.out.println(coundAndSay(i));

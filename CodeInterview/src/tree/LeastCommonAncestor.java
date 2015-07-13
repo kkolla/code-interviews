@@ -9,7 +9,7 @@ public class LeastCommonAncestor {
 		TreeNode left = lca(root.left, n1, n2);
 		TreeNode right = lca(root.right, n1, n2);
 		if (left != null && right != null)
-			return root;
+			return root; // root.left == n1 && root.right == n2 || root.left == n2 && root.right == n1
 		else
 			return left != null ? left : right;
 	}

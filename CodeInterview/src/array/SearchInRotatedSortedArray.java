@@ -21,9 +21,9 @@ public class SearchInRotatedSortedArray {
 		int high = a.length - 1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
-			if (a[mid] == key)
-				return mid;
-			else if (isLessThanByPosition(a, key, a[mid]))
+			if (a[mid] == key) return mid;
+			if (a[low] <= a[mid] && a[low] <= key && key < a[mid] ||
+	            a[mid] <= a[high] && !(a[mid] < key && key <= a[high]))
 				high = mid - 1;
 			else
 				low = mid + 1;
