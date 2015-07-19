@@ -14,6 +14,7 @@ import java.util.List;
  */
 public class MergeIntervalsAfterInsertion {
 
+	// O(n)
 	public static List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         List<Interval> result = new ArrayList<Interval>();
 
@@ -34,6 +35,7 @@ public class MergeIntervalsAfterInsertion {
         	}
         }
         
+        // in either branch above, the newInterval has not been added yet
         result.add(newInterval);
         
         return result;
