@@ -14,32 +14,24 @@ public class CloneLinkedListWithRandomPointer {
 		}
 
 		public static NodeWithRandomPointer clone(NodeWithRandomPointer head) {
-			NodeWithRandomPointer newHead = null;
-			NodeWithRandomPointer prev = null;
 			Map<NodeWithRandomPointer, NodeWithRandomPointer> map = new HashMap<NodeWithRandomPointer, NodeWithRandomPointer>();
-
-			// first round: create linked list without random pointer,
-			// and construct node map
-			NodeWithRandomPointer n = head;
-			while (n != null) {
-				NodeWithRandomPointer node = new NodeWithRandomPointer(n.val);
-				if (newHead == null)
-					newHead = node;
-				if (prev != null)
-					prev.next = node;
-				map.put(n, node);
-				prev = node;
-				n = n.next;
-			}
-			// second round: link random pointers
-			n = head;
-			while (n != null) {
-				if (n.random != null) {
-					map.get(n).random = map.get(n.random);
-				}
-				n = n.next;
-			}
-			return newHead;
+			NodeWithRandomPointer n1 = head;
+			NodeWithRandomPointer dummy = new NodeWithRandomPointer(-1), n2 = dummy;
+	        while (n1 != null) {
+	        	NodeWithRandomPointer newNode = new NodeWithRandomPointer(n1.val);
+	            n2.next = newNode;
+	            map.put(n1, newNode);
+	            n1 = n1.next;
+	            n2 = n2.next;
+	        }
+	        
+	        n1 = head;
+	        while (n1 != null) {
+	            map.get(n1).random = map.get(n1.random);
+	            n1 = n1.next;
+	        }
+	        
+	        return dummy.next;
 		}
 	}
 

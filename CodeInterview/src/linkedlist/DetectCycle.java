@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class DetectCycleInLinkedList {
+public class DetectCycle {
 	
 	public static boolean hasCycle(ListNode head) {
         ListNode slow = head, fast = head;

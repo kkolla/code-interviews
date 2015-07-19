@@ -14,8 +14,43 @@ import utils.PrintUtils;
  * For k = 3, you should return: 3->2->1->4->5
  */
 public class ReverseNodesInGroupOfK {
+	
+    public ListNode reverseKGroup(ListNode head, int k) {
+		ListNode n = head, groupHead = head, newHead = null, prevGroupTail = null;
+        int count = 0;
+        while (n != null) {
+            count++;
+            if (count == k) {
+                ListNode next = n.next;
+                n.next = null;
+                ListNode oldGroupHead = groupHead;
+                groupHead = reverse(groupHead);
+                if (newHead == null) newHead = groupHead;
+                if (prevGroupTail != null) prevGroupTail.next = groupHead;
+                prevGroupTail = oldGroupHead;
+                groupHead = next;
+                n = next;
+                count = 0;
+            } else {
+                n = n.next;
+            }
+        }
+        if (prevGroupTail != null) prevGroupTail.next = groupHead;
+        
+        return newHead == null ? head : newHead;
+	}
+    
+    private static ListNode reverse(ListNode head) {
+        ListNode curr = head, prev = null;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
 
-	// cannot pass large input, TLE?
 	public static ListNode reverseByGroup(ListNode head, int k) {
 		if (head == null || k == 1)
 			return head;
