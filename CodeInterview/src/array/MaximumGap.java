@@ -10,7 +10,6 @@ package array;
  *
  */
 public class MaximumGap {
-	
 	// O(numBuckets) = O((range / (range / numNumbers)) = O(n)
 	public static int maximumGap(int[] nums) {
         if (nums.length < 2) return 0;
