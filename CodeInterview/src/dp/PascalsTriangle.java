@@ -24,12 +24,11 @@ public class PascalsTriangle {
 		List<List<Integer>> result = new ArrayList<List<Integer>>();
 		if (numRows == 0) return result;
 		
-		List<Integer> zeroRow = new ArrayList<Integer>();
-		zeroRow.add(1);
-		result.add(zeroRow);
+		List<Integer> prevRow = new ArrayList<Integer>();
+		prevRow.add(1);
+		result.add(prevRow);
 		
 		for (int row = 1; row < numRows; row++) {
-			List<Integer> prevRow = result.get(row - 1);
 			List<Integer> currRow = new ArrayList<Integer>();
 			for (int i = 0; i < row + 1; i++) {
 				int topLeft = i == 0 ? 0 : prevRow.get(i - 1);
@@ -37,6 +36,7 @@ public class PascalsTriangle {
 				currRow.add(topLeft + topRight);
 			}
 			result.add(currRow);
+			prevRow = currRow;
 		}
 
 		return result;
