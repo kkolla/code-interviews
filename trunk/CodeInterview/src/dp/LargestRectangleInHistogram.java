@@ -7,11 +7,46 @@ import java.util.Stack;
 import utils.CreateUtils;
 import utils.PrintUtils;
 
-/*
- * http://tech-queries.blogspot.com/2011/03/maximum-area-rectangle-in-histogram.html
- */
-public class MaxRectangeAreaInHistogram {
 
+public class LargestRectangleInHistogram {
+	
+    // O(n^2)
+    public int largestRectangleAreaNaive(int[] height) {
+        int maxArea = 0;
+        for (int i = 0; i < height.length; i++) {
+            // pruning: if the next bar's height is bigger, no need to compute in the current run
+            if (i + 1 < height.length && height[i] <= height[i + 1]) continue;
+            int minHeight = height[i];
+            for (int j = i; j >= 0; j--) {
+                minHeight = Math.min(minHeight, height[j]);
+                int width = i - j + 1;
+                maxArea = Math.max(maxArea, minHeight * width);
+            }
+        } 
+        return maxArea;
+    }
+    
+    // O(n)
+    // http://fisherlei.blogspot.com/2012/12/leetcode-largest-rectangle-in-histogram.html
+    public int largestRectangleArea(int[] height) {
+        Stack<Integer> s = new Stack<Integer>(); // for saving indicies of an ascending histograms
+        int maxArea = 0, i = 0;
+        while (!(i == height.length && s.isEmpty())) {
+            if (i < height.length && (s.isEmpty() || height[i] > height[s.peek()])) {
+                s.push(i);
+                i++;
+            } else {
+                while (!s.isEmpty() && (i == height.length || height[i] <= height[s.peek()])) {
+                    int t = s.pop();
+                    int width = s.isEmpty() ? i : i - 1 - s.peek();
+                    maxArea = Math.max(maxArea, width * height[t]);
+                }  
+            }
+        }
+        return maxArea;
+    }
+
+    // http://tech-queries.blogspot.com/2011/03/maximum-area-rectangle-in-histogram.html
 	// widths[i]: the maximum width of rectangle containing the i-th histogram
 	// widths[i] = leftOffset + rightOffset + 1
 	// h[i-leftOffset] is the leftmost histogram whose height is at least h[i]
