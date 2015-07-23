@@ -11,22 +11,22 @@ import utils.PrintUtils;
 public class ConstructBinaryTreeFromInorderAndPostorderTraversal {
 	
 	public static TreeNode buildTree(int[] inorder, int[] postorder) {
-		return buildTree(inorder, postorder, 0, inorder.length - 1, 0, postorder.length - 1);
+		return buildTree(inorder, postorder, 0, 0, inorder.length);
     }
 
-	private static TreeNode buildTree(int[] inorder, int[] postorder, int startI, int endI, int startP, int endP) {
-		if (startI > endI || startP > endP) return null;
+	private static TreeNode buildTree(int[] inorder, int[] postorder, int startI, int startP, int len) {
+		if (len <= 0) return null;
 		
 		// root is always the last one in post order
-		TreeNode root = new TreeNode(postorder[endP]);
+		TreeNode root = new TreeNode(postorder[startP + len - 1]);
 		
-		int numLeftNodes = 0;
-		for (int i = startI; i <= endI; i++)
+		int leftLen = 0;
+		for (int i = startI; i <= startI + len; i++)
 			if (inorder[i] == root.val) break;
-			else numLeftNodes++;
+			else leftLen++;
 			
-		root.left = buildTree(inorder, postorder, startI, startI + numLeftNodes - 1, startP, startP + numLeftNodes - 1);
-		root.right = buildTree(inorder, postorder, startI + numLeftNodes + 1, endI, startP + numLeftNodes, endP - 1);
+		root.left = buildTree(inorder, postorder, startI, startP, leftLen);
+		root.right = buildTree(inorder, postorder, startI + 1 + leftLen, startP + leftLen, len - leftLen - 1);
 		
 		return root;
     }

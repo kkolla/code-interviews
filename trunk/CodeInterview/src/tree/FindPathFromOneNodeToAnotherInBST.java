@@ -11,7 +11,7 @@ public class FindPathFromOneNodeToAnotherInBST {
 	public static void findPath(TreeNode root, TreeNode start, TreeNode end) {
 		if (root == null)
 			return;
-		TreeNode lca = LeastCommonAncestor.lca(root, start, end);
+		TreeNode lca = LowestCommonAncestor.lowestCommonAncestor(root, start, end);
 		List<Integer> firstHalfPath = new ArrayList<Integer>();
 		List<Integer> secondHalfPath = new ArrayList<Integer>();
 		TreeNode n = lca;
