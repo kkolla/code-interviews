@@ -10,55 +10,52 @@ import utils.PrintUtils;
 
 public class DutchFlagProblem {
 
-	public static int[] sort(int[] a, int middle) {
-		int less = 0;
-		int greater = a.length - 1;
-		for (int i = 0; i <= greater;) { // pitfall: not <
-			if (a[i] < middle) {
-				int temp = a[i];
-				a[i] = a[less];
-				a[less] = temp;
-				less++;
-				i++;
-			} else if (a[i] > middle) {
-				int temp = a[i];
-				a[i] = a[greater];
-				a[greater] = temp;
-				greater--;
-			} else {
-				i++;
-			}
-		}
-		return a;
-	}
-
-	public static int[] dutchFlagSort(int[] a) {
-		for (int i = 0, small = 0, large = a.length - 1; i <= large;) {
-			if (a[i] == 0) {
-				swap(a, small, i);
-				small++;
-				i++;
-			} else if (a[i] == 2) {
-				swap(a, large, i);
-				large--;
-			} else {
-				i++;
-			}
-		}
-		return a;
-	}
-
-	public static void swap(int[] a, int i, int j) {
-		int t = a[i];
-		a[i] = a[j];
-		a[j] = t;
-	}
+	public static void dutchFlagSort(int[] nums) {
+        int i = 0, red = 0, blue = nums.length - 1;
+        while (i <= blue) {
+            if (nums[i] == 0) {
+                // put the red to left
+                swap(nums, i, red);
+                // increase the red end index
+                red++;
+                // the current number is correctly set, go to the next one
+                i++;
+            } else if (nums[i] == 2) {
+               // put the blue to right
+               swap(nums, i, blue);
+               // decrease the blue start index
+               blue--;
+               // the current element after swapping is not considered yet
+            } else {
+                // nothing to do when seeing a white, go to the next one
+                i++;
+            }
+        }
+    }
+    
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    
+    private void countingSort(int[] nums) {
+        int[] counts = new int[3];
+        for (int num : nums)
+            counts[num]++;
+        int index = 0;
+        for (int i = 0; i < counts.length; i++)
+            for (int j = 0; j < counts[i]; j++)
+                nums[index++] = i;
+    }
 
 	public static void main(String[] args) {
 		int[] a = { 0, 1, 2, 1, 2, 1, 2, 0, 0, 2, 1, 0, 0, 2, 2, 1, 0 };
 		PrintUtils.printArray(a);
-		PrintUtils.printArray(sort(a, 1));
+		dutchFlagSort(a);
+		PrintUtils.printArray(a);
 		a = new int[] { 0, 1, 0, 0, 1, 0, 0, 1, 0 };
-		PrintUtils.printArray(dutchFlagSort(a));
+		dutchFlagSort(a);
+		PrintUtils.printArray(a);
 	}
 }
