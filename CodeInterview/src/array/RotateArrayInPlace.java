@@ -23,7 +23,7 @@ public class RotateArrayInPlace {
     	if (k >= 0)
 			k = k % nums.length;
 		else
-			k = (-(-k) % nums.length + nums.length) % nums.length;
+			k = (k % nums.length + nums.length);
         
         reverse(nums, 0, nums.length - 1);
         reverse(nums, 0, k - 1); // if k == 0, this does nothing
@@ -38,7 +38,7 @@ public class RotateArrayInPlace {
 
 	public static void main(String[] args) {
 		int[] nums = { 1,2,3 };
-		rotate(nums, 2);
+		rotate(nums, -8);
 		for (int i = 0; i < nums.length; i++)
 			System.out.print(nums[i] + " ");
 	}
