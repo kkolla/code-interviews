@@ -1,0 +1,40 @@
+
+class1
+
+SNAKE
+
+scenario
+
+constraints
+
+application: system/algorithm
+
+kilobit: data 
+
+evolve: how to improve and scale up
+
+
+
+
+class 2
+
+For a web application, ASK
+(1) total users
+(2) daily active users (DAU)
+(3) ask for the numbers 3 months later
+
+PREDICT
+
+Login percentage ~= 15%
+
+Normal API call frequency is about 2x of average rate, because there're more user activity in the day.
+Peak frequency is 3x of normal frequency.
+
+
+replication methods:
+
+shadow server
+
+read log
+
+replication in different data centers

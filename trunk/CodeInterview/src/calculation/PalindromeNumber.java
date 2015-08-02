@@ -19,31 +19,26 @@ public class PalindromeNumber {
 		return m == n;
 	}
 
-	public static boolean isPalindromeByComparingEnds(int n) {
-		if (n < 0)
-			return false;
-		int divisor = 1;
-		int t = n;
-		while (t >= 10) { // pitfall: >
-			t /= 10;
-			divisor *= 10;
-		}
-		t = n;
-		while (t >= 10) {
-			int left = t / divisor;
-			int right = t % 10;
-			if (left != right)
-				return false;
-			t = (t / 10) % (divisor / 10);
-			divisor /= 100;
-		}
-		return true;
+	public static boolean isPalindromeByComparingEnds(int x) {
+		if (x < 0) return false;
+        
+        int divisor = 1;
+        while (x / divisor >= 10) divisor *= 10;
+        
+        while (x > 0) {
+        	System.out.println("x = " + x + ", divisor = " + divisor + ", left = " + x / divisor + ", right = " + x % 10);
+            if (x / divisor != x % 10) return false;
+            x = (x % divisor) / 10;
+            divisor /= 100;
+        }
+        return true;
 	}
 
 	public static void main(String[] args) {
-		for (int i = 0; i <= 99999; i++)
+		/*for (int i = 0; i <= 99999; i++)
 			if (isPalindromeByComparingEnds(i))
-				System.out.println(i);
+				System.out.println(i);*/
+		System.out.println(isPalindromeByComparingEnds(1000021));
 	}
 
 }

@@ -1,6 +1,7 @@
 package string;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import utils.PrintUtils;
 
@@ -26,70 +27,88 @@ import utils.PrintUtils;
  * 
  */
 
-// buggy for large input
 public class TextJustification {
 
-	public static ArrayList<String> justify(String[] words, int l) {
-		ArrayList<String> output = new ArrayList<String>();
-		if (words.length == 0 || l <= 0) {
-			output.add("");
-			return output;
-		}
-		int start = 0, end = 0;
-		int length = words[0].length();
-		for (int i = 1; i < words.length; i++) {
-			String word = words[i];
-			if (length + 1 + word.length() <= l) {
-				length = length + 1 + word.length();
-				end = i;
-			} else {
-				output.add(justifyLine(words, start, end, l, false));
-				start = end = i;
-				length = words[start].length();
-			}
-		}
-		output.add(justifyLine(words, start, end, l, true));
-		return output;
-	}
 
-	public static String justifyLine(String[] words, int start, int end, int l,
-			boolean lastLine) {
-		if (start == end)
-			return words[start] + spaces(l - words[start].length());
-		int totalLength = 0;
-		for (int i = start; i <= end; i++)
-			totalLength += words[i].length();
-		if (lastLine) {
-			String s = words[start];
-			for (int i = start + 1; i <= end; i++)
-				s += spaces(1) + words[i];
-			s += spaces(l - totalLength - (end - start));
-			return s;
-		} else {
-			boolean even = (l - totalLength) % (end - start) == 0;
-			String s = words[start];
-			for (int i = start + 1; i <= end; i++) {
-				int ss = i == start + 1 && !even ? (l - totalLength)
-						/ (end - start) + (l - totalLength) % (end - start)
-						: (l - totalLength) / (end - start);
-				s += spaces(ss) + words[i];
+	public static List<String> fullJustify(String[] words, int maxWidth) {
+        List<String> result = new ArrayList<String>();
+        if (words.length == 0) return result;
+        
+        int lineTotalWordLength = words[0].length();
+        int lineStartWordIndex = 0, lineEndWordIndex = 0;
+        
+        for (int i = 1; i < words.length; i++) {
+        	String word = words[i];
+        	// check if the word can be added to the current line
+        	int numSpacesBetweenWords = lineEndWordIndex - lineStartWordIndex + 1;
+        	int len = lineTotalWordLength + numSpacesBetweenWords + word.length();
+        	if (len <= maxWidth) {
+        		// the word can be added to the current line
+        		// update the end index and total length
+        		lineEndWordIndex = i;
+        		lineTotalWordLength += word.length();
+        	} else {
+        		// the word cannot be added, so we can construct a line 
+        		String line = createLine(words, maxWidth, lineStartWordIndex, lineEndWordIndex, lineTotalWordLength, false);
+        		result.add(line);
+        		// update the total length, start and end index
+        		lineTotalWordLength = word.length();
+        		lineStartWordIndex = i;
+        		lineEndWordIndex = i;
+        	}
+        }
+        
+        // the last line hasn't been added yet
+        result.add(createLine(words, maxWidth, lineStartWordIndex, lineEndWordIndex, lineTotalWordLength, true));
+        
+        return result;
+    }
+	
+	private static String createLine(String[] words, int maxWidth, int lineStartWordIndex, int lineEndWordIndex, int lineTotalWordLength, boolean isLastLine) {
+		StringBuilder sb = new StringBuilder(words[lineStartWordIndex]);
+		
+		int numWordsInLine = lineEndWordIndex - lineStartWordIndex + 1;
+		if (numWordsInLine == 1 || isLastLine) {
+			// if there's only one word in the line, or it's the last line,
+			// there must be only one space between words
+			for (int i = lineStartWordIndex + 1; i <= lineEndWordIndex; i++) {
+				sb.append(" " + words[i]);
 			}
-			return s;
+			// we need to left justify the word by appending remaining spaces on the right
+			int numSpacesBetweenWords = numWordsInLine - 1;
+			int numRemainingSpaces = maxWidth - lineTotalWordLength - numSpacesBetweenWords;
+			sb.append(spaces(numRemainingSpaces));
+		} else {
+			// justify a line, by computing the minimum number of spaces between words 
+			// and the number of words needing one extra space
+			int numSpaceSlots = numWordsInLine - 1;
+			int minNumSpacesBetweenWords = (maxWidth - lineTotalWordLength) / numSpaceSlots;
+			int numWordsWithExtraSpace = (maxWidth - lineTotalWordLength) % numSpaceSlots;
+			for (int i = lineStartWordIndex + 1; i <= lineEndWordIndex; i++) {
+				int numSpaces = i - lineStartWordIndex - 1 < numWordsWithExtraSpace ? minNumSpacesBetweenWords + 1 : minNumSpacesBetweenWords;
+				sb.append(spaces(numSpaces));
+				sb.append(words[i]);
+			}
 		}
+		
+		return sb.toString();
 	}
+	
 
 	public static String spaces(int n) {
-		String s = "";
+		StringBuilder sb = new StringBuilder("");
 		for (int i = 0; i < n; i++)
-			s += " ";
-		return s;
+			sb.append(" ");
+		return sb.toString();
 	}
 
 	public static void main(String[] args) {
 		String[] words = { "This", "is", "an", "example", "of", "text",
 				"justification." };
+		String[] words2 = {"a", "b", "c", "d"};
 		int l = 16;
-		PrintUtils.printList(justify(words, l));
+		for (String line : fullJustify(words, l))
+			System.out.println(line);
 	}
 
 }
