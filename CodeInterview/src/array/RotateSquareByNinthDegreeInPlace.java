@@ -43,7 +43,9 @@ public class RotateSquareByNinthDegreeInPlace {
 	public static void main(String[] args) {
 		int[][] m = CreateUtils.randNonNegMatrix(10, 100, true);
 		PrintUtils.print2DArray(m);
+		System.out.println();
 		PrintUtils.print2DArray(rotateRight(m));
+		System.out.println();
 		PrintUtils.print2DArray(rotateLeft(m));
 	}
 
