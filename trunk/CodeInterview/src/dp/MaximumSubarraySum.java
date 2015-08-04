@@ -20,6 +20,9 @@ public class MaximumSubarraySum {
 		}
 		return maxSum;
 	}
+	
+	// O(nlog(n)): divide and conquer
+	// http://www.geeksforgeeks.org/divide-and-conquer-maximum-sum-subarray/
 
 	public static void main(String[] args) {
 		System.out.println(maxSum(new int[] { -3, -2, 0, -1 }));

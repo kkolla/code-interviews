@@ -5,6 +5,53 @@ package string;
  * '*' Matches zero or more characters.
  */
 public class WildcardMatching {
+	
+	public boolean isMatchIterative(String s, String p) {
+        int si = 0, pi = 0, star = -1, starMatched = -1;  
+        while (si < s.length()) {
+            if (pi == p.length()) {
+               if (star != -1) {
+                    // there was a star
+                    // restore p's position to be after the star
+                    pi = star + 1;
+                    // cover one more character in s
+                    starMatched++;
+                    si = starMatched;
+                    continue;
+                } else {
+                    // unmatched
+                    return false;
+                } 
+            }
+            
+            char sc = s.charAt(si);
+            char pc = p.charAt(pi);
+            if (sc == pc || pc == '?') {
+                // characters match
+                si++;
+                pi++;
+            } else if (pc == '*') {
+                // characters match, but we don't know how many characters in s to pass yet
+                // save the star position and the end position matched in s
+                star = pi;
+                starMatched = si;
+                pi++;
+            } else if (star != -1) {
+                // there was a star
+                // restore p's position to be after the star
+                pi = star + 1;
+                // cover one more character in s
+                starMatched++;
+                si = starMatched;
+            } else {
+                // unmatched
+                return false;
+            }
+        }
+        // we have reached to the end of s, it's fine to have stars in p
+        while (pi < p.length() && p.charAt(pi) == '*') pi++;
+        return pi == p.length();
+    }
 
 	// TLE
 	public static boolean match(char[] s, char[] p, int i, int j) {
