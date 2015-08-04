@@ -30,7 +30,7 @@ public class WordLadder {
 		Queue<String> wordQueue = new LinkedList<String>();
 		Queue<Integer> distanceQueue = new LinkedList<Integer>();
 		
-		wordDict.add(endWord); // the end word doesn't need to be present in dictionary
+		wordDict.add(endWord); // the end word needs to be present in dictionary to be found
 		wordQueue.add(beginWord);
 		distanceQueue.add(1);
 		

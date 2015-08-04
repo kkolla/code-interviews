@@ -27,14 +27,10 @@ public class PriorityQueue<E extends Comparable<E>> extends AbstractQueue<E> {
 	}
 
 	private int leftChild(int k) {
-		if (k == 0)
-			return 1;
 		return 2 * k + 1;
 	}
 
 	private int rightChild(int k) {
-		if (k == 0)
-			return 2;
 		return 2 * k + 2;
 	}
 

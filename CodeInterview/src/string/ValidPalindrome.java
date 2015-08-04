@@ -16,7 +16,6 @@ public class ValidPalindrome {
         while (i < j) {
             char a = s.charAt(i);
             char b = s.charAt(j);
-            if (a == '.' || b == '.') continue;
             a = (char) (a >= 'A' && a <= 'Z' ? a - ('A' - 'a') : a);
             b = (char) (b >= 'A' && b <= 'Z' ? b - ('A' - 'a') : b);
             if (a != b) return false;

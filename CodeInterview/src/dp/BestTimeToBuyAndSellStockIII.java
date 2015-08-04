@@ -54,6 +54,8 @@ public class BestTimeToBuyAndSellStockIII {
 			maxProfit = Math.max(maxProfit, left[i] + right[i]);
 		return maxProfit;
 	}
+	
+	// simpler: http://www.cnblogs.com/grandyang/p/4281975.html
 
 	public static void main(String[] args) {
 		int[] prices = {1, 4, 2, 8, 3, 4};

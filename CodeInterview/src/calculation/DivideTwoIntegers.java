@@ -77,6 +77,28 @@ public class DivideTwoIntegers {
 		}
 		return negative ? -quotient : quotient;
 	}
+	
+	// passes leetcode
+	public static int divide(int dividend, int divisor) {
+		long dvd = Math.abs((long) dividend);
+        long dvs = Math.abs((long) divisor);
+ 
+        long res = 0;
+        while(dvd >= dvs)
+        {
+            int shifts = 0;
+            while (dvd >= (dvs << shifts))
+            {
+            	shifts++;
+            }
+            dvd -= dvs << (shifts - 1);
+            res += (long) 1 << (shifts - 1);
+        }
+
+        if ((divisor < 0) ^ (dividend < 0)) res = -res;
+        
+        return (res > Integer.MAX_VALUE || res < Integer.MIN_VALUE) ? Integer.MAX_VALUE : (int) res;
+	}
 
 	// best solution?
 	// http://basicalgos.blogspot.com/2012/03/5-divide-two-integers.html
@@ -86,7 +108,8 @@ public class DivideTwoIntegers {
 			int dividend = CreateUtils.randInt(100);
 			int divisor = CreateUtils.randInt(100);
 			System.out.print(dividend + "/" + divisor + "=");
-			System.out.println(divideByBitOps(dividend, divisor));
+			// System.out.println(divideByBitOps(dividend, divisor));
+			System.out.println(divide(dividend, divisor));
 		}
 	}
 

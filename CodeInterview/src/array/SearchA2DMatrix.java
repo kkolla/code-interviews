@@ -9,7 +9,7 @@ package array;
  10  11  16  20
  23  30  34  50
  */
-public class SearchElementInSortedMatrix {
+public class SearchA2DMatrix {
 
 	// deem the 2-d array as 1-d array then apply binary search
 	private static boolean search(int[][] m, int key) {
