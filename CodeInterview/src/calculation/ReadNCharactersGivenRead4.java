@@ -12,21 +12,30 @@ package calculation;
  */
 public class ReadNCharactersGivenRead4 {
 	
+	int bufSize = 0;
+	int offset = 0;
+	int totalRead = 0;
+	char[] buf4 = new char[4];
+	
 	public int read(char[] buf, int n) throws Exception {
-		int count = 0;
-		
-		char[] buf4 = new char[4];
-		while(count < n) {
-			int charsRead = read4(buf4);
-			int i = 0;
-			for (; i < Math.min(charsRead, n - count); i++) {
-				buf[count + i] = buf4[i];
+
+		boolean eof = false;
+				
+		while(!eof && totalRead < n) {
+			if (bufSize == 0) {
+				bufSize = read4(buf4);
+				if (bufSize < 4) eof = true;
 			}
-			count += i;
-			if (charsRead < 4) break;
+			
+			int bytesToRead = Math.min(totalRead, bufSize);
+			System.arraycopy(buf4, offset, buf, totalRead, bytesToRead);
+			
+			offset = (offset + bytesToRead) % 4;
+			bufSize -= bytesToRead;
+			totalRead += bytesToRead;
 		}
 		
-		return count;
+		return totalRead;
 	}
 
 	private int read4(char[] buf4) throws Exception {
