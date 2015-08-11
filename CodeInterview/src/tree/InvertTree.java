@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * Invert a binary tree.
  *      4
@@ -25,5 +28,20 @@ public class InvertTree {
         return root;
     }
 	
-	// iterative: level order traversal by queue
+	public void invertBinaryTree(TreeNode root) {
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        if (root != null) q.add(root);
+        while (!q.isEmpty()) {
+            TreeNode n = q.poll();
+            swapChildren(n);
+            if (n.left != null) q.add(n.left);
+            if (n.right != null) q.add(n.right);
+        }
+    }
+    
+    private void swapChildren(TreeNode root) {
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;    
+    }
 }
