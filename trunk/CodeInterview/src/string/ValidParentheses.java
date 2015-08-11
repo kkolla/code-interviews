@@ -1,5 +1,7 @@
 package string;
 
+import java.util.Stack;
+
 /*
  * Given a string containing just the characters '(', ')', '{', '}', '[' and ']', 
  * determine if the input string is valid.
@@ -42,6 +44,20 @@ public class ValidParentheses {
 		}
 		return round == 0 && square == 0 && brace == 0;
 	}
+	
+	public boolean isValidParentheses(String s) {
+		String lefts = "([{", rights = ")]}";
+        Stack<Character> stack = new Stack<Character>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (lefts.indexOf(c) != -1) stack.push(c);
+            else {
+                if (!stack.isEmpty() && rights.charAt(lefts.indexOf(stack.peek())) == c) stack.pop();
+                else return false;
+            }
+        }
+        return stack.isEmpty();
+    }
 
 	public static void main(String[] args) {
 		String[] ps = { "()", "()[]{}", "(]", "([)]" };
