@@ -36,7 +36,7 @@ public class MaximumGap {
         
         // the answer is equal to the smallest-greatest difference in the adjacent buckets
         int maxInPrevBucket = buckets[0][1]; // first bucket is guaranteed to have num in it
-        int result = Integer.MIN_VALUE;
+        int result = 0; // for the case when there's only one bucket (all elements are same)
         for (int i = 1; i < buckets.length; i++) {
         	if (buckets[i][0] == -1) continue;
         	result = Math.max(result, buckets[i][0] - maxInPrevBucket);

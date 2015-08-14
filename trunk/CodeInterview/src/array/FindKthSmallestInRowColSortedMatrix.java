@@ -1,38 +1,52 @@
 package array;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
-
-import datastructure.Pair;
 
 public class FindKthSmallestInRowColSortedMatrix {
 
 	// O(nmlog(nm)): put all elements to 1-d array and sort
+	
+	public static class Cell {
+		int x;
+		int y;
+		int value;
+		
+		public Cell(int x, int y, int value) {
+			this.x = x;
+			this.y = y;
+			this.value = value;
+		}
+
+		
+	}
 
 	// O(klogk)
 	public static int findKth(int[][] m, int k) {
 		int rows = m.length, cols = m[0].length;
-		PriorityQueue<Pair<Integer, Pair<Integer, Integer>>> heap = new PriorityQueue<Pair<Integer, Pair<Integer, Integer>>>();
-		heap.add(new Pair<Integer, Pair<Integer, Integer>>(m[0][0],
-				new Pair<Integer, Integer>(0, 0)));
+		PriorityQueue<Cell> heap = new PriorityQueue<Cell>(k, new Comparator<Cell>() {
+			@Override
+			public int compare(Cell o1, Cell o2) {
+				return new Integer(o1.value).compareTo(new Integer(o2.value));
+			}
+		});
+		Cell c = new Cell(0, 0, m[0][0]);
+		heap.add(c);
 		boolean[][] visited = new boolean[rows][cols];
 		for (int i = 1; i <= k - 1; i++) {
-			Pair<Integer, Pair<Integer, Integer>> p = heap.poll();
-			int row = p.second.first;
-			int col = p.second.second;
+			Cell cell = heap.poll();
+			int row = cell.x;
+			int col = cell.y;
 			if (row + 1 < rows && !visited[row + 1][col]) {
-				heap.add(new Pair<Integer, Pair<Integer, Integer>>(
-						m[row + 1][col], new Pair<Integer, Integer>(row + 1,
-								col)));
+				heap.add(new Cell(row + 1, col, m[row + 1][col]));
 				visited[row + 1][col] = true;
 			}
 			if (col + 1 < cols && !visited[row][col + 1]) {
-				heap.add(new Pair<Integer, Pair<Integer, Integer>>(
-						m[row][col + 1], new Pair<Integer, Integer>(row,
-								col + 1)));
+				heap.add(new Cell(row, col + 1, m[row][col + 1]));
 				visited[row][col + 1] = true;
 			}
 		}
-		return heap.peek().first;
+		return heap.peek().value;
 	}
 
 	public static void main(String[] args) {

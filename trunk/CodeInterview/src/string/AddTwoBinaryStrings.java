@@ -9,17 +9,15 @@ import utils.CreateUtils;
 public class AddTwoBinaryStrings {
 
 	public static String add(String a, String b) {
-		StringBuilder sb = new StringBuilder("");
-        int carry = 0;
-        for (int i = a.length() - 1, j = b.length() - 1; i >= 0 || j >= 0; i--, j--) {
-            int digitA = i < 0 ? 0 : a.charAt(i) - '0';
-            int digitB = j < 0 ? 0 : b.charAt(j) - '0';
-            int sum = digitA + digitB + carry;
+		StringBuilder sb = new StringBuilder();
+        for (int i = a.length() - 1, j = b.length() - 1, carry = 0;
+            i >= 0 || j >= 0 || carry != 0; i--, j--) {
+            int da = i >= 0 ? a.charAt(i) - '0' : 0;
+            int db = j >= 0 ? b.charAt(j) - '0' : 0;
+            int sum = carry + da + db;
             sb.append(sum % 2);
             carry = sum / 2;
         }
-        
-        if (carry > 0) sb.append(1);
         return sb.reverse().toString();
     }
 

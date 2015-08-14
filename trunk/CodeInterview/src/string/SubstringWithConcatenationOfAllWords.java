@@ -35,10 +35,9 @@ public class SubstringWithConcatenationOfAllWords {
 		int wordLen = words[0].length(), numWords = words.length;
 		int concatLen = wordLen * numWords;
 		
-		Map<String, Integer> found = new HashMap<String, Integer>();
 		
 		for (int start = 0; start <= s.length() - concatLen; start++) {
-			found.clear();
+			Map<String, Integer> found = new HashMap<String, Integer>();
 			// trying to see if s.substring(start, start + concatLen) is a candidate
 			int i = 0;
 			for (; i < numWords; i++) {
