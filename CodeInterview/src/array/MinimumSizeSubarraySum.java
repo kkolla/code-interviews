@@ -14,7 +14,7 @@ public class MinimumSizeSubarraySum {
         
             // if the current sum is greater than or equal to s, try to increase start to get a smaller subarray
             while (sum >= s && start < nums.length) {
-                int len = end - start;
+                int len = end - start; // not plusing 1 because end is real end + 1
                 minLen = minLen == -1 ? len : Math.min(minLen, len);
                 sum -= nums[start];
                 start++;

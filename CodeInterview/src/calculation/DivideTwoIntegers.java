@@ -84,11 +84,9 @@ public class DivideTwoIntegers {
         long dvs = Math.abs((long) divisor);
  
         long res = 0;
-        while(dvd >= dvs)
-        {
+        while(dvd >= dvs) {
             int shifts = 0;
-            while (dvd >= (dvs << shifts))
-            {
+            while (dvd >= (dvs << shifts)) {
             	shifts++;
             }
             dvd -= dvs << (shifts - 1);

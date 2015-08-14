@@ -24,7 +24,7 @@ public class NextPermutation {
             swap(nums, pivot, t);    
         }
             
-        // reverse the right partion to get a smaller tail
+        // reverse the right partition to get a smaller tail
         int start = pivot + 1, end = nums.length - 1;
         while (start < end) {
             swap(nums, start, end);
