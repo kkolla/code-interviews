@@ -1,6 +1,6 @@
 package array;
 
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
@@ -36,12 +36,7 @@ public class SlidingWindowMaximum {
     public int[] maxSlidingWindow2(int[] nums, int k) {
         if (nums.length == 0) return new int[0];
         
-        PriorityQueue<Integer> pq = new PriorityQueue<Integer>(k, new Comparator<Integer>() {
-            @Override
-			public int compare(Integer a, Integer b) {
-                return b.compareTo(a);
-            }   
-        });
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>(k, Collections.reverseOrder());
         int[] result = new int[nums.length - k + 1];
         
         for (int i = 0; i < nums.length; i++) {
