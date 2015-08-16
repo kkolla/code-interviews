@@ -57,8 +57,8 @@ public class Sodoku {
         
         // check each box
         for (int k = 0; k < 9; k++) {
-            int deltaX = (k / 3) * 3;
-            int deltaY = k * 3 % 9;
+            int deltaX = k / 3 * 3;
+            int deltaY = k % 3 * 3;
             boolean[] seen = new boolean[9];
             for (int i = deltaX; i < deltaX + 3; i++) {
                 for (int j = deltaY; j < deltaY + 3; j++) {

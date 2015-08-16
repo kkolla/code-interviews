@@ -9,28 +9,32 @@ package dp;
  */
 public class TrappingRainWater {
 
-	public static int trap2(int[] a) {
-		if (a.length == 0 || a.length == 1)
-			return 0;
-		int total = 0;
-		int highest = 0;
-		for (int i = 1; i < a.length; i++)
-			if (a[i] > a[highest])
-				highest = i;
-		int left = 0;
-		for (int i = 1; i < highest; i++)
-			if (a[i] < a[left])
-				total += a[left] - a[i];
-			else
-				left = i;
-		int right = a.length - 1;
-		for (int i = a.length - 2; i > highest; i--)
-			if (a[i] < a[right])
-				total += a[right] - a[i];
-			else
-				right = i;
-		return total;
-	}
+	// O(n), O(1)
+	public int trapRainWater(int[] heights) {
+        if (heights.length == 0) return 0;
+        
+        int highestIndex = 0;
+        for (int i = 1; i < heights.length; i++) {
+            if (heights[i] > heights[highestIndex])
+                highestIndex = i;
+        }
+        
+        int water = 0;
+        for (int i = 0, leftHighest = 0; i < highestIndex; i++) {
+            if (heights[i] > leftHighest) 
+                leftHighest = heights[i];
+            else
+                water += leftHighest - heights[i];
+        }
+        for (int i = heights.length - 1, rightHighest = 0; i >= highestIndex + 1; i--) {
+            if (heights[i] > rightHighest) 
+                rightHighest = heights[i];
+            else
+                water += rightHighest - heights[i];
+        }
+        
+        return water;
+    }
 	
 	public static int trap(int[] height) {
 		if (height == null || height.length <= 1) return 0;

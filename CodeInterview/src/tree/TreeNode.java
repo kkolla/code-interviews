@@ -5,6 +5,8 @@ public class TreeNode {
 	public TreeNode left;
 	public TreeNode right;
 	public TreeNode parent;
+	
+	public TreeNode() {}
 
 	public TreeNode(int v, TreeNode l, TreeNode r) {
 		val = v;
