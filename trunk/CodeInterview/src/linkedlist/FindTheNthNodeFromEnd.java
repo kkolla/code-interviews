@@ -4,7 +4,24 @@ import utils.CreateUtils;
 import utils.PrintUtils;
 
 public class FindTheNthNodeFromEnd {
+	
+	// one pass
+	public ListNode nthToLast(ListNode head, int n) {
+        if (head == null) return null;
+        
+        ListNode fast = head;
+        for (int i = 0; i < n; i++) fast = fast.next;
+        
+        ListNode slow = head;
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        
+        return slow;
+    }
 
+	// two passes
 	public static ListNode findNthNodeToLastIterative(ListNode head, int n) {
 		int length = ListNode.length(head);
 		if (n > length || length == 0)

@@ -13,6 +13,7 @@ package linkedlist;
  */
 public class RemoveTheNthNodeFromEnd {
 
+	// one pass
 	public static ListNode remove(ListNode head, int n) {
 		if (head == null)
 			return null;
@@ -31,4 +32,24 @@ public class RemoveTheNthNodeFromEnd {
 		return head;
 	}
 
+	// two passes
+	ListNode removeNthFromEnd(ListNode head, int n) {
+        if (head == null) return null;
+        
+        int len = 0;
+        ListNode node = head;
+        while (node != null) {
+            len++;
+            node = node.next;
+        }
+        
+        if (n == len) return head.next;
+        
+        int moves = len - n - 1;
+        node = head;
+        for (int i = 0; i < moves; i++) node = node.next;
+        if (node.next != null) node.next = node.next.next;
+        
+        return head;
+    }
 }

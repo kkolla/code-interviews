@@ -22,7 +22,7 @@ import java.util.PriorityQueue;
  */
 public class SlidingWindowMedian {
 	
-	// O(nlog(n)), assuming PriorityQueue supports O(log(n)) removal
+	// O(nlog(n)), assuming the modified PriorityQueue supports O(log(n)) removal
 	public ArrayList<Integer> medianSlidingWindow(int[] nums, int k) {
         ArrayList<Integer> result = new ArrayList<Integer>();
         if (nums.length == 0 || k == 0) return result;

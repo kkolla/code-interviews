@@ -1,7 +1,7 @@
 package tree;
 
 public class SegmentTreeNode {
-	public int start, end, max, count;
+	public int start, end, max, count, sum, min;
 	public SegmentTreeNode left, right;
 	
 	public SegmentTreeNode(int start, int end) {
