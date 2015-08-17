@@ -80,7 +80,7 @@ public class WildcardMatching {
 	// TLE
 	public static boolean isMatch(String s, String p) {
         if (p.isEmpty()) return s.isEmpty();
-        if (s.isEmpty()) return p.charAt(0) == '*' ? isMatch(s, p.substring(1)) : false;
+        if (s.isEmpty()) return p.charAt(0) == '*' && isMatch(s, p.substring(1));
         
         if (p.charAt(0) == '*') {
             return isMatch(s.substring(1), p) || isMatch(s.substring(1), p.substring(1));

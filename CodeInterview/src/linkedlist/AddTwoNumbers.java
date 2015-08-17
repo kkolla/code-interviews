@@ -10,7 +10,7 @@ public class AddTwoNumbers {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		ListNode dummy = new ListNode(-1), n = dummy;
         int carry = 0;
-        while (l1 != null || l2 != null) {
+        while (l1 != null || l2 != null || carry != 0) {
             int sum = carry;
             if (l1 != null) {
                 sum += l1.val;
@@ -25,7 +25,6 @@ public class AddTwoNumbers {
             n = n.next;
         }
         
-        if (carry == 1) n.next = new ListNode(1);
         return dummy.next;
     }
 }
