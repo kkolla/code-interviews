@@ -16,32 +16,23 @@ package string;
  */
 public class RegularExpressionMatching {
 
-	// cannot pass leetcode oj
-	public static boolean match(char[] s, char[] p, int i, int j) {
-		// pattern characters have all been matched
-		if (j == p.length)
-			return i == s.length;
-
-		// if next character is not '*', must match current characters
-		if ((j == p.length - 1) || p[j + 1] != '*') {
-			// current characters don't match
-			if (s[i] != p[j] && p[j] != '.')
-				return false;
-			// current characters match, go further for both
-			else
-				return i != s.length && match(s, p, i + 1, j + 1);
-		}
-
-		// next character is '*'
-		while (i != s.length && (p[j] == '.' || s[i] == p[j])) {
-			if (match(s, p, i, j + 2))
-				return true;
-			else
-				i++;
-		}
-		return match(s, p, i, j + 2);
-
-	}
+	// TLE
+	public boolean isMatch2(String s, String p) {
+        if (p.isEmpty()) return s.isEmpty();
+        if (s.isEmpty()) 
+            return p.length() > 1 && p.charAt(1) == '*' && isMatch2(s, p.substring(2));
+        
+        if (p.length() > 1 && p.charAt(1) == '*') {
+            if (p.charAt(0) == '.' || s.charAt(0) == p.charAt(0)) 
+                return isMatch2(s.substring(1), p) || isMatch2(s.substring(1), p.substring(2))
+                    || isMatch2(s, p.substring(2)); 
+            else
+                return isMatch2(s, p.substring(2)); 
+        } else {
+            return (p.charAt(0) == '.' || s.charAt(0) == p.charAt(0))
+                && isMatch2(s.substring(1), p.substring(1));
+        }
+    }
 	
 	public static boolean isMatch(String s, String p) {
         if (p.isEmpty()) return s.isEmpty();

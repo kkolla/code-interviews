@@ -13,8 +13,8 @@ import utils.PrintUtils;
 public class BestTimeToBuyAndSellStockIII {
 	
 	// http://www.programcreek.com/2014/02/leetcode-best-time-to-buy-and-sell-stock-iii-java/
-	//Comparing to I and II, III limits the number of transactions to 2. 
-	// This can be solve by "devide and conquer". 
+	// Comparing to I and II, III limits the number of transactions to 2. 
+	// This can be solve by "divide and conquer". 
 	// We use left[i] to track the maximum profit for transactions before i, 
 	// and use right[i] to track the maximum profit for transactions after i.
 	// You can use the following example to understand the Java solution:
@@ -29,29 +29,26 @@ public class BestTimeToBuyAndSellStockIII {
 		int[] right = new int[prices.length];
 		
 		left[0] = 0;
-		int buy = Integer.MAX_VALUE, profit = 0;
+		int profit = 0, minPrevPrice = prices[0];
 		for (int i = 1; i < prices.length; i++) {
-			buy = Math.min(buy, prices[i - 1]);
-			profit = Math.max(profit, prices[i] - buy);
-			left[i] = profit;
+		    profit = Math.max(profit, prices[i] - minPrevPrice);
+		    left[i] = profit;    
+		    minPrevPrice = Math.min(minPrevPrice, prices[i]);
 		}
 		
-		right[prices.length - 1] = 0;
-		int sell = Integer.MIN_VALUE;
-		profit = 0;
+		right[right.length - 1] = 0;
+		profit = 0; 
+		int maxPrevPrice = prices[prices.length - 1];
 		for (int i = prices.length - 2; i >= 0; i--) {
-			sell = Math.max(sell, prices[i + 1]);
-			profit = Math.max(profit, sell - prices[i]);
-			right[i] = profit;
+		    profit = Math.max(profit, maxPrevPrice - prices[i]);
+		    right[i] = profit;
+		    maxPrevPrice = Math.max(maxPrevPrice, prices[i]);
 		}
-		
-		PrintUtils.printArray(left);
-		PrintUtils.printArray(right);
-
 		
 		int maxProfit = 0;
-		for (int i = 0; i < prices.length; i++)
-			maxProfit = Math.max(maxProfit, left[i] + right[i]);
+		for (int i = 0; i < prices.length; i++) {
+		    maxProfit = Math.max(maxProfit, left[i] + right[i]);
+		}
 		return maxProfit;
 	}
 	
