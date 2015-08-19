@@ -29,4 +29,23 @@ public class UniqueBinarySearchTrees {
         }
         return nums[n];
     }
+    
+    // TLE
+    public int numTreesRecursive(int n) {
+        if (n == 0) return 1;
+        return numTreesRecursive(1, n);
+    }
+    
+    private int numTreesRecursive(int start, int end) {
+        if (start > end) return 1;
+        if (start == end) return 1;
+        
+        int count = 0;
+        for (int mid = start; mid <= end; mid++) {
+            int leftCount = numTreesRecursive(start, mid - 1);
+            int rightCount = numTreesRecursive(mid + 1, end);
+            count += leftCount * rightCount;
+        }
+        return count;
+    }
 }
