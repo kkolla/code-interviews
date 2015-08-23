@@ -22,7 +22,7 @@ public class RotateLinkedListByK {
             len++;
         }
         
-        k = k >= 0 ? k % len : k % len + len;
+        k = k >= 0 ? k % len : (k % len + len) % len;
         if (k == 0) return head;
 
         ListNode newTail = head;
@@ -38,7 +38,7 @@ public class RotateLinkedListByK {
 	public static void main(String[] args) {
 		ListNode head = CreateUtils.randNonNegLinkedList(10, 10);
 		PrintUtils.printLinkedList(head);
-		PrintUtils.printLinkedList(rotateRight(head, -2));
+		PrintUtils.printLinkedList(rotateRight(head, -24));
 		System.out.println(-13%2);
 	}
 
