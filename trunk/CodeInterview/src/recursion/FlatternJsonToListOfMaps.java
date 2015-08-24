@@ -44,6 +44,7 @@ public class FlatternJsonToListOfMaps {
 	    return flatten(json, new JSONArray());
 	}
 	  
+	// buggy
 	private static JSONArray flatten(Object object, JSONArray result) {	
 		if (object instanceof JSONArray) {
 			JSONArray jsonArray = (JSONArray) object;
