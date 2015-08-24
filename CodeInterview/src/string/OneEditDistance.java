@@ -1,6 +1,8 @@
 package string;
 
 /**
+ * company: Uber, stage: phone
+ * 
  * Given two strings S and T, determine if they are both one edit distance apart.
  *
  */
@@ -22,7 +24,7 @@ public class OneEditDistance {
 				return isOneEditDistance(s, t, si + 1, ti + 1, distance);
 			}
 		} else if (distance == 1) {
-			// at least reached one string's end
+			// must reach to both string's ends
 			return si == s.length() && ti == t.length();
 		} else {
 			// distance = 0
@@ -31,7 +33,7 @@ public class OneEditDistance {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(isOneEditDistance("abcdfe", "abcde"));
+		System.out.println(isOneEditDistance("abcdef", "abcde"));
 	}
 
 }

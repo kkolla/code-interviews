@@ -11,6 +11,8 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
+ * company: Uber, stage: phone
+ * 
  * Given two words (start and end), and a dictionary, find all shortest transformation sequence(s) from start to end, such that:
  * Only one letter can be changed at a time
  * Each intermediate word must exist in the dictionary
@@ -117,7 +119,7 @@ public class WordLadderII {
 
 	public static void main(String[] args) {
 		Set<String> dict = new HashSet<String>();
-		dict.add("hot");  dict.add("dot");
+		dict.add("hot"); dict.add("dot");
 		dict.add("dog"); dict.add("lot"); dict.add("log");
 		
 		System.out.println(findLadders("hot", "cog", dict));
